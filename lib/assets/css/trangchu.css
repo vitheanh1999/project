@@ -1,0 +1,81 @@
+body{
+    background-image: url(./login/images/bg.jpg) no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-attachment: fixed;
+	background-position: center;
+}
+.row{
+    margin: 0
+}
+.trangchu{
+    margin-top: 3%;
+}
+
+.trangchu .panel-title{
+    font-family: 'Open Sans', sans-serif;
+    text-transform:none;
+    font-weight: 600;
+    padding-left: 4%
+}
+.trangchu .blockquote{
+    background-color: aliceblue;
+   margin-bottom: 20px;
+   min-height: 120px;
+}
+.trangchu .blockquote .left{
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+}
+.trangchu .blockquote .left img{
+    border-radius: 50%
+}
+.trangchu .blockquote .right{
+    margin: auto;
+    margin-left: 0;
+}
+.trangchu .blockquote .right .cauhoidetail{
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+.trangchu .blockquote .right .chutoa{
+    font-size: 15px;
+    margin-bottom: -10px;
+}
+.trangchu .blockquote .right .bottom{
+    font-size: 15px;
+
+}
+.trangchu .blockquote .right .bottom a{
+    text-decoration: none 
+}
+.trangchu .chude{
+    width: 100%;
+}
+.trangchu .chude .listcauhoi i{
+    width: 12%;
+}
+.trangchu .chude ul{
+    padding-left: 0px;
+}
+.trangchu .chude ul li{
+    margin-top: 15px;
+    font-size: 0.9vw;
+    font-family: 'Open Sans', sans-serif;
+}
+.trangchu .chude ul li a{
+    margin-left: 20px;
+    text-decoration: none;
+}
+.trangchu .chude .panel-body ul li a{
+    font-size: 12px;
+   text-decoration: none;
+}
+.trangchu .chude ul li:hover{
+   background-color: cyan;
+}

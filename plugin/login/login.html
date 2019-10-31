@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="./lib/assets/css/login/style.css">
+    <div class="main">
+		<div class="main-w3l">
+			<h1 class="logo-w3">Q & A UET</h1>
+			<div class="w3layouts-main">
+				<h2><span>ĐĂNG NHẬP</span></h2>
+
+
+					<form method="post" >
+						<input placeholder="Username or Email" name="Email" type="email" ng-model="username" required="">
+						<input placeholder="Password" name="Password" type="password" ng-model="password" required="">
+						<input type="submit" value="Get Started" name="login" style="height: 10%;" ng-click="login()">
+						<h3>(or)</h3>
+						<div class="social">
+							<input type="submit" value="Login Facebook">
+						</div>
+					</form>
+					<div class="row">
+						<div class="col-4-lg left"><h6><a href="#">Quên mật khẩu</a></h6></div>
+						<div class="col-4-lg right "><h6><a ui-sref="resgister">Đăng ký</a></h6></div>
+					</div>
+			</div>
+			<!-- //main -->
+			
+			<!--footer-->
+			<div class="footer-w3l">
+				<p>&copy; 2019 Space Login Form. All rights reserved | Design by <a href="#">PH-Vincent</a></p>
+			</div>
+			<!--//footer-->
+		</div>
+	</div>

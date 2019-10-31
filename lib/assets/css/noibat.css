@@ -1,0 +1,28 @@
+.widget ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.widget_highest_points ul li {
+    padding-bottom: 15px;
+    border-bottom: 1px solid black;
+    margin-top: 15px;
+}
+.author-img {
+    float: left;
+    display: block;
+    overflow: hidden;
+    width: 71px;
+    height: 71px;
+    position: relative;
+    margin-right: 20px;
+    padding: 2px;
+    border: 1px solid #dedede;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.author-content {
+    display: inline-block;
+    /* overflow: hidden; */
+}

@@ -1,0 +1,24 @@
+.chude ul {
+    list-style: none;
+}
+.thongtin{
+    padding:20px
+}
+.thongtin .top .left img{
+    width: 100%;
+}
+.thongtin .top .right ul{
+    list-style: none
+}
+.thongtin .top .right ul li span i{
+    margin-right: 10px;
+    width: 20px;
+}
+.thongtin .top .listcauhoi .panel-heading{
+    background-image  : linear-gradient(to right, #369af8, #c9dddf);
+}
+.thongtin .top .right ul li span{
+    width: 200px;
+    display: inline-block;
+
+}

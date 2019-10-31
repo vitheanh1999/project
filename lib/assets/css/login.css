@@ -1,0 +1,27 @@
+.login .example{
+    margin: 20px;
+
+}
+.login .navbar{
+    background: aqua;
+}
+.login .text-center{
+    color: green;
+    margin-top: 30px;
+}
+#abc{
+    color: white;
+    margin-top: 30px;
+}
+.login form{
+    margin-left: 25%;
+    margin-top: 30px;
+    padding: 20px;
+    width: 50%;
+    vertical-align: middle;
+    background-color: darkkhaki;
+}
+.login{
+    position: relative;
+    background-image: url('https://www.xemgame.com/data/pictures/xemgame/2017/10/18/Sieu-Pham-Chibi-3.jpg');
+}

@@ -1,0 +1,134 @@
+<div class="card-header thanhchude">
+    <h5 class="dsphd">Danh sách câu hỏi</h5>
+</div>
+<div class="container-fluid trangchu" ng-init="init()">
+    <div class="row">
+        <div class="col-md-2">
+            <script src="./main/trangchu/1.js"></script>
+            <div class="panel panel-default chude">
+                <div class="panel-heading" style="text-align: center">
+                    <h3 class="panel-title">Chủ đề</h3>
+                </div>
+                <div class="">
+                    <ul>
+                        <li><a class="listcauhoi" ui-sref="root.chude({chudeId: 'lichhoc'})"><i
+                                    class="fas fa-calendar-alt"></i>Lịch học</a></li>
+                        <li><a class="listcauhoi" ui-sref="root.chude({chudeId: 'giangduong'})"><i
+                                    class="fas fa-warehouse"></i>Giảng đường</a></li>
+                        <li><a class="listcauhoi" ui-sref="root.chude({chudeId: 'giangvien'})"><i
+                                    class="fas fa-user-tie"></i>Giảng viên</a></li>
+                        <li><a class="listcauhoi" ui-sref="root.chude({chudeId: 'cosovatchat'})"><i
+                                    class="fas fa-chair"></i>Cơ sở vật chất</a></li>
+                        <li><a class="listcauhoi" ui-sref="root.chude({chudeId: 'monhoc'})"><i
+                                    class="fas fa-book-reader"></i>Môn học</a></li>
+                        <li><a class="listcauhoi" ui-sref="root.chude({chudeId: 'chudekhac'})">Chủ đề khác</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="noibat">
+                        <div id="highest-points-widget-2" class="widget highest-points-widget">
+                            <h3 class="widget_title">Nổi bật</h3>
+                            <div class="widget_highest_points">
+                                <ul>
+                                    <li>
+                                        <div class="author-img"><a href="https://2code.info/demo/themes/ask-me/author/ask-me/"><img
+                                                    class="avatar avatar-65 photo" alt="Ahmed Hassan" width="65" height="65"
+                                                    src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-7-65x65.jpg"></a>
+                                        </div>
+                                        <div class="author-content">
+                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/ask-me/">aaaa</a></h6>
+                                            <span class="badge-span" style="background-color: #81d742">Explainer</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                    <li>
+                                        <div class="author-img"><a href="https://2code.info/demo/themes/ask-me/author/barry/"><img
+                                                    class="avatar avatar-65 photo" alt="Barry Carter" width="65" height="65"
+                                                    src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-8-65x65.jpg"></a>
+                                        </div>
+                                        <div class="author-content">
+                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/barry/">Barry</a></h6>
+                                            <span class="badge-span" style="background-color: #dd9933">Pundit</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                    <li>
+                                        <div class="author-img"><a href="https://2code.info/demo/themes/ask-me/author/john-2/"><img
+                                                    class="avatar avatar-65 photo" alt="John Peter" width="65" height="65"
+                                                    src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-9-65x65.jpg"></a>
+                                        </div>
+                                        <div class="author-content">
+                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/john-2/">John</a></h6>
+                                            <span class="badge-span" style="background-color: #dd3333"> Teacher</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                    <li>
+                                        <div class="author-img"><a
+                                                href="https://2code.info/demo/themes/ask-me/author/martin-2/"><img
+                                                    class="avatar avatar-65 photo" alt="Martin Hope" width="65" height="65"
+                                                    src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-2-65x65.jpg"></a>
+                                        </div>
+                                        <div class="author-content">
+                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/martin-2/">Martin</a>
+                                            </h6><span class="badge-span" style="background-color: #dd3333"> Teacher</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                    <li>
+                                        <div class="author-img"><a href="https://2code.info/demo/themes/ask-me/author/marko/"><img
+                                                    class="avatar avatar-65 photo" alt="Marko Smith" width="65" height="65"
+                                                    src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-4-65x65.jpg"></a>
+                                        </div>
+                                        <div class="author-content">
+                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/marko/">Marko</a></h6>
+                                            <span class="badge-span" style="background-color: #000000">Beginner</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-10" ng-init="question()">
+            <div class="card" ng-init="init()">
+
+                <div class="card-body">
+                    <div class="blockquote row  listcauhoi"
+                        ng-repeat="x in temp = (result | filter : {content : searchText }) | limitTo:6:6*(currentPage-1)">
+                        <div class="left"><a href="" class="col-lg-2"><img
+                                    src="https://source.unsplash.com/QAB-WJcbgJk/60x60" alt=""></a></div>
+
+                        <div class="content col-lg-10 right ">
+                            <a ui-sref="root.cauhoi({contactId: $index+1})" class="cauhoidetail"
+                                style="display: block">Câu hỏi: {{x.content}}</a>
+                            <a ui-sref="root.thongtin" style="display: block;" class="chutoa">Tên: Somebody</a>
+                            <a class="chutoa">Chủ đề: {{x.chude}}</a>
+                            <div class="bottom">
+                                <a href="" style="margin-right:10px"> <i class="far fa-thumbs-up"></i> 1</a>
+                                <a><i class="far fa-clock" style="margin-right: 5px;"></i>{{x.date}}</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <nav class="nav pagination" role="navigation">
+                    <!-- <ul uib-pagination boundary-links="true" total-items="totalItems" max-size="maxSize"
+                        ng-model="currentPage" class="pagination-md" items-per-page="itemsPerPage" previous-text="&lsaquo;" next-text="&rsaquo;"
+                        first-text="&laquo;" last-text="&raquo;"></ul> -->
+                    <ul uib-pagination boundary-links="true" total-items="temp.length" max-size="maxSize"
+                        ng-model="currentPage" class="pagination-md" items-per-page="numPerPage"
+                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+</div>
