@@ -7,13 +7,15 @@
 
 
 					<form method="post">
-						<input placeholder="Username or Email" name="Email" type="email" ng-model="vm.user.username"  required="">					
+						<input placeholder="Username" name="text" type="text" ng-model="vm.user.username"  required="">					
                         <div class="row">
                             <div class="col-lg-6">	<input placeholder="Mật khẩu" name="Password" type="password" ng-model="vm.user.password" required=""></div>
                             <div class="col-lg-6">	<input placeholder="Nhập lại mật khẩu" name="Password" type="password" ng-model="vm.user.confirmpassword" required=""></div>
                         </div>
-                        <input placeholder="Name" name="Name" type="name" ng-model="vm.user.name" required="">	
+						<input placeholder="Name" name="Name" type="name" ng-model="vm.user.name" required="">	
+						<input placeholder="Email" name="Email" type="email" ng-model="vm.user.email"  required="">	
 						<input type="submit" value="Get Started" name="login" style="height: 10%; display: inline;" ng-click="vm.resgister()">
+						
 						<h3>(or)</h3>
 						<div class="social">
 							<input type="submit" value="Login Facebook">

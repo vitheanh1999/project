@@ -9,8 +9,10 @@ angular.module('myapp').factory('api', ['config', 'request','factory', function 
         creareanwer:'answer/create',
         viewquestion: 'question/viewquestion',
         createquestion:'question/create',
-        login:'login',
-        resgister:'resgister'
+        login:'auth/login',
+        resgister:'auth/registration',
+        like:'question/like',
+        info:'auth/info'
     };
 
     var methods = {

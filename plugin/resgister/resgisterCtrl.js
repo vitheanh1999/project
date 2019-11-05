@@ -6,7 +6,8 @@ app.controller("resgisterCtrl",function($scope,api,$state,factory){
         username:vm.user.username,
         password:vm.user.password,
         confirmpassword:vm.user.confirmpassword,
-        name:vm.user.name
+        name:vm.user.name,
+        email:vm.user.email
     }
       api.resgister(vm.data).then(result=>{
           if(result.success===true){

@@ -2,11 +2,13 @@
     padding: 0;
 height: 100%;
 }
+.header .dmenu .nav-link{
+    font-weight: 500;
+}
 .header .navbar{
     width: 100%;
     padding:0;
-
-    /* height: 12%; */
+    height: 9%;
 }
 .header .collapse{
     padding:0;
@@ -42,7 +44,7 @@ height: 100%;
 }
 .menu li{
 
-    transition: 0.3s
+    transition: 0.1s
 }
 .menu li:hover{
     margin-left: 5px;
@@ -59,14 +61,15 @@ height: 100%;
 .header .formsearch{
     /* margin-left: 10% */
 }
-.header .dropdown{
-    /* margin-left: 20% */
-    margin-right: 0!important;
+.header ul li{
+    /* margin-left: 20%;
+    margin-right: 0!important; */
 }
 .header .icondangnhap{
     padding-left: 0
 }
 .header .createquestion{
+    color: white;
 margin-right: 10px;
 display: flex;
 }
@@ -75,15 +78,24 @@ display: flex;
     border: none;
     height: 100%;
 }
-
+.header .chude .dropdown-menu a{
+    /* display: block */
+}
 @media(min-width:1024px){
     .header .img .img1 img{
         width: 135%;
     }
 }
 @media(max-width:992px){
+
     .searchform-wrap #searchbox input{
         border-radius: 0;
+ 
+    }
+    .searchform-wrap button{
+        position: relative;
+        top: 3px;
+        left: 2px;
     }
     .ml-auto, .mx-auto{
         margin-left: 0;
@@ -109,23 +121,25 @@ display: flex;
     }
 }
 @media(max-width:768px){
-
+ 
+    .navbar-collapse.collapse{
+        /* display: block */
+    } 
     .header .img .img1 img{
         width: 45%;
     }
 }
 .card-header{
+    margin-top: 20px;
+    text-align: center;
     background-color: #A9F5F2;
     padding: 0;
 
 }
-.dsphd{
-    padding-top: 6px;
-    margin-top: 7px;
-    text-align: center
-}
+
 .thanhchude{
-    margin-top:60px
+    /* display: flex; */
+    /* margin-top:90px */
 }
 #sticky-wrap {
 	top:-115px;
@@ -209,6 +223,7 @@ display: flex;
     .searchform-wrap #searchbox input{
         position: relative;
         width: 0px;
-        padding-left:0
+        padding-left:0;
+        top: 0;
     }
 }

@@ -59,5 +59,83 @@ app.factory('factory',['$uibModal', '$q',function($uibModal,$q){
         })
         return defer.promise
     }
+    methods.editquestion=function(){
+        var defer = $q.defer();
+        var modalInstance = $uibModal.open({
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+              templateUrl: "modal/editquestion/editquestion.html",
+              controller: "newquestion",
+              controllerAs:'vm',     
+              size: 'md',
+          });
+          modalInstance.result.then(function (data) {
+            defer.resolve(data)//da giai quyet
+        }, function (dismiss) {
+            defer.reject()//tu choi
+        })
+        return defer.promise
+    }
+    methods.confirm = function (title) {
+        var defer = $q.defer();
+        const toast = swal({
+            title: 'You are sure?',
+            width: 400,
+            padding: '3em',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!',
+            background: '#fff url(https://sweetalert2.github.io/images/trees.png)',
+            backdrop: `
+              rgba(0,0,123,0.4)
+              url("https://sweetalert2.github.io/images/nyan-cat.gif")
+              center left
+              no-repeat
+            `
+        }).then(result=>{
+            if(result.value){
+                defer.resolve({
+                    value: 0,
+                })
+            }
+            else {
+                defer.resolve({
+                    value: 1,
+                })
+            }
+        })
+        return defer.promise
+    }
+    methods.confirmdelete= function(){
+        Swal.fire({
+            title: 'Bạn có muốn xóa câu hỏi?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Có'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+          })
+    }
+    methods.showLoading = function(content) {
+        var defer = $q.defer()
+        loadingDialogPending = swal.fire({
+          position: 'center',
+          type: 'success',
+          title:content,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        return defer.promise
+    }
     return methods
 }])

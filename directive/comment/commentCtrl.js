@@ -1,23 +1,30 @@
 app.controller("commentCtrl", function ($scope, $timeout, $stateParams, api) {
   var vm = this;
-  // Current comment.
   vm.comment = {};
   console.log(vm.comment)
-  // Array where comments will be.
   vm.comments = [];
   vm.id = $stateParams.contactId
+  $scope.checklike=true
+  vm.nolike=function(){
+    $scope.checklike=false
+    vm.count_like++
+  }
+  vm.like=function(){
+      $scope.checklike=true
+      vm.count_like--
+
+  }
 
   api.viewquestion({ id: vm.id }).then(result => {
     vm.comments = result.a
+    vm.count_like=result.q[0].count_like
+    // vm.count_like=result.q.count_like
     vm.start = () => {
       vm.datas = vm.comments
+      vm.count_like=result.q[0].count_like
     }
     // Fires when form is submited.
     vm.addComment = function () {
-      // vm.evaluateChange=function(obj,$event){
-      //   var currentElement = $event.target;
-      //   console.log(currentElement.value);
-      // }
       api.creareanwer({
         content: vm.comment.text,
         idQuestion: vm.id

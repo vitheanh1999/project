@@ -17,7 +17,7 @@ angular.module('myapp').factory('request',['$http','$q',
                         objectKey: '.k',
                         arrayKey: '',
                         headers: {
-                            Authorization: header,
+                            Authorization: "Bearer " +localStorage.getItem('token'),
                             'Accept-Language': 'vi'
                         },
                         data: data,
@@ -91,7 +91,7 @@ angular.module('myapp').factory('request',['$http','$q',
                         url: url,
                         method: 'GET',
                         headers: {
-                            Authorization: header,
+                            Authorization: "Bearer " +localStorage.getItem('token'),
                             'Accept-Language': 'vi'
                         },
                         timeout: 20000

@@ -24,9 +24,12 @@
               </div>
             </div>
           </div>
-          <a class="likeButton" href="" title="Nhấn để thích">
-            <span class="forLike"><i class="far fa-thumbs-up"></i> </i> Thích</span>
-          </a>
+          <i class="likeButton"   title="Nhấn để thích" ng-show="checklike" ng-click="vm.nolike()" ng-model="vm.count_like">
+            <span class="forLike"><i class="far fa-thumbs-up"></i>{{vm.count_like}} Thích</span>
+          </i>
+          <i class="likeButton" style="color: blue;" title="Nhấn để thích" ng-click="vm.like()" ng-hide="checklike" ng-model="vm.count_like" >
+            <span class="forLike"><i class="fas fa-thumbs-up"></i>{{vm.count_like}} Thích</span>
+          </i>
           <span class="likeButton" href="" title="Nhấn để trả lời">
             <span class=" forComment" data-toggle="collapse" data-target="#demo"><i class="fas fa-comments"></i></i>
               Comment</span>

@@ -1,4 +1,6 @@
-app.controller("trangchu", function ( api,$scope, $http, factory, config,filterFilter) {
+app.controller("trangchu", function ( api,$scope, $http, factory, config,filterFilter,$rootScope) {
+
+    console.log($rootScope.search)
     var vm = this
     api.question().then(result => {
         console.log(result)
@@ -32,8 +34,8 @@ app.controller("trangchu", function ( api,$scope, $http, factory, config,filterF
 
    function init() {
       api.question().then(result =>{
-            $scope.result = result
-            // $scope.totalItems=result.length
+            $scope.result = result.reverse()
+        console.log(result)
         })
     }
     init()

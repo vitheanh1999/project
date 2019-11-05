@@ -31,7 +31,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('root.thongtin',{
             url:'/thongtin',
-            controller:'thongtinCtrl',
+            controller:'thongtinCtrl as vm',
             templateUrl:"main/thongtin/thongtin.html"
         })
         .state('root.myquestion',{

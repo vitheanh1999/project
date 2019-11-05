@@ -1,14 +1,14 @@
 <div class="card-header thanhchude">
     <h5 class="dsphd">Thông tin người dùng</h5>
 </div>
-<div class="container thongtin">
-    <div class="top row">
+<div class="container-fluid thongtin">
+    <div class="top row" ng-init="vm.init()">
         <div class="col-md-2 left">
             <img src="http://qa.uet.vnu.edu.vn/qa/public/img/student.png" alt="">
         </div>
         <div class="col-md-10 right">
             <ul>
-                <li><span class="info"><i class="fas fa-user-graduate"></i>aaaa</span> <a href=""><i class="far fa-edit"></i></a></li>
+                <li><span class="info" ng-model="vm.name"><i class="fas fa-user-graduate"></i>{{vm.name}}</span> <a href=""><i class="far fa-edit"></i></a></li>
                 <li><span class="info"><i class="fas fa-restroom"></i>aaa</span><a href=""><i class="far fa-edit"></i></a></i></li>
                 <li><span class="info"><i class="fas fa-calendar-alt"></i>aaa</span><a href=""><i class="far fa-edit"></i></a></li>
                 <li><span class="info"><i class="fas fa-book"></i>Tổng số câu hỏi: </span></li>
@@ -22,10 +22,9 @@
                     <h3 class="panel-title">Nội dung câu hỏi</h3>
               </div>
               <div class="panel-body">
+                    
                 <div class="blockquote row">
-                    <!-- <div class="left"><a href="" class="col-lg-2"><img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
-                                alt=""></a></div> -->
-    
+
                                 <div class="content col-lg-10 right">
                                     <a ui-sref="root.cauhoi({contactId: $index+1})" class="cauhoidetail"
                                             style="display: block">Câu hỏi: aaa</a>
@@ -36,6 +35,11 @@
                                             <a><i class="far fa-clock" style="margin-right: 5px;"></i>aaa</a>
                                         </div>
                                 </div>
+                                <div>
+                                    <button type="button" class="btn btn-success" ng-click="vm.delete()"><i class="fas fa-trash-alt"></i></button>
+                                    <button type="button" class="btn btn-danger" ng-click="vm.edit()"><i class="fas fa-edit"></i></button>
+                                </div>
+                           
                 </div>
              <div class="blockquote row">
                     <!-- <div class="left"><a href="" class="col-lg-2"><img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"

@@ -1,5 +1,7 @@
 app.controller("cauhoiCtrl",function($scope,$location,api,$stateParams,$state){
   var vm=this
+  vm.id = $stateParams.contactId
+ 
     api.question().then(result=>{
       vm.datas=result
     })

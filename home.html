@@ -13,13 +13,21 @@
     <link rel="stylesheet" href="./lib/assets/fonts/fontawesome-free-5.11.2-web/css/fontawesome.min.css">
      <link rel="stylesheet" href="./lib/vendor/bootstrap/css/bootstrap.min.css">
      <link rel="stylesheet" href="./lib/assets/fonts/themify-icons/themify-icons.css">
-     <!-- <link rel="stylesheet" href="./lib/assets/css/login/style.css"> -->
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<!-- <link rel="stylesheet" href="./lib/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css"> -->
+<!-- <link rel="stylesheet" href="./lib/assets/bootstrap-3.3.7-dist/css/bootstrap.css"> -->
+ 
+    <!-- <link rel="stylesheet" href="./lib/assets/MDB-Free_4.8.11/css/mdb.min.css"> -->
+    <link rel="stylesheet" href="./lib/assets/MDB-Free_4.8.11/css/mdb.css">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" /> -->
+    <link rel="stylesheet" href="./lib/assets/kybarg-bootstrap-dropdown-hover-7e0caab/css/animate.css">
+    <link rel="stylesheet" href="./lib/assets/kybarg-bootstrap-dropdown-hover-7e0caab/css/bootstrap-dropdownhover.css">
     <link rel="stylesheet" href="./lib/assets/css/main.css">
-    <!-- <link rel="stylesheet" href="./lib/assets/css/login/style.css"> -->
+    <link rel="stylesheet" href="./lib/assets/css/login/style.css">
     <link rel="stylesheet" href="./lib/assets/css/noibat.css">
     <link rel="stylesheet" href="./lib/assets/bootstrap-4.3.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="./lib/assets/css/header.css">
+    <link rel="stylesheet" href="./lib/assets/css/footer.css">
     <link rel="stylesheet" href="./lib/assets/css/trangchu.css">
     <link rel="stylesheet" href="./lib/assets/css/cauhoi.css">
     <link rel="stylesheet" href="./lib/assets/css/login.css">
@@ -28,7 +36,8 @@
     <link rel="stylesheet" href="./lib/assets/css/noidung.css">
     <link rel="stylesheet" href="./lib/assets/css/menun2cap.css">
     <link rel="stylesheet" href="./lib/assets/css/chude.css">
-    
+    <link rel="stylesheet" href="./directive/header/1.css">
+   
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
 
     
@@ -36,27 +45,36 @@
 </head>
 
 <body ng-app="myapp">
-    <div>
-        <!-- <my-Header></my-Header> -->
-        <ui-view></ui-view>
-        <!-- <my-Footer></my-Footer> -->
+    <div>       
+        <ui-view></ui-view> 
     </div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./lib/assets/MDB-Free_4.8.11/js/jquery-3.4.1.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<!-- <script src="./lib/assets/kybarg-bootstrap-dropdown-hover-7e0caab/js/bootstrap-dropdownhover.js"></script>
+<script src="./lib/assets/kybarg-bootstrap-dropdown-hover-7e0caab/js/bootstrap-dropdownhover.min.js"></script> -->
+<script src="./lib/assets/MDB-Free_4.8.11/js/popper.min.js"></script>
+<script src="./lib/assets/MDB-Free_4.8.11/js/mdb.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+<!-- <script src="./lib/assets/bootstrap-3.3.7-dist/js/bootstrap.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.29.2/sweetalert2.all.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.22/angular-ui-router.min.js"></script>
+
 <script src="./lib/assets/js/angular-toastr.tpls.min.js"></script>
 <script src="./lib/assets/js/toastr.js"></script>
+<script src="./directive/header/1.js"></script>
 
 <script src="./app.js"></script>
 <script src="./factories/factory.js"></script>
 <script src="./directive/directive.js"></script>
 <script src="./factories/api.js"></script>
+<script src="./factories/user.js"></script>
 <script src="./factories/config.js"></script>
 <script src="./factories/request.js"></script>
 <script src="./directive/header/headerCtrl.js"></script>
@@ -79,15 +97,16 @@
 
 <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    <script src="./lib/assets/MDB-Free_4.8.11/js/bootstrap.min.js"></script>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
 
 
 

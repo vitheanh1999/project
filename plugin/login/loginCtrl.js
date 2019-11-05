@@ -22,11 +22,14 @@ app.controller("loginCtrl",function($scope,$state,$http,api,factory){
                     username:$scope.username,
                     password:$scope.password
                 }
-                api.login(data).then(result=>{
+                api.login({data}).then(result=>{
                     let temp={}
                    if(result.success===true){
-                    localStorage.setItem("info",JSON.stringify(result.content))
-                    factory.showSuccess(result.content.message)
+                    factory.showLoading(result.content)
+                    console.log(result)
+                    // localStorage.setItem("info",JSON.stringify(result.content))
+                    localStorage.setItem("token",result.token)
+                    // factory.showSuccess(result.content.message)
                     $state.go("root.trangchu")
                    }
                    else if(result.success===false){

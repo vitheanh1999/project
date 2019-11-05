@@ -1,5 +1,10 @@
-<div class="card-header thanhchude">
-    <h5 class="dsphd">Danh sách câu hỏi</h5>
+<div class="container-fluid searchtrangchu">
+    <div class="hoverimg">
+    <form autocomplete="off" method="get" class="search-form clearfix" id="search-form">
+        <input type="text" ng-model="searchText" title="* Please enter a search term!" placeholder="Nhập câu hỏi cần tìm" class="search-term " autocomplete="off">
+        <input type="submit" value="Tìm kiếm" class="search-btn">
+    </form>
+</div>
 </div>
 <div class="container-fluid trangchu" ng-init="init()">
     <div class="row">
@@ -99,7 +104,20 @@
         </div>
         <div class="col-md-10" ng-init="question()">
             <div class="card" ng-init="init()">
-
+                    <div class="panel panel-primary">
+							<div class="panel-heading phien">
+								<!-- Tabs -->
+								<ul class="nav panel-tabs">
+									<li> <a data-toggle="tab" href="#tab1"><i class="icofont icon-ribbon"></i><span class="hidden-xs">Phiên hỏi đáp hoạt động</span></a> 
+									</li>
+									<li> <a data-toggle="tab" href="#tab2"><i class="icofont icon-layers"></i><span class="hidden-xs">Phiên hỏi đáp đã đóng</span></a> 
+									</li>
+									<li class="active"> <a data-toggle="tab" href="#tab3"><i class="icofont icon-global"></i><span class="hidden-xs">Tất cả các câu hỏi</span></a> 
+									</li>
+								
+								</ul>
+							</div>
+						</div>
                 <div class="card-body">
                     <div class="blockquote row  listcauhoi"
                         ng-repeat="x in temp = (result | filter : {content : searchText }) | limitTo:6:6*(currentPage-1)">
@@ -112,8 +130,9 @@
                             <a ui-sref="root.thongtin" style="display: block;" class="chutoa">Tên: Somebody</a>
                             <a class="chutoa">Chủ đề: {{x.chude}}</a>
                             <div class="bottom">
-                                <a href="" style="margin-right:10px"> <i class="far fa-thumbs-up"></i> 1</a>
+                                <a href="" style="margin-right:10px"> <i class="far fa-thumbs-up"></i>{{x.count_like}}</a>
                                 <a><i class="far fa-clock" style="margin-right: 5px;"></i>{{x.date}}</a>
+                                <a><i class="fas fa-comments" style="margin-right: 5px;margin-left: 10px;"></i>0 Câu trả lời</a>
                             </div>
 
                         </div>

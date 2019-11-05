@@ -2,7 +2,10 @@
     list-style: none;
 }
 .thongtin{
-    padding:20px
+    /* padding:20px */
+}
+.thongtin .top {
+    background-color: white;
 }
 .thongtin .top .left img{
     width: 100%;
