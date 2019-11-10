@@ -3,7 +3,15 @@ var app = angular.module("myapp", ['ui.router','ngAnimate', 'ngSanitize','ui.boo
 app.config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/login');
-
+    // $urlRouterProvider.otherwise(function ($injector, $location) {
+    //     var $state = $injector.get('$state');
+    //     var path = $location.protocol();
+    //     if (path == 'http') {
+    //        $state.go('external');
+    //     }
+    //     else {
+    //         return '/login';
+    //     }
     $stateProvider
         .state('root',{
             url: '/root',
@@ -14,10 +22,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'trangchu as vm',
             templateUrl: 'main/trangchu/trangchu.html'
         })
+        .state('root.phienhoatdong',{
+            url: '/phienhoatdong',
+            controller: 'phienhoatdongCtrl as vm',
+            templateUrl: 'main/phienhoatdong/phienhoatdong.html'
+        })
         .state('root.cauhoi',{
-            url:'/cauhoi/:contactId',
+            url:'/cauhoi/:cauhoiId',
             controller:'cauhoiCtrl as vm',
             templateUrl:'main/cauhoi/cauhoi.html'
+        })
+        .state('root.listcauhoi',{
+            url:'/listcauhoi/:listsectionId',
+            controller:'listcauhoiCtrl as vm',
+            templateUrl:'main/listcauhoi/listcauhoi.html'
         })
         .state('login',{
             url:'/login',

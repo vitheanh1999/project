@@ -1,31 +1,31 @@
 /**
- * Question.js
+ * Section.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
 module.exports = {
- 
+
   attributes: {
-    content: {
+    title: {
       type: "string"
-    },
-    topic_id: {
-      type: "integer"
     },
     date:{
       type:"string"
     },
-    count_like:{
-      type:"integer"
+    auth_id: {
+      type: "integer"
     },
-    auth_Id:{
-      type:"integer"
+    content: {
+      type: "string"
+    },
+    topic_id:{
+      type: "integer"
+    },
+    open: {
+      type: "boolean"
     }
-  }
-  // ,connection: 'monggodb'
-  , connection: 'someMysqlServer'
-  
+  },connection: 'someMysqlServer'
 };
 

@@ -42,13 +42,13 @@ app.factory('factory',['$uibModal', '$q',function($uibModal,$q){
     methods.showWarning = (message) => {
         toastr.warning(message)
     };
-    methods.newquestion=function(){
+    methods.taophien=function(){
         var defer = $q.defer();
         var modalInstance = $uibModal.open({
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
-              templateUrl: "modal/newquestion/newquestion.html",
-              controller: "newquestion",
+              templateUrl: "modal/taophien/taophien.html",
+              controller: "taophienCtrl",
               controllerAs:'vm',     
               size: 'md',
           });
@@ -59,15 +59,76 @@ app.factory('factory',['$uibModal', '$q',function($uibModal,$q){
         })
         return defer.promise
     }
-    methods.editquestion=function(){
+    methods.taocauhoi=function(){
+        var defer = $q.defer();
+        var modalInstance = $uibModal.open({
+            // ariaLabelledBy: 'modal-title',
+            // ariaDescribedBy: 'modal-body',
+              templateUrl: "modal/taocauhoi/taocauhoi.html",
+              controller: "taocauhoiCtrl",
+              controllerAs:'vm',     
+              size: 'md',
+          });
+          modalInstance.result.then(function (data) {
+            defer.resolve(data)//da giai quyet
+        }, function (dismiss) {
+            defer.reject()//tu choi 
+        })
+        return defer.promise
+    }
+    methods.taokhaosat=function(){
+        var defer = $q.defer();
+        var modalInstance = $uibModal.open({
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+              templateUrl: "modal/taokhaosat/taokhaosat1.html",
+              controller: "taokhaosatCtrl",
+              controllerAs:'vm',     
+              size: 'md',
+          });
+          modalInstance.result.then(function (data) {
+            defer.resolve(data)//da giai quyet
+        }, function (dismiss) {
+            defer.reject()//tu choi
+        })
+        return defer.promise
+    }
+    methods.editsection=function(args){
+        var defer = $q.defer();
+        var modalInstance = $uibModal.open({
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+              templateUrl: "modal/editsection/editsection.html",
+              controller: "editsectionCtrl",
+              controllerAs:'vm',     
+              size: 'md',
+              resolve: {
+                args: function() {
+                    return args;
+                }
+            }
+          });
+          modalInstance.result.then(function (data) {
+            defer.resolve(data)//da giai quyet
+        }, function (dismiss) {
+            defer.reject()//tu choi
+        })
+        return defer.promise
+    }
+    methods.editquestion=function(args){
         var defer = $q.defer();
         var modalInstance = $uibModal.open({
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
               templateUrl: "modal/editquestion/editquestion.html",
-              controller: "newquestion",
+              controller: "editquestionCtrl",
               controllerAs:'vm',     
               size: 'md',
+              resolve: {
+                args: function() {
+                    return args;
+                }
+            }
           });
           modalInstance.result.then(function (data) {
             defer.resolve(data)//da giai quyet
@@ -108,6 +169,7 @@ app.factory('factory',['$uibModal', '$q',function($uibModal,$q){
         return defer.promise
     }
     methods.confirmdelete= function(){
+        var defer = $q.defer();
         Swal.fire({
             title: 'Bạn có muốn xóa câu hỏi?',
             text: "You won't be able to revert this!",
@@ -118,24 +180,35 @@ app.factory('factory',['$uibModal', '$q',function($uibModal,$q){
             confirmButtonText: 'Có'
           }).then((result) => {
             if (result.value) {
+                defer.resolve({
+                    value: true,
+                })
               Swal.fire(
                 'Deleted!',
                 'Your file has been deleted.',
                 'success'
               )
             }
+            else{
+                defer.resolve({
+                    value: false,
+                })
+            }
           })
+          return defer.promise
     }
     methods.showLoading = function(content) {
-        var defer = $q.defer()
-        loadingDialogPending = swal.fire({
-          position: 'center',
-          type: 'success',
-          title:content,
-          showConfirmButton: false,
-          timer: 1500
-        })
-        return defer.promise
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          })
+          
+          Toast.fire({
+            type: 'success',
+            title: 'Signed in successfully'
+          })
     }
     return methods
 }])

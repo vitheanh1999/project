@@ -1,4 +1,4 @@
-app.controller("editquestionCtrl",function($uibModalInstance,args){
+app.controller("editsectionCtrl",function($uibModalInstance,args){
     var vm=this
     vm.data={}
     vm.data=args

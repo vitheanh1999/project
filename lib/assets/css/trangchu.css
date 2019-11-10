@@ -30,8 +30,17 @@ body{
     display: block;
     color: black;
     letter-spacing: 1px;
-    padding: 10px 0px;
+    /* padding: 10px 0px; */
     font-size: 16px;
+}
+.trangchu .phien ul li:hover a.nav-link{
+	background: #dd4343;
+}
+.trangchu .phien ul li.active{
+    background: #dd4343;
+}
+.trangchu .tab-form-demo .tab-content label{
+    color: black;
 }
 .trangchu .showlist .form-group{
     width: 80px;
@@ -44,7 +53,7 @@ body{
     padding-left: 4%
 }
 .trangchu .blockquote{
-    background-color: aliceblue;
+    background-color: darkturquoise;
    margin-bottom: 20px;
    min-height: 120px;
 }
@@ -52,6 +61,11 @@ body{
     margin: auto;
     margin-left: 0;
     margin-right: 0;
+}
+@media(max-width:768px){
+    .trangchu .blockquote .left {
+        display: none;
+    }
 }
 /* .trangchu .blockquote .left::after{
     background-color: #04182d;
@@ -62,11 +76,19 @@ body{
     height: 107px;
 } */
 .trangchu .blockquote .left img{
-    border-radius: 50%
+    /* border-radius: 50% */
+    width: 100%;
+    padding-right: 20px;
 }
 .trangchu .blockquote .right{
-    margin: auto;
-    margin-left: 0;
+    /* margin: auto;
+    margin-left: 0; */
+}
+.trangchu .blockquote .right .content{
+    float: left;
+}
+.trangchu .blockquote .right .button{
+    float: right;
 }
 .trangchu .blockquote .right .cauhoidetail{
     font-size: 20px;
@@ -74,6 +96,7 @@ body{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 .trangchu .blockquote .right .chutoa{
+    color: black;
     font-size: 15px;
 }
 .trangchu .blockquote .right .bottom{
@@ -82,7 +105,8 @@ body{
 }
 .trangchu .blockquote .right .bottom a{
     text-decoration: none;
-    font-family: sans-serif
+    font-family: sans-serif;
+    color: black;
 }
 .trangchu .chude{
     width: 100%;
@@ -138,4 +162,7 @@ body{
 }
 .searchtrangchu input{
     color: white;
+}
+.trangchu .thongke .panel-body span{
+    font-size: 15px;
 }

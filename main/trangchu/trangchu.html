@@ -1,15 +1,29 @@
 <div class="container-fluid searchtrangchu">
     <div class="hoverimg">
-    <form autocomplete="off" method="get" class="search-form clearfix" id="search-form">
-        <input type="text" ng-model="searchText" title="* Please enter a search term!" placeholder="Nhập câu hỏi cần tìm" class="search-term " autocomplete="off">
-        <input type="submit" value="Tìm kiếm" class="search-btn">
-    </form>
-</div>
+        <form autocomplete="off" method="get" class="search-form clearfix" id="search-form">
+            <input type="text" ng-model="searchText" title="* Please enter a search term!"
+                placeholder="Nhập câu hỏi cần tìm" class="search-term " autocomplete="off">
+            <input type="submit" value="Tìm kiếm" class="search-btn">
+        </form>
+    </div>
 </div>
 <div class="container-fluid trangchu" ng-init="init()">
     <div class="row">
         <div class="col-md-2">
             <script src="./main/trangchu/1.js"></script>
+
+            <div class="panel panel-primary" class="thongke">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Thống kê</h3>
+                </div>
+                <div class="panel-body name">
+                    <div style="font-size: 13px;">Số phiên đang hoạt động</div>
+                    <div style="font-size: 13px;">Số phiên đang đã đóng</div>
+                    <div style="font-size: 13px;">Số thành viên</div>
+                    <div style="font-size: 13px;">Tổng số câu hỏi</div>
+                </div>
+            </div>
+
             <div class="panel panel-default chude">
                 <div class="panel-heading" style="text-align: center">
                     <h3 class="panel-title">Chủ đề</h3>
@@ -30,7 +44,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="noibat">
@@ -39,34 +53,43 @@
                             <div class="widget_highest_points">
                                 <ul>
                                     <li>
-                                        <div class="author-img"><a href="https://2code.info/demo/themes/ask-me/author/ask-me/"><img
-                                                    class="avatar avatar-65 photo" alt="Ahmed Hassan" width="65" height="65"
+                                        <div class="author-img"><a
+                                                href="https://2code.info/demo/themes/ask-me/author/ask-me/"><img
+                                                    class="avatar avatar-65 photo" alt="Ahmed Hassan" width="65"
+                                                    height="65"
                                                     src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-7-65x65.jpg"></a>
                                         </div>
                                         <div class="author-content">
-                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/ask-me/">aaaa</a></h6>
+                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/ask-me/">aaaa</a>
+                                            </h6>
                                             <span class="badge-span" style="background-color: #81d742">Explainer</span>
                                         </div>
                                         <div class="clearfix"></div>
                                     </li>
                                     <li>
-                                        <div class="author-img"><a href="https://2code.info/demo/themes/ask-me/author/barry/"><img
-                                                    class="avatar avatar-65 photo" alt="Barry Carter" width="65" height="65"
+                                        <div class="author-img"><a
+                                                href="https://2code.info/demo/themes/ask-me/author/barry/"><img
+                                                    class="avatar avatar-65 photo" alt="Barry Carter" width="65"
+                                                    height="65"
                                                     src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-8-65x65.jpg"></a>
                                         </div>
                                         <div class="author-content">
-                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/barry/">Barry</a></h6>
+                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/barry/">Barry</a>
+                                            </h6>
                                             <span class="badge-span" style="background-color: #dd9933">Pundit</span>
                                         </div>
                                         <div class="clearfix"></div>
                                     </li>
                                     <li>
-                                        <div class="author-img"><a href="https://2code.info/demo/themes/ask-me/author/john-2/"><img
-                                                    class="avatar avatar-65 photo" alt="John Peter" width="65" height="65"
+                                        <div class="author-img"><a
+                                                href="https://2code.info/demo/themes/ask-me/author/john-2/"><img
+                                                    class="avatar avatar-65 photo" alt="John Peter" width="65"
+                                                    height="65"
                                                     src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-9-65x65.jpg"></a>
                                         </div>
                                         <div class="author-content">
-                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/john-2/">John</a></h6>
+                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/john-2/">John</a>
+                                            </h6>
                                             <span class="badge-span" style="background-color: #dd3333"> Teacher</span>
                                         </div>
                                         <div class="clearfix"></div>
@@ -74,22 +97,28 @@
                                     <li>
                                         <div class="author-img"><a
                                                 href="https://2code.info/demo/themes/ask-me/author/martin-2/"><img
-                                                    class="avatar avatar-65 photo" alt="Martin Hope" width="65" height="65"
+                                                    class="avatar avatar-65 photo" alt="Martin Hope" width="65"
+                                                    height="65"
                                                     src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-2-65x65.jpg"></a>
                                         </div>
                                         <div class="author-content">
-                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/martin-2/">Martin</a>
-                                            </h6><span class="badge-span" style="background-color: #dd3333"> Teacher</span>
+                                            <h6><a
+                                                    href="https://2code.info/demo/themes/ask-me/author/martin-2/">Martin</a>
+                                            </h6><span class="badge-span" style="background-color: #dd3333">
+                                                Teacher</span>
                                         </div>
                                         <div class="clearfix"></div>
                                     </li>
                                     <li>
-                                        <div class="author-img"><a href="https://2code.info/demo/themes/ask-me/author/marko/"><img
-                                                    class="avatar avatar-65 photo" alt="Marko Smith" width="65" height="65"
+                                        <div class="author-img"><a
+                                                href="https://2code.info/demo/themes/ask-me/author/marko/"><img
+                                                    class="avatar avatar-65 photo" alt="Marko Smith" width="65"
+                                                    height="65"
                                                     src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-4-65x65.jpg"></a>
                                         </div>
                                         <div class="author-content">
-                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/marko/">Marko</a></h6>
+                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/marko/">Marko</a>
+                                            </h6>
                                             <span class="badge-span" style="background-color: #000000">Beginner</span>
                                         </div>
                                         <div class="clearfix"></div>
@@ -97,55 +126,136 @@
                                 </ul>
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="col-md-10" ng-init="question()">
             <div class="card" ng-init="init()">
-                    <div class="panel panel-primary">
-							<div class="panel-heading phien">
-								<!-- Tabs -->
-								<ul class="nav panel-tabs">
-									<li> <a data-toggle="tab" href="#tab1"><i class="icofont icon-ribbon"></i><span class="hidden-xs">Phiên hỏi đáp hoạt động</span></a> 
+                <div class="panel panel-primary">
+                    <div class="panel-heading phien">
+                        <!-- Tabs -->
+                        <!-- <ul class="nav panel-tabs">
+									<li> <a data-toggle="tab" ui-sref="root.phienhoatdong"><i class="icofont icon-ribbon"></i><span class="hidden-xs">Phiên hỏi đáp hoạt động</span></a> 
 									</li>
 									<li> <a data-toggle="tab" href="#tab2"><i class="icofont icon-layers"></i><span class="hidden-xs">Phiên hỏi đáp đã đóng</span></a> 
 									</li>
-									<li class="active"> <a data-toggle="tab" href="#tab3"><i class="icofont icon-global"></i><span class="hidden-xs">Tất cả các câu hỏi</span></a> 
+									<li class="active"> <a data-toggle="tab" ng-model="display" ng-click="checkdisplay()"><i class="icofont icon-global"></i><span class="hidden-xs">Tất cả các câu hỏi</span></a> 
 									</li>
 								
-								</ul>
-							</div>
-						</div>
-                <div class="card-body">
-                    <div class="blockquote row  listcauhoi"
-                        ng-repeat="x in temp = (result | filter : {content : searchText }) | limitTo:6:6*(currentPage-1)">
-                        <div class="left"><a href="" class="col-lg-2"><img
-                                    src="https://source.unsplash.com/QAB-WJcbgJk/60x60" alt=""></a></div>
+                                </ul> -->
+                        <form name="outerForm" class="tab-form-demo">
+                            <uib-tabset>
+                                <uib-tab heading="Phiên đang hoạt động">
+                                    <ng-form name="nestedForm">
+                                        <div class="form-group">
+                                            <div class="card-body">
+                                                <div class="blockquote row  listcauhoi"
+                                                    ng-repeat="x in temp = (result | filter : {content : searchText }) | limitTo:6:6*(currentPage-1)">
+                                                    <div class="left"><a href="" class="col-lg-2"><img
+                                                                src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
+                                                                alt=""></a></div>
 
-                        <div class="content col-lg-10 right ">
-                            <a ui-sref="root.cauhoi({contactId: $index+1})" class="cauhoidetail"
-                                style="display: block">Câu hỏi: {{x.content}}</a>
-                            <a ui-sref="root.thongtin" style="display: block;" class="chutoa">Tên: Somebody</a>
-                            <a class="chutoa">Chủ đề: {{x.chude}}</a>
-                            <div class="bottom">
-                                <a href="" style="margin-right:10px"> <i class="far fa-thumbs-up"></i>{{x.count_like}}</a>
-                                <a><i class="far fa-clock" style="margin-right: 5px;"></i>{{x.date}}</a>
-                                <a><i class="fas fa-comments" style="margin-right: 5px;margin-left: 10px;"></i>0 Câu trả lời</a>
-                            </div>
+                                                    <div class="content col-lg-10 right ">
+                                                        <div class="content">
+                                                            <a ui-sref="root.listcauhoi({listsectionId: {{x.id}}})"
+                                                                class="cauhoidetail"
+                                                                style="display: block">{{x.title}}</a>
+                                                            <a ui-sref="root.thongtin" style="display: block;"
+                                                                class="chutoa">Chủ tọa: {{x.auth_id}}</a>
+                                                            <a class="chutoa">Chủ đề: {{x.topic_id}}</a>
+                                                            <div class="bottom">
+                                                                <a><i class="far fa-clock"
+                                                                        style="margin-right: 5px;"></i>{{x.date}}</a>
+                                                                <a><i class="fas fa-comments"
+                                                                        style="margin-right: 5px;margin-left: 10px;"></i>0
+                                                                    Câu hỏi</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button">
+                                                            <button type="button" class="btn btn-success"
+                                                                ng-click="vm.delete(x.id)"><i
+                                                                    class="fas fa-trash-alt"></i></button>
+                                                            <button type="button" class="btn btn-danger"
+                                                                ng-click="vm.edit(x.id,x.title,x.content)"><i
+                                                                    class="fas fa-edit"></i></button>
+                                                        </div>
+                                                    </div>
 
-                        </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                        <nav class="nav pagination" role="navigation">
+                                            <!-- <ul uib-pagination boundary-links="true" total-items="totalItems" max-size="maxSize"
+                                                    ng-model="currentPage" class="pagination-md" items-per-page="itemsPerPage" previous-text="&lsaquo;" next-text="&rsaquo;"
+                                                    first-text="&laquo;" last-text="&raquo;"></ul> -->
+                                            <ul uib-pagination boundary-links="true" total-items="temp.length"
+                                                max-size="maxSize" ng-model="currentPage" class="pagination-md"
+                                                items-per-page="numPerPage" previous-text="&lsaquo;"
+                                                next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+                                        </nav>
+                                    </ng-form>
+                                </uib-tab>
+                                <uib-tab heading="Phiên đã đóng">
+                                    <ng-form name="nestedForm">
+                                        <div class="form-group">
+                                            <label>aaaaaaaaaaa</label>
+                                            <input type="text" class="form-control" required ng-model="model.name" />
+                                        </div>
+                                    </ng-form>
+                                </uib-tab>
+                                <uib-tab heading="Tất cả câu hỏi">
+                                    <ng-form name="nestedForm">
+                                        <div class="form-group">
+                                            <div class="card-body">
+                                                <div class="blockquote row  listcauhoi"
+                                                    ng-repeat="x in temp = (result | filter : {content : searchText }) | limitTo:6:6*(currentPage-1)">
+                                                    <div class="left"><a href="" class="col-lg-2"><img
+                                                                src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
+                                                                alt=""></a></div>
+
+                                                    <div class="content col-lg-10 right ">
+                                                        <a ui-sref="root.cauhoi({contactId: $index+1})"
+                                                            class="cauhoidetail" style="display: block">Câu hỏi:
+                                                            {{x.content}}</a>
+                                                        <a ui-sref="root.thongtin" style="display: block;"
+                                                            class="chutoa">Tên: Somebody</a>
+                                                        <a class="chutoa">Chủ đề: {{x.chude}}</a>
+                                                        <div class="bottom">
+                                                            <a href="" style="margin-right:10px"> <i
+                                                                    class="far fa-thumbs-up"></i>{{x.count_like}}</a>
+                                                            <a><i class="far fa-clock"
+                                                                    style="margin-right: 5px;"></i>{{x.date}}</a>
+                                                            <a><i class="fas fa-comments"
+                                                                    style="margin-right: 5px;margin-left: 10px;"></i>0
+                                                                Câu trả lời</a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="text" class="form-control" required ng-model="model.name" />
+                                        </div>
+                                        <nav class="nav pagination" role="navigation">
+                                            <!-- <ul uib-pagination boundary-links="true" total-items="totalItems" max-size="maxSize"
+                                                                ng-model="currentPage" class="pagination-md" items-per-page="itemsPerPage" previous-text="&lsaquo;" next-text="&rsaquo;"
+                                                                first-text="&laquo;" last-text="&raquo;"></ul> -->
+                                            <ul uib-pagination boundary-links="true" total-items="temp.length"
+                                                max-size="maxSize" ng-model="currentPage" class="pagination-md"
+                                                items-per-page="numPerPage" previous-text="&lsaquo;"
+                                                next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+                                        </nav>
+                                    </ng-form>
+                                </uib-tab>
+                            </uib-tabset>
+                        </form>
                     </div>
                 </div>
-                <nav class="nav pagination" role="navigation">
-                    <!-- <ul uib-pagination boundary-links="true" total-items="totalItems" max-size="maxSize"
-                        ng-model="currentPage" class="pagination-md" items-per-page="itemsPerPage" previous-text="&lsaquo;" next-text="&rsaquo;"
-                        first-text="&laquo;" last-text="&raquo;"></ul> -->
-                    <ul uib-pagination boundary-links="true" total-items="temp.length" max-size="maxSize"
-                        ng-model="currentPage" class="pagination-md" items-per-page="numPerPage"
-                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
-                </nav>
+
             </div>
         </div>
 

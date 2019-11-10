@@ -1,18 +1,33 @@
-angular.module('myapp').factory('api', ['config', 'request','factory', function (config, request, factory) {
+angular.module('myapp').factory('api', ['config', 'request','factory','$stateParams', function (config, request, factory,$stateParams,$scope) {
     console.log('host', request);
+    var idlistsectionId = $stateParams.listsectionId
+    var idcauhoiId =$stateParams.idcauhoiId
     var apiget = {
         question: 'question/list',
+        listsection:'section/list',
+        listtopic:'topic/list',
     };
     
     var apipost = {
         
-        creareanwer:'answer/create',
-        viewquestion: 'question/viewquestion',
+        createanswer:'answer/create',
+
+        createsection:'section/create',
+        viewsec:'section/viewsec',
+        deletesection:'section/delete',
+        editsection:'section/edit',
+
         createquestion:'question/create',
+        viewquestion: 'question/viewquestion',
+        deletequestion:'question/delete',
+        editquestion:'question/edit',
+
         login:'auth/login',
         resgister:'auth/registration',
         like:'question/like',
         info:'auth/info'
+
+
     };
 
     var methods = {

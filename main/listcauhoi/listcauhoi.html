@@ -1,0 +1,66 @@
+<div class="card-header thanhchude">
+        <h5 class="dsphd">Phiên hỏi đáp</h5>
+    </div>
+    <div class="container-fluid listcauhoi">
+        <div class="top row" ng-init="vm.init()">
+            <div class="col-md-2 left">
+                <img src="http://qa.uet.vnu.edu.vn/qa/public/img/student.png" alt="">
+            </div>
+            <div class="col-md-10 right">
+                <ul>
+                    <li><span class="info" ng-model="vm.name"><i class="fas fa-file-signature icon"></i>Tên phiên</span> <a href=""></a></li>
+                    <li><span class="info" ng-model="vm.name"><i class="fas fa-user-secret icon"></i></i>Chủ tọa</span> <a href=""></a></li>
+                    <li><span class="info"><i class="far fa-clipboard icon"></i></i>Mô tả</span><a href=""></a></i></li>
+                    <li><span class="info"><i class="fas fa-calendar-alt icon"></i>Ngày tạo</span><a href=""></a></li>
+                    <li><span class="info"><i class="fas fa-book icon"></i>Tổng số câu hỏi: </span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="listcauhoi trangchu"  >
+            
+            <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <ul style="display: flex;margin-bottom: 0;">
+                          <li style="width: 55%; text-align: right" > <h3 class="panel-title">Danh sách câu hỏi</h3></li>
+                          <li style="width: 45%;"> <div class="searchform-wrap" >
+                                <form name="search" id="searchbox" class="znewsSearch {{a}} mr-auto" ng-class="{active : check(true)}" target="_blank">
+                                  <input type="text" name="s" id="search_keyword" placeholder="Nhập nội dung cần tìm..." ng-model="searchText">
+                                  <button type="submit" id="search_button" ng-model="a" ng-model="count=0"
+                                    ng-click="searchclick(count = count + 1)"><span class="znews-icon ti-search"></span></button>
+                                </form>
+                              </div></li>
+                      </ul>
+                       
+                       
+                  </div>
+                  <div class="panel-body" ng-init="vm.init()" >
+                       <div class="createquestion"> <a ><button type="button" class="btn btn-primary" ng-click="vm.taocauhoi()">Tạo câu hỏi mới</button></a></div>
+                       <div class="createquestion"> <a ><button type="button" class="btn btn-primary" ng-click="vm.taokhaosat()">Tạo cuộc khảo sát</button></a></div>
+                       
+                       <div class="blockquote row  listcauhoi " ng-repeat="temp in vm.listquestion">
+                        <div class="left"><a href="" class="col-md-2"><img
+                                    src="https://source.unsplash.com/QAB-WJcbgJk/60x60" alt=""></a></div>
+    
+                        <div class="content col-md-10 right " >
+                            <a ui-sref="root.cauhoi({cauhoiId: {{temp.id}}})" class="cauhoidetail"
+                                style="display: block">{{temp.content}}</a>
+                            <a ui-sref="root.thongtin" style="display: block;" class="chutoa">Chủ tọa: Somebody</a>
+                            <a class="chutoa">Chủ đề: {{x.chude}}</a>
+                            <div class="bottom">
+                                <a><i class="far fa-clock" style="margin-right: 5px;"></i>{{x.date}}</a>
+                                <a><i class="fas fa-comments" style="margin-right: 5px;margin-left: 10px;"></i>0 Câu hỏi</a>
+                            </div>
+    
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success" ng-click="vm.delete(temp.id)"><i class="fas fa-trash-alt"></i></button>
+                            <button type="button" class="btn btn-danger" ng-click="vm.edit(temp.content,temp.id)"><i class="fas fa-edit"></i></button>
+                        </div>
+                    </div>
+
+                  </div>
+            </div>
+    
+        </div>
+        
+    </div>

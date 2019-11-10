@@ -15,9 +15,7 @@ module.exports.checkPassword = function (passWord) {
     }
 }
 module.exports.checkName = function (name) {
-    const regexName = "^[^-\s][a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
-        "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
-        "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$";
+    const regexName = "^[^-\s][a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +        "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +        "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$";
     if (name.match(regexName)) {
         return true;
     } else {
@@ -25,11 +23,11 @@ module.exports.checkName = function (name) {
     }
 }
 
-module.exports.checkContent = function (content) {
-    const regexName = "^[^-\s][a-z0-9A-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
+module.exports.checkContent = function (nameClass) {
+    const regexName = "^[^-\s][a-z0-9A-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
         "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
         "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$";
-    if (content.match(regexName)) {
+    if (nameClass.match(regexName)) {
         return true;
     } else {
         return false;

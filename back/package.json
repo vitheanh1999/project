@@ -22,6 +22,7 @@
     "include-all": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
+    "nodemon": "^1.19.4",
     "rc": "1.0.1",
     "sails": "~0.12.14",
     "sails-disk": "~0.10.9",
@@ -30,7 +31,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "main": "app.js",
   "repository": {

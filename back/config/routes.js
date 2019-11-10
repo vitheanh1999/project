@@ -36,7 +36,15 @@ module.exports.routes = {
     view: 'homepage'
   },
   'post /auth/login':'AuthController.login',
-  'post /auth/registration':'AuthController.registration'
+  'post /auth/registration':'AuthController.registration',
+  'post /auth/info' : 'AuthController.getInfor',
+  'post /section/create' :'SectionCotroller.create',
+  'post /section/list':'SectionCotroller.list',
+  'post /answer/create': 'AnswerController.create',
+  'post /section/delete':'SectionCotrollerl.delete',
+  'post /section/edit':'SectionCotroller.edit',
+  'post /question/delete':'QuestionController.delete',
+  'post /question/edit':'QuestionController.edit'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

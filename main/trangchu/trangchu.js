@@ -31,13 +31,44 @@ app.controller("trangchu", function ( api,$scope, $http, factory, config,filterF
     $scope.currentPage = 1;
     $scope.numPerPage = 6;
     $scope.maxSize = 5;
-
+    $scope.topic=[]
    function init() {
-      api.question().then(result =>{
-            $scope.result = result.reverse()
+      api.listsection().then(result =>{
+            $scope.result = result.Sections.reverse()
+            localStorage.setItem("infophien",JSON.stringify($scope.result))
+            console.log($scope.result)
         console.log(result)
         })
+        api.listtopic().then(result=>{
+            $scope.topic=result.list.reserver()
+           
+        })
     }
+    vm.delete=(id)=>{
+        factory.confirmdelete().then(result=>{
+          if(result.value==true){
+            api.deletesection({id:id}).then(result=>{
+              $scope.result=result.listSec.splice(id,1)
+              init()
+            })
+          }
+
+        })
+
+      }
+      vm.edit=(id,title,content)=>{
+        let data={
+          id:id,
+          title:title,
+          content:content
+        }
+        let args=Object.assign({},data)
+          factory.editsection(args).then(result=>{
+            api.editsection(result).then(result=>{
+              init()
+            })
+          })
+      }
     init()
     $scope.$watch(updateFilteredItems)
 

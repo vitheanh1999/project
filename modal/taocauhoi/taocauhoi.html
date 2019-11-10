@@ -1,0 +1,23 @@
+<div class="modal_class">
+        <div class="modal-header">
+          <h3 class="modal-title">Tạo câu hỏi</h3>
+        </div>
+        <div class="modal-body">
+            <form >
+                <div class="form-group">
+                    <form class="text-center" style="color: #757575;" action="#!">
+      
+                        <div class="md-form">
+                          <input type="text" id="materialLoginFormEmail" class="form-control" ng-model="vm.newquestion.content">
+                          <label for="materialLoginFormEmail">Câu hỏi của bạn</label>
+                        </div>
+                      </form>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          
+          <button class="btn btn-warning" ng-click="vm.save()">Submit</button>
+          <button class="btn btn-warning" ng-click="cancel()">Thoát</button>
+        </div>
+      </div>

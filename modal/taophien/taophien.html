@@ -1,0 +1,36 @@
+<div class="modal_class">
+  <div class="modal-header">
+    <h3>Tạo phiên hỏi đáp</h3>
+  </div>
+  <div class="modal-body">
+      <form >
+          <div class="form-group">
+              <p> Chủ đề của bạn là: {{vm.newphien.topic_id}} </p>
+    
+            <label for="exampleFormControlSelect1">Chủ đề</label>
+            <select class="form-control" id="exampleFormControlSelect1" ng-model="vm.newphien.topic_id"  ng-options="option.id as option.topic for option in chudes">
+              <option>{{vm.newphien.topic_id}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+              <form class="text-center" style="color: #757575;" action="#!">
+
+                  <div class="md-form">
+                    <input type="text" id="materialLoginFormEmail" class="form-control" ng-model="vm.newphien.title">
+                    <label for="materialLoginFormEmail">Tên phiên hỏi đáp</label>
+                  </div>
+                </form>
+          </div>
+          <div class="form-group">
+              <label for="exampleFormControlTextarea1">Mô tả</label>
+              <textarea  class="form-control" id="exampleFormControlTextarea1" rows="3" ng-model="vm.newphien.content" ></textarea>
+            </div>
+        </form>
+  </div>
+  <div class="modal-footer">
+    
+    <button class="btn btn-warning" ng-click="vm.save()">Submit</button>
+    <button class="btn btn-warning" ng-click="cancel()">Thoát</button>
+  </div>
+</div>

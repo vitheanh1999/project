@@ -42,9 +42,9 @@ angular.module("myapp").controller("headerCtrl", ['factory', '$scope', '$uibModa
     }
   )
   console.log(vm.chude)
-  $scope.newquestion = function () {
-    factory.newquestion().then(function (result) {
-      api.createquestion(result).then(data => {
+  $scope.taophien = function () {
+    factory.taophien().then(function (result) {
+      api.createsection(result).then(data => {
         location.reload();
         // $state.go('root.trangchu')
       })
