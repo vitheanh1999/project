@@ -16,7 +16,11 @@ angular.module('myapp').factory('api', ['config', 'request','factory','$statePar
         viewsec:'section/viewsec',
         deletesection:'section/delete',
         editsection:'section/edit',
+        closesection:'section/closesec',
+        closesec:'section/closesec',
+        opensec:'section/opensec',
 
+        listquestion:'viewauth/list',
         createquestion:'question/create',
         viewquestion: 'question/viewquestion',
         deletequestion:'question/delete',

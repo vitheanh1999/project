@@ -22,6 +22,9 @@ app.controller("loginCtrl",function($scope,$state,$http,api,factory){
                     username:$scope.username,
                     password:$scope.password
                 }
+                if(data.username==="admin"&& data.password==="1"){
+                    $state.go("admin")
+                }
                 api.login({data}).then(result=>{
                     let temp={}
                    if(result.success===true){
@@ -29,6 +32,7 @@ app.controller("loginCtrl",function($scope,$state,$http,api,factory){
                     console.log(result)
                     // localStorage.setItem("info",JSON.stringify(result.content))
                     localStorage.setItem("token",result.token)
+                    localStorage.setItem("infouser",JSON.stringify(result.dataAuth))
                     // factory.showSuccess(result.content.message)
                     $state.go("root.trangchu")
                    }

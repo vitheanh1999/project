@@ -80,15 +80,14 @@ body{
     width: 100%;
     padding-right: 20px;
 }
-.trangchu .blockquote .right{
-    /* margin: auto;
-    margin-left: 0; */
+.trangchu .blockquote .right .button .nav-item{
+   /* background-color: aqua; */
 }
 .trangchu .blockquote .right .content{
-    float: left;
+    /* float: left; */
 }
 .trangchu .blockquote .right .button{
-    float: right;
+    float: left;
 }
 .trangchu .blockquote .right .cauhoidetail{
     font-size: 20px;

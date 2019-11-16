@@ -12,14 +12,25 @@ module.exports = {
         try {
             const sectionId = req.body.id;
             if (sectionId) {
-                const list = await Question.find({ section_id: sectionId });
-                res.jsonp({
-                    list,
-                    success: true
-                });
+                const sec = await Section.findOne({ id: sectionId })
+                if (sec) {
+                    const listQ = await Question.find({ section_id: sectionId });
+                    res.jsonp({
+                        sec,
+                        listQ,
+                        success: true
+                    });
+                } else {
+                    res.jsonp({
+                        content: "Không có phiên",
+                        success: false
+                    })
+                }
+
             } else {
                 res.jsonp({
-                    content: "Không có id phiên"
+                    content: "Không có id phiên",
+                    success: false
                 })
             }
 
@@ -37,11 +48,42 @@ module.exports = {
             if (idQuestion) {
                 const q = await Question.findOne({ id: idQuestion });
                 if (q) {
-                    const a = await Answer.find({ idQuestion: idQuestion });
-                    res.jsonp({
-                        q, a,
-                        success: true
+                    let queryQ = `
+                            SELECT q.*,a.name FROM question q
+                            inner join auth a on a.id=q.auth_Id
+                            where q.id=${idQuestion}`;
+                    Question.query(queryQ, [''], function (err, Q) {
+                        if (err) {
+                            return res.badRequest(err);
+                        } else {
+                            let queryA = `
+                                    SELECT anw.*,a.name FROM answer anw
+                                    inner join auth a on a.id=anw.auth_Id
+                                    where anw.idQuestion=${idQuestion}
+                                    `
+                            Answer.query(queryA, [''], function (err, listA) {
+                                if (err) {
+                                    return res.badRequest(err);
+                                } else {
+                                    res.jsonp({
+                                        Q,
+                                        listA,
+                                        content: "Thành công",
+                                        success: true
+                                    });
+                                }
+
+                            })
+
+                        }
                     });
+                    // const sec = await Section.findOne({ id: q.section_id })
+                    // const a = await Answer.find({ idQuestion: idQuestion });
+                    // res.jsonp({
+                    //     sec,
+                    //     q, a,
+                    //     success: true
+                    // });
                 } else {
                     res.jsonp({
                         success: false,
@@ -69,21 +111,41 @@ module.exports = {
             const sectionId = req.body.id;
             const { content } = req.body;
             if (sectionId) {
-                if (content) {
-                    if (vaildate.checkContent(content)) {
-                        const date = moment(Date.now()).format("HH:mm DD-MM-YYYY");
-                        await Question.create({ content: content, date: date, section_id: sectionId, count_like: 0, auth_Id: id });
-                        const list = await Question.find({ section_id: sectionId });
-                        res.jsonp({ list, success: true });
+                const sec = await Section.findOne({ id: sectionId })
+                if (sec) {
+                    if (sec.open == true) {
+                        if (content) {
+                            if (vaildate.checkContent(content)) {
+                                const date = moment(Date.now()).format("HH:mm DD-MM-YYYY");
+                                await Question.create({ content: content, date: date, section_id: sectionId, count_like: 0, auth_Id: id });
+                                const listQ = await Question.find({ section_id: sectionId });
+                                res.jsonp({
+                                    listQ,
+                                    sec,
+                                    success: true,
+                                    content: "Thêm câu hỏi thành công"
+                                });
+                            } else {
+                                res.jsonp({
+                                    content: "Nội dung nhập vào chưa hợp lệ",
+                                    success: false
+                                })
+                            }
+                        } else {
+                            res.json({
+                                content: "Vui lòng nhập đủ thông tin",
+                                success: false
+                            })
+                        }
                     } else {
-                        res.jsonp({
-                            content: "Nội dung nhập vào chưa hợp lệ",
+                        res.json({
+                            content: "Phiên đã đóng",
                             success: false
                         })
                     }
                 } else {
-                    res.json({
-                        content: "Vui lòng nhập đủ thông tin",
+                    res.jsonp({
+                        content: "Không có phiên",
                         success: false
                     })
                 }
@@ -93,8 +155,6 @@ module.exports = {
                     success: false
                 })
             }
-
-
         } catch (error) {
             res.badRequest(
                 error
@@ -171,16 +231,13 @@ module.exports = {
 
                         await Question.destroy({ id: id });
                         const answerDelete = await Answer.find({ idQuestion: id });
-                        const listQuestion = await Question.find();
                         if (answerDelete) {
                             await Answer.destroy({ idQuestion: id });
                         }
                         res.jsonp(
                             {
                                 content: "Xóa thành công",
-                                success: true,
-                                listQuestion
-
+                                success: true
                             }
                         )
                     } else {
@@ -224,9 +281,22 @@ module.exports = {
         } catch (error) {
             res.badRequest(error)
         }
+    },
+    viewlistquestion: async function (req, res) {
+        try {
+            const headers = req.headers['authorization'];
+            const id = await taikhoan.getId(headers);
+            const listQuestion = await Question.find();
+            res.jsonp({
+                listQuestion,
+                success: true
+            });
+        } catch (error) {
+            res.badRequest(error)
+        }
     }
     // like: async function (req, res) {
-    //     const { id } = req.body;
+    //     const { id } = req.params;
     //     const q = await Question.findOne({ id: id })
     //     const like = q.count_like + 1;
     //     console.log(like);

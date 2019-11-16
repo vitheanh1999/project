@@ -9,7 +9,7 @@ app.controller("cauhoiCtrl",function($scope,$location,api,$stateParams,$state){
     vm.init=()=>{
       api.viewquestion({id:vm.id}).then(result=>{
         console.log(result.q)
-        $scope.datas=Object.assign({}, result.q)
+        $scope.datas=Object.assign({}, result.Q[0])
       })
     }
  

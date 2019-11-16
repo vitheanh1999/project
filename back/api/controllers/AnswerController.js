@@ -13,33 +13,43 @@ module.exports = {
             const idQuestion = req.body.id;
             if (idQuestion) {
                 const { content } = req.body;
-                if (content) {
-                    if (vaildate.checkContent(content)) {
-                        
-                        await Answer.create({ content: content, idQuestion: idQuestion, auth_Id: idAuth });
-                        const q = await Question.findOne({ id: idQuestion });
-                        const a = await Answer.find({idQuestion: idQuestion});
-                        res.jsonp({
-                            q,
-                            a,
-                            content: "Thêm thành công",
-                            success: true
-                        });
-                    } else {
-                        res.jsonp(
-                            {
-                                content: "Nội dung câu trả lời nhập vào chưa hợp lệ",
-                                success: false
-                            })
-                    }
+                const q = await Question.findOne({ id: idQuestion });
+                const sec = await Section.findOne({ id: q.section_id });
+                if (sec.open == true) {
+                    if (content) {
+                        if (vaildate.checkContent(content)) {
+                            const date = moment(Date.now()).format("HH:mm DD-MM-YYYY");
+                            await Answer.create({ content: content, idQuestion: idQuestion, auth_Id: idAuth, date: date });
+                            const a = await Answer.find({ idQuestion: idQuestion });
+                            res.jsonp({
+                                q,
+                                a,
+                                content: "Thêm thành công",
+                                success: true
+                            });
+                        } else {
+                            res.jsonp(
+                                {
+                                    content: "Nội dung câu trả lời nhập vào chưa hợp lệ",
+                                    success: false
+                                })
+                        }
 
+                    } else {
+                        res.jsonp({
+                            content: "Vui lòng nhập thông tin",
+                            success: false
+                        })
+
+                    }
                 } else {
                     res.jsonp({
-                        content: "Vui lòng nhập thông tin",
+                        content: "Phiên đã đóng",
                         success: false
                     })
 
                 }
+
 
             } else {
 

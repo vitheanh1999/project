@@ -76,22 +76,37 @@ app.factory('factory',['$uibModal', '$q',function($uibModal,$q){
         })
         return defer.promise
     }
-    methods.taokhaosat=function(){
+    // methods.taokhaosat=function(){
+    //     var defer = $q.defer();
+    //     var modalInstance = $uibModal.open({
+    //         ariaLabelledBy: 'modal-title',
+    //         ariaDescribedBy: 'modal-body',
+    //           templateUrl: "modal/taokhaosat/taokhaosat.html",
+    //           controller: "taokhaosatCtrl",
+    //           controllerAs:'vm',     
+    //           size: 'lg',
+    //       });
+    //       modalInstance.result.then(function (data) {
+    //         defer.resolve(data)//da giai quyet
+    //     }, function (dismiss) {
+    //         defer.reject()//tu choi
+    //     })
+    //     return defer.promise
+    // }
+    methods.khaosat=function(){
         var defer = $q.defer();
-        var modalInstance = $uibModal.open({
-            ariaLabelledBy: 'modal-title',
-            ariaDescribedBy: 'modal-body',
-              templateUrl: "modal/taokhaosat/taokhaosat1.html",
-              controller: "taokhaosatCtrl",
-              controllerAs:'vm',     
-              size: 'md',
-          });
-          modalInstance.result.then(function (data) {
-            defer.resolve(data)//da giai quyet
-        }, function (dismiss) {
-            defer.reject()//tu choi
-        })
-        return defer.promise
+    var modalInstance=$uibModal.open({
+        templateUrl:"modal/khaosat/khaosat.html",
+        controller:"khaosatCtrl",
+        controllerAs:"vm",
+        size:"lg"
+    })
+    modalInstance.result.then(function (data) {
+        defer.resolve(data)//da giai quyet
+    }, function (dismiss) {
+        defer.reject()//tu choi
+    })
+    return defer.promise
     }
     methods.editsection=function(args){
         var defer = $q.defer();
@@ -192,6 +207,60 @@ app.factory('factory',['$uibModal', '$q',function($uibModal,$q){
             else{
                 defer.resolve({
                     value: false,
+                })
+            }
+          })
+          return defer.promise
+    }
+    methods.closesec=function(){
+        var defer=$q.defer()
+        Swal.fire({
+            title: 'Bạn muốn đóng phiên',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Có!'
+          }).then((result) => {
+            if (result.value) {
+                defer.resolve({
+                    value:true
+                })
+              Swal.fire(
+                'Đã đóng!',
+                'success'
+              )
+            }
+            else{
+                defer.resolve({
+                    value:false
+                })
+            }
+          })
+          return defer.promise
+    }
+    methods.opensec=function(){
+        var defer=$q.defer()
+        Swal.fire({
+            title: 'Bạn muốn mở phiên',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Có!'
+          }).then((result) => {
+            if (result.value) {
+                defer.resolve({
+                    value:true
+                })
+              Swal.fire(
+                'Đã đóng!',
+                'success'
+              )
+            }
+            else{
+                defer.resolve({
+                    value:false
                 })
             }
           })

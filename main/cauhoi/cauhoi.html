@@ -1,25 +1,54 @@
-
-<div class="container-fluid cauhoi" ng-init="vm.init()">
+<!-- <div class="container-fluid cauhoi" ng-init="vm.init()">
   <div class="panel panel-default">
         <div class="panel-heading">
               <h1 class="panel-title">Nội dung</h1>
         </div>
         <div class="panel-body" ng-model="datas">
-              <p>{{datas.content}}</p>
+              <p>{{vm.content.content}}</p>
               <div class="" style="display: flex; ">
-                 <!-- <div class="numberlike" style="margin-right:5px">0</div> -->
                 <div class="likeButton" href="" title="Nhấn để thích">
-                    <!-- <span class="forLike" title="Nhấn để thích"><i class="far fa-thumbs-up"></i> </i></span>  -->
                 </div>
                 </div>
                 <my-Comment></my-Comment>
             </div>
-        </div>
+      
         <div class="panel-footer">
          
 
         </div>
-  </div>
-  
+      </div>
+  </div> -->
+<div class="container-fluid cauhoi"  ng-init="vm.init()">
 
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="./lib/img/2.jpg" class="img img-rounded img-fluid" style="margin-left: auto;
+                      margin-right: auto;
+                      display: block;" />
+                    <p class="text-secondary text-center"></p>
+                </div>
+                <div class="col-md-10">
+                    <div class="commentcontent">
+                            <div style="background: lightyellow;
+                            /* border: 1px; */
+                            border-style: groove;
+                            border-width: 1px;">
+                                    <div style="display: flex; ">
+                                        <p>Thành viên :</p>
+                                        <a style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" href="https://maniruzzaman-akash.blogspot.com/p/contact.html">{{datas.name}}</a>
+                                    </div>
+                                    <p style="font-size: 11px;
+                                    margin-top: -18px;">{{datas.date}}</p>
+                                </div>
+                                <div class="clearfix"></div>
+                                <p>{{datas.content}}</p>
+                    </div>
+                    <my-Comment></my-Comment>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>

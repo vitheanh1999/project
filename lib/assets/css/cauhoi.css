@@ -7,3 +7,17 @@
 .cauhoi .forComment{
     margin-left: 10px   
 }
+.cauhoi .commentcontent{
+    background-color: beige;
+    padding: 23px;
+}
+
+.cauhoi .commentcontent::after{
+    border-width: 17px 20px 17px 0;
+    border-style: solid;
+    border-color: transparent beige;
+    content: "";
+    left: -5px;
+    position: absolute;
+    top: 20px;
+}

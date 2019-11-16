@@ -1,62 +1,49 @@
-<div class="comments-app" >
+<div class="comments-app">
 
   <div class="comments">
 
-    <!-- From -->
     <div class="row optionForSeeQuestion" ng-enter="vm.addComment()">
-      <div class="col-md-12 leftOption notPullLeft">
+      <div class="col-md-12 leftOption notPullLeft" ng-init="init()">
 
+        <p style="justify-content: right;
+          display: grid;">
+          <span class="likeButton" href="" title="Nhấn để trả lời">
+            <span class=" btn text-white btn-danger forComment" data-toggle="collapse" data-target="#demo"> <i
+                class="fa fa-reply"></i>
+              Comment</span>
+            <div id="demo" class="collapse">
+              <textarea autofocus="" placeholder="Add comment..." id="" style="width: 100%;" rows="3" ng-model="vm.comment.text"
+                ng-change="vm.evaluateChange(this)" ></textarea>
+              <button class="btn btn-primary" ng-click="vm.addComment()">Bình luận</button>
 
-          <div class="comment" hide-me="5000" ng-init="init()">
-            <div class="comment" hide-me="5000" ng-repeat="comment in vm.datas">
-
-              <div class="comment-box">
-                <div class="comment-footer">
-                  <div class="comment-info">
-                    <span class="comment-date"><i class="fas fa-user-clock" style="margin-right:5px"></i>{{comment.createdAt | date: 'medium' }}</span>
-                    <span class="comment-date"></span>
-                  </div>
-
-                  <div class="comment-actions">
-                  </div>
+            </div>
+          </span>
+        </p>
+        <div class="comment" hide-me="5000">
+        
+          <div class="comment row" hide-me="5000" ng-repeat="comment in vm.datas" >
+              <div style="display: flex;justify-content: flex-end;" class="col-md-2 col-sm-4 col-4"><img src="./lib/img/3.png" alt=""></div>
+            <div class="comment-box col-md-10 col-sm-8 col-8">
+              <div class="comment-footer">
+                <div class="comment-info">
+                  <p><i class="fas fa-user-clock"
+                    style="margin-right:5px"></i>{{comment.name}}</p>
+                  <span class="comment-date" style="font-size: 11px;">{{comment.createdAt | date: 'medium' }}</span>
+                  <span class="comment-date"></span>
                 </div>
-                <div class="comment-text">{{comment.content}}</div>
+
+                <div class="comment-actions">
+                </div>
               </div>
+              <div class="comment-text">{{comment.content}}</div>
             </div>
           </div>
-          <i class="likeButton"   title="Nhấn để thích" ng-show="checklike" ng-click="vm.nolike()" ng-model="vm.count_like">
-            <span class="forLike"><i class="far fa-thumbs-up"></i>{{vm.count_like}} Thích</span>
-          </i>
-          <i class="likeButton" style="color: blue;" title="Nhấn để thích" ng-click="vm.like()" ng-hide="checklike" ng-model="vm.count_like" >
-            <span class="forLike"><i class="fas fa-thumbs-up"></i>{{vm.count_like}} Thích</span>
-          </i>
-          <span class="likeButton" href="" title="Nhấn để trả lời">
-            <span class=" forComment" data-toggle="collapse" data-target="#demo"><i class="fas fa-comments"></i></i>
-              Comment</span>
-          <div id="demo" class="collapse">
-            <textarea autofocus="" id="" style="width: 100%;" rows="3" ng-model="vm.comment.text" ng-change="vm.evaluateChange(this)"
-              placeholder="Add comment..."></textarea>
-            <button class="btn btn-primary" ng-click="vm.addComment()">Bình luận</button>
-
-          </div>
-        </span>
+        </div>
 
 
       </div>
 
 
     </div>
-    <!-- <div class="comment-form">
-    <form class="form" name="form" ng-submit="vm.addComment()" novalidate>
-      <div class="form-row">
-        <textarea class="input" ng-model="vm.comment.text" placeholder="Add comment..." required>
-                  </textarea>
-      </div>
-
-      <div class="form-row">
-        <input type="submit" value="SEND" >
-      </div>
-    </form>
-  </div> -->
   </div>
-  </div>
+</div>

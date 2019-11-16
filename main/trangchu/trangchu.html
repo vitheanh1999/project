@@ -1,10 +1,95 @@
 <div class="container-fluid searchtrangchu">
     <div class="hoverimg">
         <form autocomplete="off" method="get" class="search-form clearfix" id="search-form">
-            <input type="text" ng-model="searchText" title="* Please enter a search term!"
+            <input type="text" ng-model="searchText" title="* Please enter a search term!" style="width: 90%;"
                 placeholder="Nhập câu hỏi cần tìm" class="search-term " autocomplete="off">
             <input type="submit" value="Tìm kiếm" class="search-btn">
         </form>
+    </div>
+    <div class="row">
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Users</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">120 người</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="material-icons" style="font-size:48px; color :grey">person</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Tổng số phiên hỏi đáp
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" ng-model="vm.sumphien"
+                                style="color: #000000;">{{vm.sumphien}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="material-icons" style="font-size:48px; color :grey">assignment</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Số phiên hỏi đáp đang
+                                hoạt động</div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" ng-model="vm.sophienhd"
+                                        style="color: #000000;">{{vm.phiendong.length}} phiên</div>
+                                </div>
+                                <div class="col">
+                                    <div class="progress progress-sm mr-2">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 26%"
+                                            aria-valuenow="{{vm.sumphien}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="material-icons" style="font-size:48px; color :grey">assignment_turned_in</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Tổng số câu hỏi</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" ng-model="vm.sumques"
+                                style="color: #000000;">{{vm.sumques}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="material-icons" style="font-size:48px; color :grey">question_answer</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="container-fluid trangchu" ng-init="init()">
@@ -12,17 +97,7 @@
         <div class="col-md-2">
             <script src="./main/trangchu/1.js"></script>
 
-            <div class="panel panel-primary" class="thongke">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Thống kê</h3>
-                </div>
-                <div class="panel-body name">
-                    <div style="font-size: 13px;">Số phiên đang hoạt động</div>
-                    <div style="font-size: 13px;">Số phiên đang đã đóng</div>
-                    <div style="font-size: 13px;">Số thành viên</div>
-                    <div style="font-size: 13px;">Tổng số câu hỏi</div>
-                </div>
-            </div>
+
 
             <div class="panel panel-default chude">
                 <div class="panel-heading" style="text-align: center">
@@ -130,29 +205,21 @@
                 </div>
             </div>
 
+
         </div>
         <div class="col-md-10" ng-init="question()">
-            <div class="card" ng-init="init()">
+            <div class="card">
                 <div class="panel panel-primary">
                     <div class="panel-heading phien">
-                        <!-- Tabs -->
-                        <!-- <ul class="nav panel-tabs">
-									<li> <a data-toggle="tab" ui-sref="root.phienhoatdong"><i class="icofont icon-ribbon"></i><span class="hidden-xs">Phiên hỏi đáp hoạt động</span></a> 
-									</li>
-									<li> <a data-toggle="tab" href="#tab2"><i class="icofont icon-layers"></i><span class="hidden-xs">Phiên hỏi đáp đã đóng</span></a> 
-									</li>
-									<li class="active"> <a data-toggle="tab" ng-model="display" ng-click="checkdisplay()"><i class="icofont icon-global"></i><span class="hidden-xs">Tất cả các câu hỏi</span></a> 
-									</li>
-								
-                                </ul> -->
                         <form name="outerForm" class="tab-form-demo">
                             <uib-tabset>
                                 <uib-tab heading="Phiên đang hoạt động">
-                                    <ng-form name="nestedForm">
+                                    <ng-form name="nestedForm" ng-init="init()">
                                         <div class="form-group">
                                             <div class="card-body">
                                                 <div class="blockquote row  listcauhoi"
-                                                    ng-repeat="x in temp = (result | filter : {content : searchText }) | limitTo:6:6*(currentPage-1)">
+                                                    ng-repeat="x in seclist = (vm.phienhoatdong | filter : {title : searchText }) | limitTo:6:6*(currentPage-1)"
+                                                    ng-show="x.open">
                                                     <div class="left"><a href="" class="col-lg-2"><img
                                                                 src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
                                                                 alt=""></a></div>
@@ -163,63 +230,116 @@
                                                                 class="cauhoidetail"
                                                                 style="display: block">{{x.title}}</a>
                                                             <a ui-sref="root.thongtin" style="display: block;"
-                                                                class="chutoa">Chủ tọa: {{x.auth_id}}</a>
-                                                            <a class="chutoa">Chủ đề: {{x.topic_id}}</a>
+                                                                class="chutoa">Chủ tọa: {{x.name}}</a>
+                                                            <a class="chutoa">Chủ đề: {{x.topic}}</a>
                                                             <div class="bottom">
                                                                 <a><i class="far fa-clock"
                                                                         style="margin-right: 5px;"></i>{{x.date}}</a>
                                                                 <a><i class="fas fa-comments"
-                                                                        style="margin-right: 5px;margin-left: 10px;"></i>0
+                                                                        style="margin-right: 5px;margin-left: 10px;"></i>{{x.countQ}}
                                                                     Câu hỏi</a>
                                                             </div>
+                                                            <div class="button" ng-show="vm.checkuser(x.auth_id,vm.iduser)">
+                                                                <ul class="nav">
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link"
+                                                                            ng-click="vm.delete(x.id)"><i
+                                                                                class="fas fa-trash-alt"></i></a>
+                                                                    </li>
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link"
+                                                                            ng-click="vm.edit(x.id,x.title,x.content)"><i
+                                                                                class="fas fa-edit"></i></a>
+                                                                    </li>
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link"
+                                                                            ng-click="vm.closesec(x.id)"><i
+                                                                                class="fas fa-lock"></i></a>
+                                                                    </li>
+
+
+                                                                </ul>
+
+                                                            </div>
                                                         </div>
-                                                        <div class="button">
-                                                            <button type="button" class="btn btn-success"
-                                                                ng-click="vm.delete(x.id)"><i
-                                                                    class="fas fa-trash-alt"></i></button>
-                                                            <button type="button" class="btn btn-danger"
-                                                                ng-click="vm.edit(x.id,x.title,x.content)"><i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
+
                                                     </div>
 
                                                 </div>
 
                                             </div>
 
-
+                                            <nav class="nav pagination" role="navigation">
+                                                <ul uib-pagination boundary-links="true" total-items="seclist.length"
+                                                    max-size="maxSize" ng-model="currentPage" class="pagination-md"
+                                                    items-per-page="numPerPage" previous-text="&lsaquo;"
+                                                    next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+                                            </nav>
                                         </div>
-                                        <nav class="nav pagination" role="navigation">
-                                            <!-- <ul uib-pagination boundary-links="true" total-items="totalItems" max-size="maxSize"
-                                                    ng-model="currentPage" class="pagination-md" items-per-page="itemsPerPage" previous-text="&lsaquo;" next-text="&rsaquo;"
-                                                    first-text="&laquo;" last-text="&raquo;"></ul> -->
-                                            <ul uib-pagination boundary-links="true" total-items="temp.length"
-                                                max-size="maxSize" ng-model="currentPage" class="pagination-md"
-                                                items-per-page="numPerPage" previous-text="&lsaquo;"
-                                                next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
-                                        </nav>
+
                                     </ng-form>
                                 </uib-tab>
                                 <uib-tab heading="Phiên đã đóng">
                                     <ng-form name="nestedForm">
                                         <div class="form-group">
-                                            <label>aaaaaaaaaaa</label>
-                                            <input type="text" class="form-control" required ng-model="model.name" />
-                                        </div>
-                                    </ng-form>
-                                </uib-tab>
-                                <uib-tab heading="Tất cả câu hỏi">
-                                    <ng-form name="nestedForm">
-                                        <div class="form-group">
                                             <div class="card-body">
                                                 <div class="blockquote row  listcauhoi"
-                                                    ng-repeat="x in temp = (result | filter : {content : searchText }) | limitTo:6:6*(currentPage-1)">
+                                                    ng-repeat="x in seclist = (vm.phiendong | filter : {title : searchText }) | limitTo:6:6*(currentPage-1)"
+                                                    ng-hide="x.open">
                                                     <div class="left"><a href="" class="col-lg-2"><img
                                                                 src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
                                                                 alt=""></a></div>
 
                                                     <div class="content col-lg-10 right ">
-                                                        <a ui-sref="root.cauhoi({contactId: $index+1})"
+                                                        <div class="content">
+                                                            <a ui-sref="root.listcauhoi({listsectionId: {{x.id}}})"
+                                                                class="cauhoidetail"
+                                                                style="display: block">{{x.title}}</a>
+                                                            <a ui-sref="root.thongtin" style="display: block;"
+                                                                class="chutoa">Chủ tọa: {{x.name}}</a>
+                                                            <a class="chutoa">Chủ đề: {{x.topic}}</a>
+                                                            <div class="bottom">
+                                                                <a><i class="far fa-clock"
+                                                                        style="margin-right: 5px;"></i>{{x.date}}</a>
+                                                                <a><i class="fas fa-comments"
+                                                                        style="margin-right: 5px;margin-left: 10px;"></i>{{x.countQ}}
+                                                                    Câu hỏi</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button" ng-show="vm.checkuser(x.auth_id,vm.iduser)">
+                                                            <button ng-show="x.open" type="button"
+                                                                class="btn btn-success" ng-click="vm.delete(x.id)"><i
+                                                                    class="fas fa-trash-alt"></i></button>
+                                                            <button ng-show="x.open" type="button"
+                                                                class="btn btn-danger"
+                                                                ng-click="vm.edit(x.id,x.title,x.content)"><i
+                                                                    class="fas fa-edit"></i></button>
+                                                            <!-- <button ng-show="x.open" type="button" class="btn btn-danger"
+                                                                ng-click="vm.closesec(x.id)"><i class="fas fa-lock"></i></button> -->
+                                                            <button ng-hide="x.open" type="button"
+                                                                class="btn btn-danger" ng-click="vm.opensec(x.id)"><i
+                                                                    class="fas fa-lock-open"></i></button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </ng-form>
+                                </uib-tab>
+                                <uib-tab heading="Tất cả câu hỏi">
+                                    <ng-form name="nestedForm" ng-init="vm.listquestion()">
+                                        <div class="form-group">
+                                            <div class="card-body">
+                                                <div class="blockquote row  listcauhoi"
+                                                    ng-repeat="x in temp = (vm.listquestion | filter : {content : searchText }) | limitTo:6:6*(currentPage-1)">
+                                                    <div class="left"><a href="" class="col-lg-2"><img
+                                                                src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
+                                                                alt=""></a></div>
+
+                                                    <div class="content col-lg-10 right ">
+                                                        <a ui-sref="root.cauhoi({cauhoiId: {{x.id}}})"
                                                             class="cauhoidetail" style="display: block">Câu hỏi:
                                                             {{x.content}}</a>
                                                         <a ui-sref="root.thongtin" style="display: block;"
@@ -237,21 +357,20 @@
 
                                                     </div>
                                                 </div>
+
                                             </div>
-                                            <input type="text" class="form-control" required ng-model="model.name" />
+                                            <nav class="nav pagination" role="navigation">
+                                                <ul uib-pagination boundary-links="true" total-items="temp.length"
+                                                    max-size="maxSize" ng-model="currentPage" class="pagination-md"
+                                                    items-per-page="numPerPage" previous-text="&lsaquo;"
+                                                    next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+                                            </nav>
                                         </div>
-                                        <nav class="nav pagination" role="navigation">
-                                            <!-- <ul uib-pagination boundary-links="true" total-items="totalItems" max-size="maxSize"
-                                                                ng-model="currentPage" class="pagination-md" items-per-page="itemsPerPage" previous-text="&lsaquo;" next-text="&rsaquo;"
-                                                                first-text="&laquo;" last-text="&raquo;"></ul> -->
-                                            <ul uib-pagination boundary-links="true" total-items="temp.length"
-                                                max-size="maxSize" ng-model="currentPage" class="pagination-md"
-                                                items-per-page="numPerPage" previous-text="&lsaquo;"
-                                                next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
-                                        </nav>
+
                                     </ng-form>
                                 </uib-tab>
                             </uib-tabset>
+
                         </form>
                     </div>
                 </div>

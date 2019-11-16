@@ -4,6 +4,8 @@
 
 .stepwizard-row {
     display: table-row;
+    justify-content: center;
+    display: flex;
 }
 
 .stepwizard {
@@ -30,6 +32,7 @@
 }
 
 .stepwizard-step {
+    margin: 0 5%;
     display: table-cell;
     text-align: center;
     position: relative;
@@ -51,4 +54,11 @@
 .taokhaosat .col-md-12{
     justify-content: center;
     /* display: table-caption; */
+}
+.taokhaosat .custom-control-inline{
+    display: block
+}
+.taokhaosat{
+    margin-top: 5%;
+    background: white;
 }

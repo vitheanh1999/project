@@ -12,20 +12,37 @@ module.exports = {
             const headers = req.headers['authorization'];
             const idAuth = await taikhoan.getId(headers);
             if (sec.title && sec.content && sec.topic_id) {
-                const date = moment(Date.now()).format("HH:mm DD-MM-YYYY");
-                await Section.create({
-                    title: sec.title,
-                    content: sec.content,
-                    open: 1,
-                    date: date,
-                    topic_id: sec.topic_id,
-                    auth_id: idAuth
-                });
-                const listSec = await Section.find();
-                res.jsonp({
-                    listSec,
-                    success: true
-                });
+                if (vaildate.checkContent(sec.title)) {
+                    if (vaildate.checkContent(sec.content)) {
+                        const date = moment(Date.now()).format("HH:mm DD-MM-YYYY");
+                        await Section.create({
+                            title: sec.title,
+                            content: sec.content,
+                            open: 1,
+                            date: date,
+                            topic_id: sec.topic_id,
+                            auth_id: idAuth
+                        });
+                        const listSec = await Section.find();
+                        res.jsonp({
+                            content: "Tạo thành công",
+                            listSec,
+                            success: true
+                        });
+                    } else {
+                        res.jsonp({
+                            content: "Vui lòng nhập đúng nội dung",
+                            success: false
+                        })
+                    }
+
+                } else {
+                    res.jsonp({
+                        content: "Vui lòng nhập đúng tiêu đề",
+                        success: false
+                    })
+                }
+
             } else {
                 res.jsonp({
                     content: "Vui lòng nhập đủ thông tin",
@@ -39,12 +56,24 @@ module.exports = {
     },
     list: async function (req, res) {
         try {
-            const Sections = await Section.find();
-            res.jsonp({
-                Sections,
-                content: "Thành công",
-                success: true
-            })
+            let query = `SELECT a.name,t.topic,s.*,
+            (SELECT count(*) From question q where q.section_id=s.id ) as countQ FROM section s 
+            inner join auth a on s.auth_id=a.id 
+            inner join topic t on t.id = s.topic_id
+            ORDER BY s.updatedAt DESC   `
+            Section.query(query, [''], function (err, sec) {
+                if (err) {
+                    return res.badRequest(err);
+                } else {
+
+                    res.jsonp({
+                        sec,
+                        content: "Thành công",
+                        success: true
+                    });
+                }
+
+            });
         } catch (error) {
             res.badRequest(error)
         }
@@ -55,12 +84,36 @@ module.exports = {
             if (idSec) {
                 const sec = await Section.findOne({ id: idSec });
                 if (sec) {
-                    const q = await Question.find({ section_id: idSec });
-                    res.jsonp({
-                        content: "Thành công",
-                        sec, q,
-                        success: true
-                    })
+                    let query = `SELECT a.name,t.topic,s.*,
+                    (SELECT count(*) From question q where q.section_id=s.id ) as countQ FROM section s 
+                    inner join auth a on s.auth_id=a.id 
+                    inner join topic t on t.id = s.topic_id
+                    where s.id=${idSec}
+                    `
+                    Section.query(query, [''], function (err, sec) {
+                        if (err) {
+                            return res.badRequest(err);
+                        } else {
+                            let queryQ = `SELECT q.*,a.name,
+                            (SELECT count(*)FROM answer anw where anw.idQuestion=q.id) as countA FROM question q
+                            inner join auth a on a.id=q.auth_Id
+                            where q.section_id=${idSec}`;
+                            Question.query(queryQ, [''], function (err, listQ) {
+                                if (err) {
+                                    return res.badRequest(err);
+                                } else {
+                                    res.jsonp({
+                                        sec,
+                                        listQ,
+                                        content: "Thành công",
+                                        success: true
+                                    });
+                                }
+                            });
+                        }
+
+                    });
+
                 } else {
                     res.jsonp({
                         content: "Không có phiên câu hỏi",
@@ -86,18 +139,42 @@ module.exports = {
                     const headers = req.headers['authorization'];
                     const idAuth = await taikhoan.getId(headers);
                     if (secEdit.auth_id == idAuth) {
-                        const sec = req.body;
-                        if (sec.title && sec.content) {
-                            await Section.update({ id: idSec }, { title: sec.title, content: sec.content })
-                            const s = await Section.findOne({ id: idSec });
-                            res.jsonp({
-                                content: "Sửa thành công",
-                                s,
-                                success: true
-                            })
+                        if (secEdit.open == true) {
+                            const sec = req.body;
+                            if (sec.title && sec.content) {
+                                if (vaildate.checkContent(sec.title)) {
+                                    if (vaildate.checkContent(sec.content)) {
+                                        const date = moment(Date.now()).format("HH:mm DD-MM-YYYY");
+                                        await Section.update({ id: idSec }, { title: sec.title, content: sec.content, date:date})
+                                        const s = await Section.findOne({ id: idSec });
+                                        res.jsonp({
+                                            content: "Sửa thành công",
+                                            s,
+                                            success: true
+                                        })
+                                    } else {
+                                        res.jsonp({
+                                            content: "Vui lòng nhập đúng nội dung",
+                                            success: false
+                                        })
+                                    }
+
+                                } else {
+                                    res.jsonp({
+                                        content: "Vui lòng nhập đúng tiêu đề",
+                                        success: false
+                                    })
+                                }
+
+                            } else {
+                                res.jsonp({
+                                    content: "Vui lòng nhập đủ thông tin",
+                                    success: false
+                                })
+                            }
                         } else {
                             res.jsonp({
-                                content: "Vui lòng nhập đủ thông tin",
+                                content: "Phiên đã đóng",
                                 success: false
                             })
                         }
@@ -134,6 +211,8 @@ module.exports = {
                     const idAuth = await taikhoan.getId(headers);
                     if (idAuth == secDelete.auth_id) {
                         await Section.destroy({ id: idSec });
+                        await Question.destroy({ section_id: idSec })
+                        await Survey.destroy({ section_id: idSec })
                         const listSec = await Section.find();
                         res.jsonp({
                             content: "Xóa thành công",
@@ -169,11 +248,27 @@ module.exports = {
             if (idSec) {
                 const secClose = await Section.findOne({ id: idSec });
                 if (secClose) {
-                    await Section.update({ id: idSec }, { open: 0 })
-                    res.jsonp({
-                        content: "Đóng phiên thành công",
-                        success: true
-                    })
+                    const headers = req.headers['authorization'];
+                    const idAuth = await taikhoan.getId(headers);
+                    if (secClose.auth_id == idAuth) {
+                        if (secClose.open == false) {
+                            res.jsonp({
+                                content: "Phiên đã đóng",
+                                success: false
+                            })
+                        } else {
+                            await Section.update({ id: idSec }, { open: 0 })
+                            res.jsonp({
+                                content: "Đóng phiên thành công",
+                                success: true
+                            })
+                        }
+                    } else {
+                        res.jsonp({
+                            content: "Bạn không có quyền đóng",
+                            success: false
+                        })
+                    }
                 } else {
                     res.jsonp({
                         content: "Không có phiên cần đóng",
@@ -196,11 +291,29 @@ module.exports = {
             if (idSec) {
                 const secopen = await Section.findOne({ id: idSec });
                 if (secopen) {
-                    await Section.update({ id: idSec }, { open: 1 })
-                    res.jsonp({
-                        content: "Mở phiên thành công",
-                        success: true
-                    })
+                    const headers = req.headers['authorization'];
+                    const idAuth = await taikhoan.getId(headers);
+                    if (secopen.auth_id == idAuth) {
+                        if (secopen.open == true) {
+                            res.jsonp({
+                                content: "Phiên đang mở",
+                                success: false
+                            })
+                        } else {
+                            await Section.update({ id: idSec }, { open: 1 })
+                            res.jsonp({
+                                content: "Mở phiên thành công",
+                                success: true
+                            })
+                        }
+                    } else {
+                        res.jsonp({
+                            content: "Bạn không có quyền mở",
+                            success: false
+                        })
+                    }
+
+
                 } else {
                     res.jsonp({
                         content: "Không có phiên cần mở",

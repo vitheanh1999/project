@@ -2,77 +2,83 @@
     <h5 class="dsphd">Thông tin người dùng</h5>
 </div>
 <div class="container-fluid thongtin">
-    <div class="top row" ng-init="vm.init()">
+    <!-- <div class="top row" ng-init="vm.init()">
         <div class="col-md-2 left">
             <img src="http://qa.uet.vnu.edu.vn/qa/public/img/student.png" alt="">
         </div>
         <div class="col-md-10 right">
             <ul>
-                <li><span class="info" ng-model="vm.name"><i class="fas fa-user-graduate"></i>{{vm.name}}</span> <a href=""><i class="far fa-edit"></i></a></li>
-                <li><span class="info"><i class="fas fa-restroom"></i>aaa</span><a href=""><i class="far fa-edit"></i></a></i></li>
-                <li><span class="info"><i class="fas fa-calendar-alt"></i>aaa</span><a href=""><i class="far fa-edit"></i></a></li>
+                <li><span class="info" ng-model="vm.name"><i class="fas fa-user-graduate"></i>{{vm.user.name}}</span> <a href=""><i class="far fa-edit"></i></a></li>
+                <li><span class="info"><i class="fas fa-restroom"></i>{{vm.user.role}}</span><a href=""><i class="far fa-edit"></i></a></i></li>
+                <li><span class="info"><i class="fas fa-calendar-alt"></i>{}</span><a href=""><i class="far fa-edit"></i></a></li>
                 <li><span class="info"><i class="fas fa-book"></i>Tổng số câu hỏi: </span></li>
             </ul>
         </div>
-    </div>
-    <div class="listcauhoi trangchu">
-        
-        <div class="panel panel-default">
-              <div class="panel-heading">
-                    <h3 class="panel-title">Nội dung câu hỏi</h3>
-              </div>
-              <div class="panel-body">
-                    
-                <div class="blockquote row">
-
-                                <div class="content col-lg-10 right">
-                                    <a ui-sref="root.cauhoi({contactId: $index+1})" class="cauhoidetail"
-                                            style="display: block">Câu hỏi: aaa</a>
-                                        <a ui-sref="root.thongtin" style="display: block;" class="chutoa">Tên: Somebody</a>
-                                        <a class="chutoa">Chủ đề: aaa</a>
-                                        <div class="bottom">
-                                            <a href="" style="margin-right:10px"> <i class="far fa-thumbs-up"></i> 1</a>
-                                            <a><i class="far fa-clock" style="margin-right: 5px;"></i>aaa</a>
-                                        </div>
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-success" ng-click="vm.delete()"><i class="fas fa-trash-alt"></i></button>
-                                    <button type="button" class="btn btn-danger" ng-click="vm.edit()"><i class="fas fa-edit"></i></button>
-                                </div>
-                           
-                </div>
-             <div class="blockquote row">
-                    <!-- <div class="left"><a href="" class="col-lg-2"><img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
-                                alt=""></a></div> -->
-                                <div class="content col-lg-10 right">
-                                    <a ui-sref="root.cauhoi({contactId: $index+1})" class="cauhoidetail"
-                                            style="display: block">Câu hỏi: aaa</a>
-                                        <a ui-sref="root.thongtin" style="display: block;" class="chutoa">Tên: Somebody</a>
-                                        <a class="chutoa">Chủ đề: aaa</a>
-                                        <div class="bottom">
-                                            <a href="" style="margin-right:10px"> <i class="far fa-thumbs-up"></i> 1</a>
-                                            <a><i class="far fa-clock" style="margin-right: 5px;"></i>aaa</a>
-                                        </div>
-                                </div>
-                </div>
-             <div class="blockquote row">
-                    <!-- <div class="left"><a href="" class="col-lg-2"><img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
-                                alt=""></a></div>
-     -->
-                    <div class="content col-lg-10 right">
-                        <a ui-sref="root.cauhoi({contactId: $index+1})" class="cauhoidetail"
-                                style="display: block">Câu hỏi: aaa</a>
-                            <a ui-sref="root.thongtin" style="display: block;" class="chutoa">Tên: Somebody</a>
-                            <a class="chutoa">Chủ đề: aaa</a>
-                            <div class="bottom">
-                                <a href="" style="margin-right:10px"> <i class="far fa-thumbs-up"></i> 1</a>
-                                <a><i class="far fa-clock" style="margin-right: 5px;"></i>aaa</a>
+    </div> -->
+    <div class="container-fluid" ng-init="vm.init()">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+                    <div class="card-block">
+                        <div class="row">
+                                <div class="col-md-2 col-sm-2 text-center">
+                                        <img class="btn-md" src="https://www.webnots.com/bootstrap/assets/images/card-image.png" alt=""
+                                            >
+                                    </div>
+                            <div class="col-md-10 col-sm-10">
+                                <h2 ng-model="vm.name" class="card-title" style="color: white;"><i class="fas fa-user-graduate"></i> Name: {{vm.user.name}} </h2>
+                                <p class="card-text"><strong>Profile: </strong> Thành viên </p>
+                                <p class="card-text"><strong>Số câu hỏi: </strong> 
+                                </p>
+                                <p><strong>Platform: </strong>
+                                    <span class="badge bg-primary">WordPress</span>
+                                    <span class="badge bg-info">Weebly</span>
+                                    <span class="badge bg-warning">Bootstrap</span>
+                                    <span class="badge bg-success">Wix</span>
+                                </p>
                             </div>
+                            
+
+
+
+                        </div>
                     </div>
                 </div>
-              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="listcauhoi trangchu">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Nội dung câu hỏi</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="blockquote row" ng-repeat="temp in vm.datas">
+
+                    <div class="content col-lg-10 right">
+                        <a ui-sref="root.cauhoi({cauhoiId: {{temp.id}}})" class="cauhoidetail"
+                            style="display: block">Câu hỏi: {{temp.content}}</a>
+                        <a ui-sref="root.thongtin" style="display: block;" class="chutoa">Tên: {{temp.auth_Id}}</a>
+                        <a class="chutoa">Phiên hỏi đáp: {{temp.section_id}}</a>
+                        <div class="bottom">
+                            <a href="" style="margin-right:10px"> <i class="far fa-thumbs-up"></i> 1</a>
+                            <a><i class="far fa-clock" style="margin-right: 5px;"></i>{{temp.date}}</a>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-success" ng-click="vm.delete()"><i
+                                class="fas fa-trash-alt"></i></button>
+                        <button type="button" class="btn btn-danger" ng-click="vm.edit()"><i
+                                class="fas fa-edit"></i></button>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
     </div>
-    
+
 </div>

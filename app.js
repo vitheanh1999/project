@@ -17,6 +17,21 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/root',
             templateUrl: 'root/rootview.html'
         })
+        .state('admin',{
+            url: '/admin/trangchu',
+            controller: 'trangchuCtrl as vm',
+            templateUrl: 'admin/trangchu/trangchu.html'
+        })
+        .state('section',{
+            url: '/admin/section',
+            controller: 'sectionCtrl as vm',
+            templateUrl: 'admin/section/section.html'
+        })
+        .state('question',{
+            url: '/admin/question',
+            controller: 'questionCtrl as vm',
+            templateUrl: 'admin/question/question.html'
+        })
         .state('root.trangchu', {
             url: '/trangchu',
             controller: 'trangchu as vm',
@@ -42,6 +57,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller:'loginCtrl',
             templateUrl:"plugin/login/login.html"
         })
+        .state('taokhaosat',{
+            url:'/taokhaosat',
+            controller:'taokhaosatCtrl',
+            templateUrl:"modal/taokhaosat/taokhaosat.html"
+        })
         .state('resgister',{
             url:'/resgister',
             controller:'resgisterCtrl as vm',
@@ -62,6 +82,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url:'/chude/:chudeId',
             controller:'chudeCtrl as vm',
             templateUrl:'main/chude/chudeCtrl.js'
+        })
+        .state('root.thongke',{
+            url:'/thongke',
+            controller:'thongkeCtrl as vm',
+            templateUrl:'main/thongke/thongke.html'
         })
      
 

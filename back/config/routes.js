@@ -38,13 +38,21 @@ module.exports.routes = {
   'post /auth/login':'AuthController.login',
   'post /auth/registration':'AuthController.registration',
   'post /auth/info' : 'AuthController.getInfor',
-  'post /section/create' :'SectionCotroller.create',
-  'post /section/list':'SectionCotroller.list',
   'post /answer/create': 'AnswerController.create',
-  'post /section/delete':'SectionCotrollerl.delete',
-  'post /section/edit':'SectionCotroller.edit',
+
+  'post /section/create' :'SectionController.create',
+  'post /section/list':'SectionController.list',
+  'post /section/delete':'SectionController.delete',
+  'post /section/edit':'SectionController.edit',
+  'post /section/closesec':'SectionController.closesec',
+  'post /section/opensec':'SectionController.opensec',
+
+  'post /question/list':'QuestionController.viewlistquestion',
+  'post /viewauth/list':'QuestionController.viewauth',
   'post /question/delete':'QuestionController.delete',
-  'post /question/edit':'QuestionController.edit'
+  'post /question/edit':'QuestionController.edit',
+
+  'post /survey/create':'SurveyController.create'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

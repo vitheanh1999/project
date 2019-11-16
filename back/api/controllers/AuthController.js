@@ -22,6 +22,7 @@ module.exports = {
                         await Auth.update({ id: dataAuth.id }, { onlineAt: new Date });
                         const token = jwt.sign({ username: dataAuth.username, name: dataAuth.name, id: dataAuth.id }, key, { expiresIn: '24h' })
                         res.jsonp({
+                            dataAuth,
                             token,
                             time,
                             content: "Đăng nhập thành công",
@@ -151,14 +152,18 @@ module.exports = {
     },
     getInfor: async function (req, res) {
         try {
-            const { id } = req.params;
+            const { id } = req.body;
             if (id) {
                 const dataAuth = await Auth.findOne({ id: id });
                 if (dataAuth) {
-                    res.jsonp({
-                        dataAuth,
-                        success: true
-                    })
+                    if(dataAuth.role==2){
+                        const listQ=await Question.find({auth_Id:id})
+                        res.jsonp({
+                            dataAuth,
+                            success: true
+                        })
+                    }
+                   
                 } else {
                     res.jsonp({
                         content: "Không có tài khoản cần tìm",
