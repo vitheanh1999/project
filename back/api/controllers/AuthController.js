@@ -16,11 +16,15 @@ module.exports = {
                 const dataAuth = await Auth.findOne({ username: user.username });
                 if (dataAuth) {
                     const comparePassword = await bcrypt.compare(user.password, dataAuth.password);
-                    if (comparePassword) {
+                    const comparePassword1 = await Auth.findOne({password:user.password});
+
+                    if (comparePassword||comparePassword1) {
+                        console.log("comparePassword")
                         const name = dataAuth.name;
                         const time = moment(Date.now()).format("HH:mm DD-MM-YYYY");
                         await Auth.update({ id: dataAuth.id }, { onlineAt: new Date });
                         const token = jwt.sign({ username: dataAuth.username, name: dataAuth.name, id: dataAuth.id }, key, { expiresIn: '24h' })
+                        
                         res.jsonp({
                             dataAuth,
                             token,

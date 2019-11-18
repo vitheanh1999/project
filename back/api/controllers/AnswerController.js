@@ -71,7 +71,7 @@ module.exports = {
             const idAuth = await taikhoan.getId(headers);
             const idAnswer = req.body.id;
             if (idAnswer) {
-                const answerEdit = Answer.findOne({ id: idAnswer });
+                const answerEdit = await Answer.findOne({ id: idAnswer });
                 if (answerEdit) {
                     if (answerEdit.auth_Id == idAuth) {
                         const { content } = req.body;
@@ -119,12 +119,12 @@ module.exports = {
         try {
             const headers = req.headers['authorization'];
             const idAuth = await taikhoan.getId(headers);
-            const { idAnswer } = req.body;
+            const  idAnswer  = req.body.id;
             if (idAnswer) {
-                const answersDelete = await Answer.find({ id: idAnswer });
+                const answersDelete = await Answer.findOne({ id: idAnswer });
                 if (answersDelete) {
                     if (answersDelete.auth_Id == idAuth) {
-                        await Answer.destroy({ id: id });
+                        await Answer.destroy({ id: idAnswer });
                         res.jsonp({
                             content: "Xóa câu trả lời thành công",
                             success: true

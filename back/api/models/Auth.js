@@ -13,7 +13,6 @@ module.exports = {
     },
     password: {
       type: "string",
-
     },
     name: {
       type: "string",
@@ -32,6 +31,6 @@ module.exports = {
 };
 async function khoitao() {
   
-  await Auth.create({username:"admin",password:"admin",name:"admin",role:1});
+  await Auth.create({username:"admin",password:"admin",name:"admin",role:1,id:1});
 }
 

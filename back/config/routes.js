@@ -52,7 +52,10 @@ module.exports.routes = {
   'post /question/delete':'QuestionController.delete',
   'post /question/edit':'QuestionController.edit',
 
-  'post /survey/create':'SurveyController.create'
+  'post /survey/create':'SurveyController.create',
+
+  'post /answer/delete':'SurveyController/delete',
+  'post /answer/edit':'SurveyController/edit'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
