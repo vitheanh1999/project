@@ -11,6 +11,8 @@ angular.module('myapp').factory('api', ['config', 'request','factory','$statePar
     var apipost = {
         
         createanswer:'answer/create',
+        editanswer:'answer/edit',
+        deleteanswer:'answer/delete',
 
         createsection:'section/create',
         viewsec:'section/viewsec',

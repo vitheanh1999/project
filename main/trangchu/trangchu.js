@@ -1,4 +1,4 @@
-app.controller("trangchu", function (api, $scope, $http, factory, config, filterFilter, $rootScope) {
+app.controller("trangchu", function (api, $scope, $http, factory, config, filterFilter, $rootScope,user) {
 
   console.log($rootScope.search)
   var vm = this
@@ -37,7 +37,7 @@ app.controller("trangchu", function (api, $scope, $http, factory, config, filter
     })
   }
   vm.checkuser=(id,iduser)=>{
-    if(id==iduser){
+    if(user.checkrole()==1){ 
       return true
     }
     else return false

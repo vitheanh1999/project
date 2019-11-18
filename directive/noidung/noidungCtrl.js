@@ -1,3 +1,0 @@
-app.controller("noidungCtrl",function(){
-    
-})

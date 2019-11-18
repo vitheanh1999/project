@@ -13,22 +13,17 @@ app.controller("taokhaosatCtrl", function ($scope) {
             title: "Câu 1",
             content: vm.content
           },
-          //   {
-          //     id:2,
-          //   title: "Câu 2" ,
-          //   content:vm.content
-          // }
         ]
       }
     ],
     style: [
       {
         content: "Nhiều đáp án",
-        check: "one",
+        check: 1,
       },
       {
         content: "1 đáp án",
-        check: "two",
+        check: 2,
       }
     ]
   }];
@@ -56,11 +51,11 @@ app.controller("taokhaosatCtrl", function ($scope) {
     style: [
       {
         content: "Nhiều đáp án",
-        check: "one",
+        check: "1",
       },
       {
         content: "1 đáp án",
-        check: "two",
+        check: "2",
       }
     ]
   }];
@@ -101,11 +96,11 @@ app.controller("taokhaosatCtrl", function ($scope) {
       style: [
         {
           content: "Nhiều đáp án",
-          check: "one",
+          check: 1,
         },
         {
           content: "1 đáp án",
-          check: "two",
+          check: 2,
         }
       ],
       data: [
@@ -141,22 +136,33 @@ app.controller("taokhaosatCtrl", function ($scope) {
   }
   vm.s={}
 
-  vm.q={}
   vm.createkhaosat = (data) => {
-    // let data={
-    //   s:{
-    //     title:s.title,
-    //     description:s.description
-    //   },
-    //   q:[
-    //     {
-    //       content:q.content,
-          
-    //     }
-    //   ]
- 
-    // }
+    data.content.forEach(element => {
+      delete element.title
+      element.style.splice(0,2)
+      if(element.style.check==1){
+
+        delete element.data[0].answer1
+        delete element.data[0].question
+      }
+       else if(element.style.check==2){
+        delete element.data[0].answer
+        delete element.data[0].question
+       }
+    });
     console.log(data)
+
+      vm.title=data.titlekhaosat
+      vm.deskhaosat=data.deskhaosat
+      vm.cauhoi=[]
+      vm.cauhoi=data.content
+      console.log(vm.cauhoi)
+      vm.checkstyle=(type)=>{
+        if(type==1){
+          return true
+        }
+        else return false
+      }
   }
   vm.cancel = function () {
     $uibModalInstance.dismiss('cancel');

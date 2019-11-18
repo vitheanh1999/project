@@ -44,18 +44,17 @@
           <a class="dropdown-item listcauhoi" ui-sref="root.chude({chudeId: 'chudekhac'})">Chủ đề khác</a>
       </div>
     </li>
-    <li class="nav-item createquestion" >
+    <li class="nav-item createquestion" ng-show="vm.checkrole()" >
         <button>
           <a  class="dropdown-item" ng-click="taophien()" style="color: white;">Tạo phiên hỏi đáp</a>
         </button>
  </li>
     </ul>
-    <div class="searchform-wrap" >
-      <form name="search" id="searchbox" class="znewsSearch {{a}}" ng-class="{active : check(true)}" target="_blank">
-        <input type="text" name="s" id="search_keyword" placeholder="Nhập nội dung cần tìm..." ng-model="searchText">
-        <button type="submit" id="search_button" ng-model="a" ng-model="count=0"
-          ng-click="searchclick(count = count + 1)"><span class="znews-icon ti-search"></span></button>
-      </form>
+    <div ng-show="vm.checkrole()" class="searchform-wrap" style="     margin-right: 10px;
+    border-style: groove;
+    border-width: 3px;
+    display: inline;">
+     <button ui-sref="admin">Admin  <i class="fas fa-sign-out-alt"></i></button>
     </div>
     <div class="nav-item dropdown ">
       <div class="nav-link dropdown-toggle icondangnhap" href="#" id="navbarDropdown" role="button"

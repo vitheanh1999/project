@@ -1,4 +1,4 @@
-app.controller("listcauhoiCtrl", function (api, $scope, factory, $stateParams) {
+app.controller("listcauhoiCtrl", function (api, $scope, factory, $stateParams,user) {
   var vm = this
 
 
@@ -54,15 +54,21 @@ app.controller("listcauhoiCtrl", function (api, $scope, factory, $stateParams) {
       })
     })
   }
-  vm.checkopen=(open)=>{
-    if(open==false){
-      return true
+  // vm.checkopen=(open)=>{
+  //   if(open==false){
+  //     return true
+  //   }
+  //   else return false
+  // }
+  vm.checkuser=(id,iduser)=>{
+    if((id==iduser||user.checkrole()==1)&&vm.infoadmin.open){
+      return true;
     }
     else return false
   }
-  vm.checkuser=(id,iduser)=>{
-    if(id==iduser){
-      return true;
+  vm.checkrole=()=>{
+    if(user.checkrole()==1&&vm.infoadmin.open){
+      return true
     }
     else return false
   }

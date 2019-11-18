@@ -27,15 +27,12 @@
                                     </div>
                             <div class="col-md-10 col-sm-10">
                                 <h2 ng-model="vm.name" class="card-title" style="color: white;"><i class="fas fa-user-graduate"></i> Name: {{vm.user.name}} </h2>
-                                <p class="card-text"><strong>Profile: </strong> Thành viên </p>
-                                <p class="card-text"><strong>Số câu hỏi: </strong> 
+                                <p class="card-text "><strong>Username: </strong> {{vm.user.username}} </p>
+                                <p class="card-text" ng-show="vm.admin()"><strong>Chức vụ: </strong> Admin </p>
+                                <p class="card-text" ng-hide="vm.admin()"><strong>Chức vụ: </strong> Thành viên </p>
+                                <p class="card-text"><strong>Số câu hỏi: {{vm.datas.length}}</strong> 
                                 </p>
-                                <p><strong>Platform: </strong>
-                                    <span class="badge bg-primary">WordPress</span>
-                                    <span class="badge bg-info">Weebly</span>
-                                    <span class="badge bg-warning">Bootstrap</span>
-                                    <span class="badge bg-success">Wix</span>
-                                </p>
+                               
                             </div>
                             
 
@@ -61,10 +58,9 @@
                     <div class="content col-lg-10 right">
                         <a ui-sref="root.cauhoi({cauhoiId: {{temp.id}}})" class="cauhoidetail"
                             style="display: block">Câu hỏi: {{temp.content}}</a>
-                        <a ui-sref="root.thongtin" style="display: block;" class="chutoa">Tên: {{temp.auth_Id}}</a>
-                        <a class="chutoa">Phiên hỏi đáp: {{temp.section_id}}</a>
+                        <a class="chutoa" ui-sref="root.listcauhoi({listsectionId: temp.section_id})">Phiên hỏi đáp: {{temp.section_id}}</a>
                         <div class="bottom">
-                            <a href="" style="margin-right:10px"> <i class="far fa-thumbs-up"></i> 1</a>
+            
                             <a><i class="far fa-clock" style="margin-right: 5px;"></i>{{temp.date}}</a>
                         </div>
                     </div>

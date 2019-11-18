@@ -5,6 +5,16 @@ angular.module("myapp").controller("headerCtrl", ['factory', '$scope', '$uibModa
       $state.go("login")
     }
   }
+  vm.checkrole=()=>{
+    console.log(user.checkrole())
+    if(user.checkrole()==1){
+      return true
+    }
+    else return false
+  }
+  vm.gotoadmin=()=>{
+    
+  }
   $scope.searchclick = function () {
 
     if ($scope.count % 2 != 0) {
@@ -14,33 +24,6 @@ angular.module("myapp").controller("headerCtrl", ['factory', '$scope', '$uibModa
       $scope.a = ""
     }
   }
-  // vm.chude=[]
-  // vm.chude.push(
-  //   {
-  //     "chude": "Lịch học",
-  //     "url":"lichhoc"
-  //   },
-  //   {
-  //     "chude": "Giảng đường",
-  //     "url":"giangduong"
-  //   },
-  //   {
-  //     "chude": "Giảng viên",
-  //     "url":"giangvien"
-  //   },
-  //   {
-  //     "chude": "Cơ sở vật chất",
-  //     "url":"cosovatchat"
-  //   },
-  //   {
-  //     "chude": "Lịch học",
-  //     "url":"lichhoc"
-  //   },
-  //   {
-  //     "chude": "Chủ đề khác",
-  //     "url":"chudekhac"
-  //   }
-  // )
   console.log(vm.chude)
   $scope.taophien = function () {
     factory.taophien().then(function (result) {

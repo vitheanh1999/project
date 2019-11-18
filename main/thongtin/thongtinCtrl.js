@@ -7,10 +7,22 @@ app.controller("thongtinCtrl",function(api,user,factory){
             vm.datas=result.listQuestion
             console.log(vm.datas)
         })
-        vm.id=user.getinfouser().id
-        api.info({id:vm.id}).then(result=>{
-            vm.user=result.dataAuth
-        })
+        vm.user=user.getinfouser()
+        if(user.checkrole()==1){
+            vm.admin=()=>{
+                return true
+            }
+        }
+        else{
+            vm.admin=()=>{
+                return false
+            }
+        }
+        
+        // api.info({id:vm.id}).then(result=>{
+        //     vm.user=result.dataAuth
+        //     vm.name=user.getinfouser().name
+        // })
     }
     vm.edit=()=>{
         factory.editquestion().then(result=>{

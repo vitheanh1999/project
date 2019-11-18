@@ -59,7 +59,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('taokhaosat',{
             url:'/taokhaosat',
-            controller:'taokhaosatCtrl',
+            controller:'taokhaosatCtrl as vm',
             templateUrl:"modal/taokhaosat/taokhaosat.html"
         })
         .state('resgister',{
@@ -74,7 +74,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('root.myquestion',{
             url:'/myquestion',
-            controller:'myquestionCtrl',
+            controller:'myquestionCtrl as vm',
             templateUrl:"main/myquestion/myquestion.html"
 
         })

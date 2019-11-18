@@ -1,3 +1,27 @@
 <div class="container-fluid noidung">
-    <my-Noidung></my-Noidung>
+    <div class="container myquestion" ng-init="vm.init()">
+        <div class="listcauhoi trangchu">
+            
+            <div class="panel panel-default">
+                  <div class="panel-heading">
+                        <h3 class="panel-title">Nội dung câu hỏi</h3>
+                  </div>
+                  <div class="panel-body" ng-repeat="x in vm.datas">
+                    <div class="blockquote row">
+                        <div class="left"><a href="" class="col-lg-2"><img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
+                                    alt=""></a></div>
+        
+                        <div class="content col-lg-10 right">
+                            <a ui-sref="root.cauhoi" class="cauhoidetail" style="display: block">Câu hỏi: {{x.content}}</a>
+                            <a  class="chutoa">Ngày tạo: {{x.date}}</a>
+                          
+        
+                        </div>
+                    </div>
+                
+                  </div>
+            </div>
+    
+        </div>
+    </div>
 </div>

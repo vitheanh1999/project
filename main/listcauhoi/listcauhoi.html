@@ -82,9 +82,7 @@
 
                                         <div ng-show="vm.infoadmin.open" class="createquestion" style="width: 110%;
                                         margin-left: -16px;">
-                                            <!-- <a><button
-                                                    type="button" class="btn btn-primary" ng-click="vm.taocauhoi()">Tạo
-                                                    câu hỏi mới</button></a> -->
+                                            
                                                     <nav class="navbar navbar-expand-lg">
 
                                                             <ul class="navbar-nav">
@@ -121,7 +119,7 @@
                                                 </div>
 
                                             </div>
-                                            <div ng-show="vm.checkuser(x.auth_Id,vm.iduser)" ng-hide="vm.checkopen(vm.infoadmin.open)">
+                                            <div ng-show="vm.checkuser(x.auth_Id,vm.iduser)">
                                                 <button type="button" class="btn btn-success"
                                                     ng-click="vm.delete(x.id)"><i class="fas fa-trash-alt"></i></button>
                                                 <button type="button" class="btn btn-danger"
@@ -140,7 +138,7 @@
                                             sát</a></div>
                                 </li>
                             </ul>
-                            <ul class="nav nav-tabs" id="myTab" role="tablist" ng-show="vm.checkuser(vm.infoadmin.auth_id,vm.iduser)" ng-hide="vm.checkopen(vm.infoadmin.open)" >
+                            <ul class="nav nav-tabs" id="myTab" role="tablist" ng-show="vm.checkrole()">
                                 <li class="nav-item">
                                     <div class="createquestion"> <a class="nav-link" ui-sref="taokhaosat">Tạo cuộc
                                             khảo sát</a></div>

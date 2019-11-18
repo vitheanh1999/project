@@ -231,6 +231,8 @@
                                                                 style="display: block">{{x.title}}</a>
                                                             <a ui-sref="root.thongtin" style="display: block;"
                                                                 class="chutoa">Chủ tọa: {{x.name}}</a>
+                                                            <a  style="display: block;"
+                                                                class="chutoa">Mô tả: {{x.content}}</a>
                                                             <a class="chutoa">Chủ đề: {{x.topic}}</a>
                                                             <div class="bottom">
                                                                 <a><i class="far fa-clock"
@@ -239,7 +241,7 @@
                                                                         style="margin-right: 5px;margin-left: 10px;"></i>{{x.countQ}}
                                                                     Câu hỏi</a>
                                                             </div>
-                                                            <div class="button" ng-show="vm.checkuser(x.auth_id,vm.iduser)">
+                                                            <div class="button" ng-show="vm.checkuser()">
                                                                 <ul class="nav">
                                                                     <li class="nav-item">
                                                                         <a class="nav-link"
@@ -343,7 +345,7 @@
                                                             class="cauhoidetail" style="display: block">Câu hỏi:
                                                             {{x.content}}</a>
                                                         <a ui-sref="root.thongtin" style="display: block;"
-                                                            class="chutoa">Tên: Somebody</a>
+                                                            class="chutoa">Tên: {{x.name}}</a>
                                                         <a class="chutoa">Chủ đề: {{x.chude}}</a>
                                                         <div class="bottom">
                                                             <a href="" style="margin-right:10px"> <i
