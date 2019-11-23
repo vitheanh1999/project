@@ -41,3 +41,37 @@ module.exports.checkEmail = function (email) {
         return false;
     }
 }
+module.exports.checkSurvey = function (q) {
+    let kt = true;
+    // for (let question of q) {
+    //     if (kt == true) {
+    //         if (question.question && question.style) {
+    //             if (vaildate.checkContent(question.question)) {
+    //                 const a = question.data[0].answer;
+    //                 console.log( question.data[0].answer)
+    //                 for (let anw of a) {
+    //                     console.log(anw)
+    //                     if (!anw.content) {
+    //                         kt = false
+    //                         break
+    //                     } else {
+    //                         if ((vaildate.checkContent(anw.content))) {
+    //                         } else {
+    //                             kt = false
+    //                             break
+    //                         }
+    //                     }
+    //                 }
+    //             } else {
+    //                 kt = false
+    //             }
+
+    //         } else {
+    //             kt = false
+    //         }
+    //     } else {
+    //         break
+    //     }
+    // }
+    return kt;
+}

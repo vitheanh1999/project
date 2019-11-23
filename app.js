@@ -1,4 +1,4 @@
-var app = angular.module("myapp", ['ui.router','ngAnimate', 'ngSanitize','ui.bootstrap','toastr']);
+var app = angular.module("myapp", ['ui.router','ngAnimate', 'ngSanitize','ui.bootstrap','toastr','chart.js']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -58,7 +58,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl:"plugin/login/login.html"
         })
         .state('taokhaosat',{
-            url:'/taokhaosat',
+            url:'/taokhaosat/:surveyId',
             controller:'taokhaosatCtrl as vm',
             templateUrl:"modal/taokhaosat/taokhaosat.html"
         })
@@ -81,10 +81,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('root.chude',{
             url:'/chude/:chudeId',
             controller:'chudeCtrl as vm',
-            templateUrl:'main/chude/chudeCtrl.js'
+            templateUrl:'main/chude/chude.html'
         })
         .state('root.thongke',{
-            url:'/thongke',
+            url:'/thongke/:thongkeId',
             controller:'thongkeCtrl as vm',
             templateUrl:'main/thongke/thongke.html'
         })

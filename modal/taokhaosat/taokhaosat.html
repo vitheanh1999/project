@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="/modal/taokhaosat/taokhaosat.css">
 <script src="./modal/taokhaosat/taokhaosat.js"></script>
-<div class="container taokhaosat">
-    <h3 style="text-align: center;">Tạo cuộc khảo sát</h3>
+<div class="container taokhaosat" >
+    <h3 style="text-align: center;    padding-top: 35px;
+    padding-bottom: 25px;">Tạo cuộc khảo sát</h3>
     <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
             <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
@@ -18,93 +19,114 @@
 
     </div>
 
-    <form role="form" class="content">
+    <form role="form" class="content" name="myForm" >
         <div class="row setup-content" style="width: 100%;" id="step-1">
             <div class="col-xs-12" style="width: 100%;">
                 <div class="col-md-12" style="width: 100%;">
                     <!-- <h3> Step 1</h3> -->
 
                     <div class="md-form">
-                        <input type="text" id="materialLoginFormEmail" class="form-control"
-                            ng-model="vm.data.titlekhaosat" ng-change="vm.s.title=vm.data.titlekhaosat">
-                        <input class="form-control" type="hidden" ng-model="vm.s.title">
+                        <input type="text" id="materialLoginFormEmail" class="form-control" ng-model="vm.data.title" required>
                         <label for="materialLoginFormEmail">Tiêu đề</label>
+                        
                     </div>
+                    
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Mô tả</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                            ng-model="vm.data.deskhaosat" ng-change="vm.s.description=vm.data.deskhaosat"></textarea>
-                        <textarea hidden ng-model="vm.s.description"></textarea>
+                            ng-model="vm.data.description" required></textarea>
+
                     </div>
-                    <button class="btn btn-primary nextBtn btn-md pull-right" style="    display: block;
-                    margin-left: auto;" type="button">Next</button>
+                    <button class="btn btn-primary nextBtn btn-md pull-right" style="display: block;
+                    margin-left: auto;" type="submit">Next</button>
                 </div>
             </div>
         </div>
         <div class="row setup-content" style="width: 100%;" id="step-2">
-            <div class="col-xs-12" style="width: 100%;" ng-repeat="x in options">
+            <div class="col-xs-12" style="width: 100%;" ng-repeat="($indexOption,x) in options" >
                 <div class="col-md-12" style="width: 100%;">
 
                     <div class="md-form">
                         <span for="exampleForm2">Câu {{x.title}}</span><button style="padding: 0px 10px 0px 10px"
-                            ng-click="vm.deletequestion($index)" type="button"
+                        ng-show="vm.checkshow($indexOption)"  ng-click="vm.deletequestion($index)" type="button"
                             class="btn btn-outline-primary waves-effect"><i class="fas fa-backspace"></i></button>
-                        <input type="" id="exampleForm2" class="" placeholder="Tên câu hỏi" ng-model="x.data.question"
-                            ng-change="vm.q.content=x.data.question" style="width: 100%;">
-                        <input type="hidden" ng-model="vm.q[$index][content]" style="width: 100%;">
+                        <input type="" name="question" id="exampleForm2" class="" placeholder="Tên câu hỏi" ng-model="x.question"
+                            style="width: 100%;" required>
+                    
                     </div>
+                    
                     <span>Kiểu câu khảo sát</span>
                     <div class="md-form">
 
                         <div>
-                            <select ng-model="x.style.check" class="form-control"
+                            <select ng-model="x.style" class="form-control"
                                 ng-options="option.check as option.content for option in {{x.style}}"></select>
                         </div>
-                        <div ng-switch="x.style.check">
+                        <div ng-switch="x.style">
                             <div ng-switch-when="1">
                                 <div class="mutiple" ng-repeat="x2 in x.data">
 
                                     <div class="custom-control custom-checkbox" ng-repeat="x3 in x2.answer">
-                                        <input type="checkbox" class="custom-control-input" id="defaultGroupExample1"
+                                        <input type="checkbox" class="custom-control-input" id="defaultGroupExample{{x3.title}}"
                                             name="groupOfDefaultRadios">
-                                        <label class="custom-control-label" for="defaultGroupExample1"></label>
+                                        <label class="custom-control-label" for="defaultGroupExample{{x3.title}}"></label>
                                         <div class="md-form">
                                             <input type="text" id="form1" class="form-control" ng-model="x3.content"
                                                 style="width: 80%;
                                             display: inline-block;">
                                             <label for="defaultGroupExample1">{{x3.title}}.</label>
-                                            <button type="button" class="btn btn-outline-danger waves-effect"
+                                            <button ng-show="vm.checkshow($indexOption)" type="button" class="btn btn-outline-danger waves-effect"
                                                 ng-click="vm.deleteanswer($index)"><i class="fas fa-trash"></i></button>
 
                                         </div>
 
                                     </div>
-
-                                    <button type="button" class="btn btn-outline-success waves-effect"
+ 
+                                    <button ng-show="vm.checkshow($indexOption)" type="button" class="btn btn-outline-success waves-effect" 
                                         ng-click="vm.addanswer()">Thêm <i class="fas fa-plus-circle"></i></button>
 
                                 </div>
                             </div>
-                            <div ng-switch-when="2" class="two">
+                            <div ng-switch-when="2" >
                                 <div class="mutiple" ng-repeat="x2 in x.data">
 
                                     <div class="custom-control custom-radio" ng-repeat="x3 in x2.answer1">
-                                        <input type="radio" class="custom-control-input" id="defaultGroupExample1"
+                                        <input type="radio" class="custom-control-input" id="defaultGroupExample{{x3.title}}"
                                             name="groupOfDefaultRadios">
-                                        <label class="custom-control-label" for="defaultGroupExample1"></label>
+                                        <label class="custom-control-label" for="defaultGroupExample{{x3.title}}"></label>
                                         <div class="md-form">
                                             <input type="text" id="form1" class="form-control" ng-model="x3.content"
                                                 style="width: 80%;
                                             display: inline-block;">
                                             <label for="defaultGroupExample1">{{x3.title}}.</label>
-                                            <button type="button" class="btn btn-outline-danger waves-effect"
+                                            <button ng-show="vm.checkshow($indexOption)" type="button" class="btn btn-outline-danger waves-effect"
                                                 ng-click="vm.deleteanswer1($index)"><i
                                                     class="fas fa-trash"></i></button>
                                         </div>
                                     </div>
 
-                                    <button type="button" class="btn btn-outline-success waves-effect"
+                                    <button ng-show="vm.checkshow($indexOption)" type="button"  class="btn btn-outline-success waves-effect"
                                         ng-click="vm.addanswer1()">Thêm <i class="fas fa-plus-circle"></i></button>
+                                </div>
+                            </div>
+                            <div ng-switch-when="3" >
+                                <div class="mutiple" ng-repeat="x2 in x.data">
+                                    
+                                    <!-- <div class="custom-control custom-radio" ng-repeat="x3 in x2.answer2">
+                                        
+                                        <div class="md-form">
+                                            <p for="defaultGroupExample1">{{x3.title}}.</p>
+                                            <textarea  ng-model="x3.content" name="" id="" cols="30" rows="5" style="width: 97%;
+                                            display: inline-block;"></textarea> 
+                                            <button style="    position: absolute;
+                                            top: 32px;" ng-show="vm.checkshow($indexOption)" type="button" class="btn btn-outline-danger waves-effect"
+                                                ng-click="vm.deleteanswer2($index)"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </div>
+                                    </div>
+
+                                    <button ng-show="vm.checkshow($indexOption)" type="button"  class="btn btn-outline-success waves-effect"
+                                        ng-click="vm.addanswer2()">Thêm <i class="fas fa-plus-circle"></i></button> -->
                                 </div>
                             </div>
                             <div ng-switch-default>
@@ -115,50 +137,60 @@
 
 
                     </div>
+                    
                 </div>
             </div>
-            <button class="btn btn-primary  btn-md " type="button" ng-click="vm.addquestion()">Thêm câu
+           
+            <button class="btn btn-primary  btn-md " type="button" ng-click="vm.addquestion()"  type="submit">Thêm câu
                 hỏi</button>
-            <button class="btn btn-primary nextBtn btn-md pull-right" style="    display: block;
-            margin-left: auto;" type="button" ng-click="vm.createkhaosat(vm.data)">Next</button>
+            <button type="sumbit" class="btn btn-primary nextBtn btn-md pull-right" style="    display: block;
+            margin-left: auto;" type="button" ng-click="vm.createkhaosat(vm.data)" >Next</button>
+            
 
         </div>
-        <div class="row setup-content" style="width: 100%;" id="step-3" >
-            <div class="col-xs-12" style="width: 100%;" >
-                    <div class="titlekhaosat">Title: {{vm.title}}</div>
-                    <div class="deskhaosat">Mô tả: {{vm.deskhaosat}}</div>
+        <div class="row setup-content" style="width: 100%;" id="step-3">
+            <div class="col-xs-12" style="width: 100%;">
+                <div class="titlekhaosat">Title: {{vm.title}}</div>
+                <div class="description">Mô tả: {{vm.description}}</div>
                 <div class="col-md-12" style="width: 100%;" ng-repeat="x in vm.cauhoi">
-              
-                    <div class="radio" ng-show="vm.checkstyle(x.style.check)">
+                    <div ng-switch="x.style">
+                    <div class="radio" ng-switch-when="1">
+                            <div class="question">
+                                    <label for="">Câu: {{x.question}}</label>
+                                </div>
+                                <div class="answer" ng-repeat="x1 in x.data">
+                                    <div class="custom-control custom-checkbox" ng-repeat="x2 in x1.answer">
+                                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
+                                        <label class="custom-control-label" for="defaultUnchecked1">{{x2.content}}</label>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="checkbox" ng-switch-when="2">
+                            <div class="question">
+                                    <label for="">Câu: {{x.question}}</label>
+                                </div>
+                                <div class="answer" ng-repeat="x1 in x.data">
+        
+                                    <div class="custom-control custom-radio" ng-repeat="x2 in x1.answer1">
+                                        <input type="radio" class="custom-control-input" id="defaultGroupExample1"
+                                            name="groupOfDefaultRadios">
+                                        <label class="custom-control-label" for="defaultGroupExample1">{{x2.content}}</label>
+                                   
+                                    </div>
+                                </div>
+                      
+                    </div>
+                    <div class="" ng-switch-when="3">
                         <div class="question">
-                            <label for="">Câu: {{x.data.question}}</label>
-                        </div>
-                        <div class="answer" ng-repeat="x1 in x.data">
-                    
-                            <div class="custom-control custom-radio" ng-repeat="x2 in x1.answer">
-                                <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios">
-                                <label class="custom-control-label" for="defaultGroupExample1">{{x2.content}}</label>
-                       
-                             
-                            </div>
+                            <label for="">Câu: {{x.question}}</label>
+                            <textarea name="" id="" cols="30" rows="3" style="width: 100%;"></textarea>
                         </div>
                     </div>
-                    <div class="checkbox"  ng-hide="vm.checkstyle(x.style.check)">
-                        <div class="question">
-                            <label for="">Câu: {{x.data.question}}</label>
-                        </div>
-                        <div class="answer" ng-repeat="x1 in x.data">
-                            <div class="custom-control custom-checkbox" ng-repeat="x2 in x1.answer1">
-                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
-                                <label class="custom-control-label" for="defaultUnchecked1">{{x2.content}}</label>
-                            </div>
-                        </div>
-                    </div>
-                   
                 </div>
-                <button class="btn btn-success btn-lg pull-right" type="submit"
-                ng-click="vm.createkhaosat(vm.data)" style="display: block;margin: auto;">Tạo cuộc khảo sát!</button>
-                
+                </div>
+                <button class="btn btn-success btn-lg pull-right" type="submit"  ng-click="vm.save(vm.data)" 
+                    style="display: block;margin: auto;">Tạo cuộc khảo sát!</button>
+
             </div>
         </div>
     </form>

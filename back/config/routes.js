@@ -38,8 +38,16 @@ module.exports.routes = {
   'post /auth/login':'AuthController.login',
   'post /auth/registration':'AuthController.registration',
   'post /auth/info' : 'AuthController.getInfor',
+  'post /auth/myauth' : 'AuthController.myauth',
   'post /answer/create': 'AnswerController.create',
 
+  'post /admin/getAll':"AuthController.getAll",
+  'post /admin/changeRole':"AuthController.changeRole",
+  'post /admin/create':"AuthController.create",
+  'post /admin/editpassword':"AuthController.editpassword",
+  'post /admin/resetpassword':"AuthController.resetpassword",
+  
+  
   'post /section/create' :'SectionController.create',
   'post /section/list':'SectionController.list',
   'post /section/delete':'SectionController.delete',
@@ -54,8 +62,14 @@ module.exports.routes = {
 
   'post /survey/create':'SurveyController.create',
 
-  'post /answer/delete':'SurveyController/delete',
-  'post /answer/edit':'SurveyController/edit'
+  'post /answer/delete':'SurveyController.delete',
+  'post /answer/edit':'SurveyController.edit',
+  'post /survey/create':'SurveyController.create',
+  'post /survey/view':'SurveyController.viewsurvey',
+  'post /survey/doSurvey':'SurveyController.doSurvey',
+  'post /survey/static':'SurveyController.statistics',
+
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

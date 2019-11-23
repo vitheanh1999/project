@@ -55,12 +55,12 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" ng-model="vm.sophienhd"
-                                        style="color: #000000;">{{vm.phiendong.length}} phiên</div>
+                                        style="color: #000000;">{{vm.phienhoatdong.length}} phiên</div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 26%"
-                                            aria-valuenow="{{vm.sumphien}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                            aria-valuenow="{{vm.phienhoatdong.length}}" aria-valuemin="0" aria-valuemax="{{vm.sumphien}}"></div>
                                     </div>
                                 </div>
                             </div>
@@ -215,9 +215,9 @@
                             <uib-tabset>
                                 <uib-tab heading="Phiên đang hoạt động">
                                     <ng-form name="nestedForm" ng-init="init()">
-                                        <div class="form-group">
+                                        <div class="form-group" style="min-height: 1355px;">
                                             <div class="card-body">
-                                                <div class="blockquote row  listcauhoi"
+                                                <div class="blockquote row  listcauhoi "
                                                     ng-repeat="x in seclist = (vm.phienhoatdong | filter : {title : searchText }) | limitTo:6:6*(currentPage-1)"
                                                     ng-show="x.open">
                                                     <div class="left"><a href="" class="col-lg-2"><img
@@ -235,7 +235,7 @@
                                                                 class="chutoa">Mô tả: {{x.content}}</a>
                                                             <a class="chutoa">Chủ đề: {{x.topic}}</a>
                                                             <div class="bottom">
-                                                                <a><i class="far fa-clock"
+                                                                <a><i class="far fa-clock" 
                                                                         style="margin-right: 5px;"></i>{{x.date}}</a>
                                                                 <a><i class="fas fa-comments"
                                                                         style="margin-right: 5px;margin-left: 10px;"></i>{{x.countQ}}
@@ -271,8 +271,10 @@
 
                                             </div>
 
-                                            <nav class="nav pagination" role="navigation">
-                                                <ul uib-pagination boundary-links="true" total-items="seclist.length"
+                                            <nav class="nav pagination" role="navigation" style="bottom: 0px;
+                                            left: 685px;
+                                            position: absolute;">
+                                                <ul uib-pagination boundary-links="true" total-items="vm.phienhoatdong.length"
                                                     max-size="maxSize" ng-model="currentPage" class="pagination-md"
                                                     items-per-page="numPerPage" previous-text="&lsaquo;"
                                                     next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>

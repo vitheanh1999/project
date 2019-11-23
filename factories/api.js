@@ -4,16 +4,21 @@ angular.module('myapp').factory('api', ['config', 'request','factory','$statePar
     var idcauhoiId =$stateParams.idcauhoiId
     var apiget = {
         question: 'question/list',
-        listsection:'section/list',
+        // listsection:'section/list',
         listtopic:'topic/list',
     };
     
     var apipost = {
-        
+        surveystatic:'survey/static',
+        dosurvey:'survey/doSurvey',
+        createsurvey:'survey/create',
+        viewsurvey:'survey/view',
+
         createanswer:'answer/create',
         editanswer:'answer/edit',
         deleteanswer:'answer/delete',
 
+        listsection:'section/list',
         createsection:'section/create',
         viewsec:'section/viewsec',
         deletesection:'section/delete',
@@ -31,7 +36,13 @@ angular.module('myapp').factory('api', ['config', 'request','factory','$statePar
         login:'auth/login',
         resgister:'auth/registration',
         like:'question/like',
-        info:'auth/info'
+        info:'auth/info',
+        myauth:'auth/myauth' ,
+
+        getall:'admin/getAll',
+        changeRole:'admin/changeRole',
+        create:'admin/create'
+
 
 
     };

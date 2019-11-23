@@ -1,6 +1,5 @@
 app.controller("trangchu", function (api, $scope, $http, factory, config, filterFilter, $rootScope,user) {
 
-  console.log($rootScope.search)
   var vm = this
   api.question().then(result => {
     console.log(result)
@@ -33,7 +32,7 @@ app.controller("trangchu", function (api, $scope, $http, factory, config, filter
       vm.phiendong
     })
     api.listtopic().then(result => {
-      $scope.topic = result.list.reserver()
+      $scope.topic = result.list
     })
   }
   vm.checkuser=(id,iduser)=>{

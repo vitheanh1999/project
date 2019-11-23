@@ -17,6 +17,9 @@ module.exports = {
     name: {
       type: "string",
     },
+    date:{
+      type:"string"
+    },
     onlineAt: {
       type: "Date"
     },
@@ -29,8 +32,5 @@ module.exports = {
   },
    connection: 'someMysqlServer'
 };
-async function khoitao() {
-  
-  await Auth.create({username:"admin",password:"admin",name:"admin",role:1,id:1});
-}
+
 

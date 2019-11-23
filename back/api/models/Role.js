@@ -11,6 +11,6 @@ module.exports = {
     name_role: {
       type: "String"
     }
-  }
+  }, connection: 'someMysqlServer'
 };
 

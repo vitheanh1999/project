@@ -20,9 +20,9 @@ module.exports = {
     description:{
       type:"string"
     },
-    type:{
-      type:"integer"
-    } 
+    // type:{
+    //   type:"integer"
+    // } 
   },
    connection: 'someMysqlServer'
 };

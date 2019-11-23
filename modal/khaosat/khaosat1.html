@@ -1,0 +1,37 @@
+<div class="modal_class" ng-init="vm.init()">
+    <div class="modal-header">
+      <h3>Khảo sát sinh viên</h3>
+    </div>
+    <form name="form">
+      <div class="modal-body" ng-repeat=" ($listId , list) in vm.list">
+        <div class="radio">
+          <div class="question">
+            <label for="">Câu: {{list.q.content}} {{list.q.id}}</label>
+          </div>
+          <div class="answer" ng-repeat="($id,answer) in list.a">
+            <div class="custom-control custom-radio" ng-show="vm.checktype(list.q.type)">
+              <input type="radio" ng-model="vm.test[list.q.id,list.q.type]" ng-value="{{answer.id}}" class="custom-control-input"
+                id="defaultGroupExample{{answer.id}}" name="groupOfDefaultRadios">
+              <label class="custom-control-label" for="defaultGroupExample{{answer.id}}">{{answer.id}}
+                </label>
+            </div>
+  
+            <div class="custom-control custom-checkbox" ng-hide="vm.checktype(list.q.type)">
+              <input type="checkbox" ng-model="vm.test[list.q.id][answer.id]" ng-value="{{answer.id}}" class="custom-control-input"
+                id="defaultUnchecked{{answer.id}}">
+              <label class="custom-control-label" for="defaultUnchecked{{answer.id}}">{{answer.id}}
+             </label>
+            </div>
+
+          </div>
+  
+        </div>
+      </div>
+    </form>
+  
+    <div class="modal-footer">
+  
+      <button class="btn btn-warning" ng-click="vm.save()">Submit</button>
+      <button class="btn btn-warning" ng-click="vm.cancel()">Thoát</button>
+    </div>
+  </div>

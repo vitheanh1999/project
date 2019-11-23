@@ -1,4 +1,4 @@
-<div id="wrapper">
+<div id="wrapper" ng-init="vm.init()">
 
   <!-- Sidebar -->
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -71,133 +71,31 @@
                     <th>Email</th>
                     <th>Password</th>
                     <th>Số câu hỏi</th>
+                    <th>Số Phiên </th>
                   </tr>
                 </thead>
                 <tfoot>
-                  <tr>
-                    <th>Tên</th>
-                    <th>Tên đăng nhập</th>
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Số câu hỏi</th>
-                  </tr>
+                    <tr>
+                        <th>Tên</th>
+                        <th>Tên đăng nhập</th>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Số câu hỏi</th>
+                        <th>Số Phiên </th>
+                      </tr>
                 </tfoot>
                 <tbody>
-                  <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
+                  <tr ng-repeat="x in vm.datas">
+                    <td>{{x.name}}</td>
+                    <td>{{x.username}}</td>
+                    <td>{{x.id}}</td>
+                    <td>{{x.email}}</td>
                     <td>********</td>
-                    <td>4</td>
+                    <td>{{x.countQ}}</td>
+                    <td>{{x.countS}}</td>
                   </tr>
-                  <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Thắng</td>
-                    <td>17021111</td>
-                    <td>12390213104123</td>
-                    <td>thangpt317@gmail.com</td>
-                    <td>*********</td>
-                    <td>5</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr> <tr>
-                    <td>Phạm Thanh Tùng</td>
-                    <td>17021114</td>
-                    <td>12390213904123</td>
-                    <td>tungpt317@gmail.com</td>
-                    <td>********</td>
-                    <td>4</td>
-                  </tr>
+                  
                 </tbody>
               </table>
             </div>
@@ -261,8 +159,8 @@
 <script src="admin/lib/js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="admin/lib/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="admin/lib/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="./admin/lib/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="./admin/lib/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
 <script src="admin/lib/js/demo/datatables-demo.js"></script>

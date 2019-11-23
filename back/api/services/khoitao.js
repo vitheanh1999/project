@@ -1,3 +1,4 @@
+var bcrypt = require('bcrypt');
 module.exports.khoitao = async function () {
     const chude = [
         { topic: "Lịch học" },
@@ -7,15 +8,24 @@ module.exports.khoitao = async function () {
         { topic: "Môn học" },
         { topic: "Chủ đề khác" }
     ]
+    const role = [
+        { name_role: "Admin" },
+        { name_role: "Chủ tọa" },
+        { name_role: "Người dùng" },
+        
+    ]
     const authList = await Auth.find();
-    console.log(authList.length)
     const topicList = await Topic.find();
-    console.log(topicList.length);
+    const roleList = await Role.find()
     if (authList.length == 0) {
-        await Auth.create({ username: "admin", password: "admin", name: "admin", role: 1 });
+        const hashPassword = await bcrypt.hash('admin', 10);
+        await Auth.create({ username: "admin", password: hashPassword, name: "admin", role: 1 });
     }
     if (topicList.length == 0) {
         await Topic.create(chude)
+    }
+    if (roleList.length == 0) {
+        await Role.create(role)
     }
 
 };

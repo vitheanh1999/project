@@ -1,23 +1,4 @@
-<!-- <div class="container-fluid cauhoi" ng-init="vm.init()">
-  <div class="panel panel-default">
-        <div class="panel-heading">
-              <h1 class="panel-title">Nội dung</h1>
-        </div>
-        <div class="panel-body" ng-model="datas">
-              <p>{{vm.content.content}}</p>
-              <div class="" style="display: flex; ">
-                <div class="likeButton" href="" title="Nhấn để thích">
-                </div>
-                </div>
-                <my-Comment></my-Comment>
-            </div>
-      
-        <div class="panel-footer">
-         
 
-        </div>
-      </div>
-  </div> -->
 <div class="container-fluid cauhoi"  ng-init="vm.init()">
 
     <div class="card">
@@ -31,10 +12,7 @@
                 </div>
                 <div class="col-md-10">
                     <div class="commentcontent">
-                            <div style="background: lightyellow;
-                            /* border: 1px; */
-                            border-style: groove;
-                            border-width: 1px;">
+                            <div >
                                     <div style="display: flex; ">
                                         <p>Thành viên :</p>
                                         <a style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" href="https://maniruzzaman-akash.blogspot.com/p/contact.html">{{datas.name}}</a>
@@ -42,8 +20,10 @@
                                     <p style="font-size: 11px;
                                     margin-top: -18px;">{{datas.date}}</p>
                                 </div>
-                                <div class="clearfix"></div>
-                                <p>{{datas.content}}</p>
+                                <div class="clearfix" style="background: lightyellow;
+                                border-style: groove;
+                                border-width: 1px;" ><p>{{datas.content}}</p></div>
+                                
                     </div>
                     <my-Comment></my-Comment>
                 </div>

@@ -54,12 +54,20 @@ module.exports = {
         }
 
     },
-    list: async function (req, res) {
+      list: async function (req, res) {
         try {
+            const { topic_id } = req.body;
+            let whereQuery;
+            if (topic_id) {
+                whereQuery = `where s.topic_id=${topic_id}`
+            } else {
+                whereQuery = " "
+            }
             let query = `SELECT a.name,t.topic,s.*,
             (SELECT count(*) From question q where q.section_id=s.id ) as countQ FROM section s 
             inner join auth a on s.auth_id=a.id 
             inner join topic t on t.id = s.topic_id
+            ${whereQuery}
             ORDER BY s.updatedAt DESC   `
             Section.query(query, [''], function (err, sec) {
                 if (err) {
@@ -78,12 +86,14 @@ module.exports = {
             res.badRequest(error)
         }
     },
+
     viewsec: async function (req, res) {
         try {
             const idSec = req.body.id;
             if (idSec) {
                 const sec = await Section.findOne({ id: idSec });
                 if (sec) {
+                    const listSurvey= await Survey.find({section_id: idSec})
                     let query = `SELECT a.name,t.topic,s.*,
                     (SELECT count(*) From question q where q.section_id=s.id ) as countQ FROM section s 
                     inner join auth a on s.auth_id=a.id 
@@ -97,7 +107,12 @@ module.exports = {
                             let queryQ = `SELECT q.*,a.name,
                             (SELECT count(*)FROM answer anw where anw.idQuestion=q.id) as countA FROM question q
                             inner join auth a on a.id=q.auth_Id
-                            where q.section_id=${idSec}`;
+                            where q.section_id=${idSec} 
+                            ORDER BY q.updatedAt DESC `;
+                            // let queryQ = `SELECT q.*,a.name,
+                            // (SELECT count(*)FROM answer anw where anw.idQuestion=q.id) as countA FROM question q
+                            // inner join auth a on a.id=q.auth_Id
+                            // where q.section_id=${idSec}`;
                             Question.query(queryQ, [''], function (err, listQ) {
                                 if (err) {
                                     return res.badRequest(err);
@@ -105,6 +120,7 @@ module.exports = {
                                     res.jsonp({
                                         sec,
                                         listQ,
+                                        listSurvey,
                                         content: "Thành công",
                                         success: true
                                     });

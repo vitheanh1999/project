@@ -1,0 +1,9 @@
+.chude .blockquote p{
+    padding: 0;
+    font-size: 16px;
+    color: black;
+    margin: 0;
+}
+.chude .panel-heading h3{
+    text-align: center;
+}

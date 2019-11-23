@@ -1,52 +1,43 @@
-<div class="modal_class" >
-    <div class="modal-header">
-      <h3>Khảo sát sinh viên</h3>
-    </div>
-    <div class="modal-body">
-        <div class="radio">
-            <div class="question">
-                <label for="">Câu: </label>
-            </div>
-            <div class="answer">
-                <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios">
-                    <label class="custom-control-label" for="defaultGroupExample1">Option 1</label>
-                  </div>
-                  
-                  <!-- Group of default radios - option 2 -->
-                  <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios" checked>
-                    <label class="custom-control-label" for="defaultGroupExample2">Option 2</label>
-                  </div>
-                  
-                  <!-- Group of default radios - option 3 -->
-                  <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="groupOfDefaultRadios">
-                    <label class="custom-control-label" for="defaultGroupExample3">Option 3</label>
-                  </div>
-            </div>
-        </div>
-        <div class="checkbox">
-            <div class="question">
-                <label for="">Câu: </label>
-            </div>
-            <div class="answer">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
-                    <label class="custom-control-label" for="defaultUnchecked1">Default unchecked</label>
-                </div><div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
-                    <label class="custom-control-label" for="defaultUnchecked2">Default unchecked</label>
-                </div><div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked3">
-                    <label class="custom-control-label" for="defaultUnchecked3">Default unchecked</label>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-      
-      <button class="btn btn-warning" ng-click="vm.save()">Submit</button>
-      <button class="btn btn-warning" ng-click="cancel()">Thoát</button>
-    </div>
+<div class="modal_class" ng-init="vm.init()">
+  <div class="modal-header">
+    <h3>Khảo sát sinh viên</h3>
   </div>
+  <form name="form" ng-submit="vm.save(id)">
+    <div class="modal-body" ng-repeat=" ($listId , list) in vm.list">
+      <div class="radio" ng-switch="list.q.type">
+        <div class="question">
+          <label for="">Câu: {{list.q.content}} {{list.q.id}}</label>
+        </div>
+        <div class="answer" ng-repeat="($id,answer) in list.a">
+          <div class="custom-control custom-radio" ng-switch-when="1">
+            <input type="radio" ng-model="vm.test[list.q.id]" ng-value="{{answer.id}}"  class="custom-control-input"
+              id="defaultGroupExample{{answer.id}}" name="groupOfDefaultRadios" required>
+            <label class="custom-control-label" for="defaultGroupExample{{answer.id}}">{{answer.content}}  {{answer.id}}
+              </label>
+          </div>
+
+          <div class="custom-control custom-checkbox" ng-switch-when="2" required>
+            <input type="checkbox" ng-model="vm.test[list.q.id][answer.id]" ng-value="{{answer.id}}" class="custom-control-input"
+              id="defaultUnchecked{{answer.id}}" >
+            <label class="custom-control-label" for="defaultUnchecked{{answer.id}}">{{answer.content}}  {{answer.id}}
+           </label>
+          </div>
+
+          <div class="custom-control custom-checkbox" ng-switch-when="3" required>
+          <textarea name="" id="" cols="30" rows="5" style="width: 100%;"></textarea>
+           </label>
+          </div>
+          {{aa}}
+        </div>
+
+      </div>
+    </div>
+
+
+  <div class="modal-footer">
+
+    <button class="btn btn-warning" type="submit" >Submit</button>
+    <button class="btn btn-warning" ng-click="cancel()">Thoát</button>
+  </div>
+</form>
+</div>

@@ -54,12 +54,12 @@ app.controller("listcauhoiCtrl", function (api, $scope, factory, $stateParams,us
       })
     })
   }
-  // vm.checkopen=(open)=>{
-  //   if(open==false){
-  //     return true
-  //   }
-  //   else return false
-  // }
+  vm.checkopen=()=>{
+    if(vm.infoadmin.open==1){
+      return true
+    }
+    else return false
+  }
   vm.checkuser=(id,iduser)=>{
     if((id==iduser||user.checkrole()==1)&&vm.infoadmin.open){
       return true;
@@ -75,14 +75,24 @@ app.controller("listcauhoiCtrl", function (api, $scope, factory, $stateParams,us
   vm.init = () => {
     vm.iduser=JSON.parse(localStorage.getItem('infouser')).id
     api.viewsec({ id: vm.id }).then(result => {
-      vm.listquestion = result.listQ.reverse()
-      vm.name=vm.listquestion.name
+
       vm.infoadmin=result.sec[0]
+      vm.listsurvey=result.listSurvey
+      vm.listquestion = result.listQ
+      vm.name=vm.listquestion.name
+      if(vm.checkopen()==false){
+        factory.showError("Phiên đã đóng")
+      }
+       else if(vm.listquestion.length==0){
+        factory.showError("Chưa có câu hỏi trong phiên")
+      }
+     
     })
+    
   }
-  vm.khaosat=()=>{
-    factory.khaosat().then(result=>{
-      
+  vm.khaosat=(id)=>{
+    factory.khaosat(id).then(result=>{
+      api.viewsurvey()
     })
   }
 

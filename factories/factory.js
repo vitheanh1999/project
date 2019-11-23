@@ -93,13 +93,19 @@ app.factory('factory',['$uibModal', '$q',function($uibModal,$q){
     //     })
     //     return defer.promise
     // }
-    methods.khaosat=function(){
+    methods.khaosat=function(args){
         var defer = $q.defer();
     var modalInstance=$uibModal.open({
+
         templateUrl:"modal/khaosat/khaosat.html",
         controller:"khaosatCtrl",
         controllerAs:"vm",
-        size:"lg"
+        size:"lg",
+        resolve: {
+            args: function() {
+                return args;
+            }
+        }
     })
     modalInstance.result.then(function (data) {
         defer.resolve(data)//da giai quyet

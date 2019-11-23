@@ -39,10 +39,10 @@
                                 {{vm.infoadmin.name}}</p>
                         </li>
                         <li>
-                            <p><span class="fas fa-calendar-alt" style="width:50px;"></span><a >Ngày tạo:
+                            <p><span class="fas fa-calendar-alt" style="width:50px;"></span><a>Ngày tạo:
                                     {{vm.infoadmin.date}}</p></a>
                         <li>
-                            <p><span class="fas fa-book icon" style="width:50px;"></span><a >Chủ đề:
+                            <p><span class="fas fa-book icon" style="width:50px;"></span><a>Chủ đề:
                                     {{vm.infoadmin.topic}}</p></a>
                     </ul>
                 </div>
@@ -76,28 +76,31 @@
                     <form name="outerForm" class="tab-form-demo">
 
                         <uib-tabset active="activeForm">
-                            <uib-tab index="0" heading="Hỏi đáp" >
+                            <uib-tab ng-show="vm.checkopen()" index="0" heading="Hỏi đáp ">
                                 <ng-form name="nestedForm">
                                     <div class="form-group">
 
                                         <div ng-show="vm.infoadmin.open" class="createquestion" style="width: 110%;
                                         margin-left: -16px;">
-                                            
-                                                    <nav class="navbar navbar-expand-lg">
 
-                                                            <ul class="navbar-nav">
-                                                              
-                                                                <li class="nav-item">
-                                                                    <a  ng-click="vm.taocauhoi()" class="nav-link">Tạo câu hỏi mới</a>
-                                                                </li>
-                                                                
-                                                                <li class="nav-item">
-                                                                    <a ng-click="vm.khaosat()" class="nav-link">Tham gia khảo sát</a>
-                                                                </li>
-                                                            </ul>
-                                                
-                                                    </nav>
-                                                </div>
+                                            <nav class="navbar navbar-expand-lg">
+
+                                                <ul class="navbar-nav">
+
+                                                    <li class="nav-item">
+                                                        <a ng-click="vm.taocauhoi()" class="nav-link">Tạo câu hỏi
+                                                            mới</a>
+                                                    </li>
+
+                                                    <li class="nav-item">
+                                                            <div class="createquestion"> <a class="nav-link" ui-sref="root.thongke">Thống kê
+                                                                    khảo
+                                                                    sát</a></div>
+                                                        </li>
+                                                </ul>
+
+                                            </nav>
+                                        </div>
                                         <div class="blockquote row  listcauhoi "
                                             ng-repeat="x in queslist = (vm.listquestion | filter : {content : searchText }) | limitTo:6:6*(currentPage-1)">
                                             <div class="left"><a href="" class="col-md-2"><img
@@ -107,14 +110,18 @@
                                             <div class="content col-md-10 right ">
                                                 <a ui-sref="root.cauhoi({cauhoiId: {{x.id}}})" class="cauhoidetail"
                                                     style="display: block">{{x.content}}</a>
-                                                <a ui-sref="root.thongtin" style="display: block;" class="chutoa">Tên thành viên:
+                                                <a ui-sref="root.thongtin" style="display: block;" class="chutoa">Tên
+                                                    thành viên:
+                                                    {{x.name}}</a>
+                                                <a ui-sref="root.thongtin" style="display: block;" class="chutoa">
                                                     {{x.name}}</a>
                                                 <a class="chutoa">Chủ đề: {{vm.infoadmin.topic}}</a>
                                                 <div class="bottom">
                                                     <a><i class="far fa-clock"
                                                             style="margin-right: 5px;"></i>{{x.date}}</a>
                                                     <a><i class="fas fa-comments"
-                                                            style="margin-right: 5px;margin-left: 10px;"></i>{{x.countA}} Câu trả
+                                                            style="margin-right: 5px;margin-left: 10px;"></i>{{x.countA}}
+                                                        Câu trả
                                                         lời</a>
                                                 </div>
 
@@ -130,17 +137,47 @@
 
                                     </div>
                                 </ng-form>
+                                <nav class="nav pagination" role="navigation">
+                                        <ul uib-pagination boundary-links="true" total-items="queslist.length" max-size="maxSize"
+                                            ng-model="currentPage" class="pagination-md" items-per-page="numPerPage"
+                                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+                                    </nav>
                             </uib-tab>
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <div class="createquestion"> <a class="nav-link" ui-sref="root.thongke">Thống kê
-                                            khảo
-                                            sát</a></div>
-                                </li>
-                            </ul>
+                            <uib-tab ng-show="vm.checkopen()"  index="1" heading="Tham gia khảo sát">
+                                    <ng-form name="nestedForm">
+                                      <div class="form-group" class="listkhaosat">
+                                            <table class="table">
+                                                    <thead class="black white-text">
+                                                      <tr>
+                                                        <th scope="col">STT</th>
+                                                        <th scope="col">Tên cuộc khảo sát</th>
+                                                        <th scope="col">Ngày tạo</th>
+                                                        <th scope="col" class="mota">Mô tả</th>
+                                                        <th></th>
+                                                        <th></th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody ng-repeat="datasv in vm.listsurvey">
+                                                      <tr>
+                                                        <th scope="row">{{$index}}</th>
+                                                        <td>{{datasv.title}}</td>
+                                                        <td>{{datasv.createdAt}} </td>
+                                                        <td><span>{{datasv.description}}</span>   </td>
+                                                       <td><a type="button" class="btn btn-primary" style="position: absolute;right: 156px;"  ng-click="vm.khaosat(datasv.id)">tham gia</a>   </td>
+                                                       <td><a ng-show="vm.checkrole()" type="button" class="btn btn-primary" style="position: absolute;right: 49px;" ui-sref="root.thongke({thongkeId: {{datasv.id}}})">Thống kê</a>   </td>
+                                                      </tr>      
+                                                    </tbody>
+                                                  </table>
+                                                  
+                                              
+                                      </div>
+                                    </ng-form>
+                                  </uib-tab>
+                         
                             <ul class="nav nav-tabs" id="myTab" role="tablist" ng-show="vm.checkrole()">
                                 <li class="nav-item">
-                                    <div class="createquestion"> <a class="nav-link" ui-sref="taokhaosat">Tạo cuộc
+                                    <div class="createquestion"> <a class="nav-link"
+                                            ui-sref="taokhaosat({surveyId: vm.id})">Tạo cuộc
                                             khảo sát</a></div>
                                 </li>
                             </ul>
@@ -148,11 +185,7 @@
                     </form>
 
                 </div>
-                <nav class="nav pagination" role="navigation">
-                    <ul uib-pagination boundary-links="true" total-items="queslist.length" max-size="maxSize"
-                        ng-model="currentPage" class="pagination-md" items-per-page="numPerPage"
-                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
-                </nav>
+
             </div>
 
         </div>

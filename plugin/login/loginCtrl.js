@@ -22,6 +22,7 @@ app.controller("loginCtrl",function($scope,$state,$http,api,factory){
                     username:$scope.username,
                     password:$scope.password
                 }
+
                 api.login({data}).then(result=>{
                     let temp={}
                    
@@ -33,7 +34,7 @@ app.controller("loginCtrl",function($scope,$state,$http,api,factory){
                         // factory.showSuccess(result.content.message)
                         $state.go("root.trangchu")  
                     }
-                    if(result.dataAuth.role==2){
+                    if(result.dataAuth.role==3){
                         factory.showLoading(result.content)
                         localStorage.setItem("token",result.token)
                         localStorage.setItem("infouser",JSON.stringify(result.dataAuth))

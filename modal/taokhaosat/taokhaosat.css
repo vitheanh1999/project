@@ -39,15 +39,16 @@
 }
 
 .btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    padding: 11px 0;
+    font-size: 16px;
+    line-height: 1.428571429;
+    border-radius: 29px;
 }
 .taokhaosat .content{
+    padding-bottom: 50px;
     display: flex;
     justify-content: center;
 }
@@ -59,6 +60,8 @@
     display: block
 }
 .taokhaosat{
+    border-style: groove;
+    border-width: 3px;
     margin-bottom: 5%;
     margin-top: 5%;
     background: white;

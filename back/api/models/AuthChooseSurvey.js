@@ -1,5 +1,5 @@
 /**
- * AuthChooseAnswer.js
+ * AuthChooseSurvey.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -7,14 +7,14 @@
 
 module.exports = {
 
-  attributes: {
-    auth_id: {
-      type: "integer"
-    },
-    answer_id: {
-      type: "integer"
-    }
- 
-} ,connection: 'someMysqlServer'
-};
-
+    attributes: {
+      auth_id: {
+        type: "integer"
+      },
+      survey_id: {
+        type: "integer"
+      }
+    },connection: 'someMysqlServer'
+  };
+  
+  

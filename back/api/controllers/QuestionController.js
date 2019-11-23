@@ -171,8 +171,8 @@ module.exports = {
                 if (questionEdit) {
                     const headers = req.headers['authorization'];
                     const idAuth = await taikhoan.getId(headers);
-                    if (questionEdit.id == idAuth) {
-                        const { content } = req.body.content;
+                    if (questionEdit.auth_Id == idAuth) {
+                        const  content  = req.body.content;
                         if (content) {
                             if (vaildate.checkContent(content)) {
                                 const date = moment(Date.now()).format("HH:mm DD-MM-YYYY");

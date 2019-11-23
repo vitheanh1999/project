@@ -20,6 +20,7 @@ vm.init=()=>{
       }).then(result => {
         console.log(result.a[result.a.length-1])
         vm.datas.push(result.a[result.a.length-1])
+        vm.init()
       })
  
       vm.comment = {};
@@ -44,6 +45,7 @@ vm.init=()=>{
       factory.confirmdelete().then(result => {
         if (result.value == true) {
           api.deleteanswer({ id: id }).then(result => {
+            vm.datas=vm.datas.splice(id,1)
            vm.init()
           })
         }
