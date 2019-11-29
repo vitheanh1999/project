@@ -11,16 +11,31 @@ vm.init=()=>{
     vm.content=result.Q[0]
     vm.datas= result.listA
   })
+  api.viewquestion({id:vm.id}).then(result=>{
+    vm.open=result.section.open
+  })
 }
- 
+  vm.checkuser=(iduser)=>{
+    vm.iduser=JSON.parse(localStorage.getItem('infouser')).id
+    if(iduser==vm.iduser){
+      return 1
+    }
+    else return 0
+  }
     vm.addComment = function () {
       api.createanswer({
         id:vm.id,
         content: vm.comment.text,
       }).then(result => {
-        console.log(result.a[result.a.length-1])
-        vm.datas.push(result.a[result.a.length-1])
-        vm.init()
+        if(result.success==false){
+          factory.showError(result.content)
+        }
+        else{
+          console.log(result.a[result.a.length-1])
+          vm.datas.push(result.a[result.a.length-1])
+          vm.init()
+        }
+       
       })
  
       vm.comment = {};

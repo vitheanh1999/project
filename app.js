@@ -88,6 +88,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller:'thongkeCtrl as vm',
             templateUrl:'main/thongke/thongke.html'
         })
+        .state('root.profile',{
+            url:'/profile/:profileId',
+            controller:'profileCtrl as vm',
+            templateUrl:'main/profile/profile.html'
+        })
      
 
 });

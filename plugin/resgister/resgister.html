@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="./lib/assets/css/resgister.css">
+<!-- <link rel="stylesheet" href="./lib/assets/css/resgister.css">
     <div class="main">
 		<div class="main-w3l">
 			<h1 class="logo-w3">Q & A UET</h1>
@@ -26,12 +26,84 @@
 						<div class="col-4-lg right "><h6><a href="#">Đăng ký</a></h6></div>
 					</div>
 			</div>
-			<!-- //main -->
-			
-			<!--footer-->
+
 			<div class="footer-w3l">
 				<p>&copy; 2019 Space Login Form. All rights reserved | Design by <a href="#">PH-Vincent</a></p>
 			</div>
-			<!--//footer-->
+
+		</div>
+	</div> -->
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('./lib/assets/css/login/images1/bg-01.jpg');">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title p-b-49">
+						Đăng kí
+					</span>
+
+					<div class="wrap-input100 ">
+						<span class="label-input100">Tên đăng nhập</span>
+						<input ng-model="vm.user.username" class="input100" type="text" placeholder="Type your username" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+					<div class="wrap-input100 ">
+						<span class="label-input100">Mật khẩu</span>
+						<input ng-model="vm.user.password" class="input100" type="password" placeholder="Type your password" required>
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+					<div class="wrap-input100 ">
+						<span class="label-input100">Nhập lại mật khẩu</span>
+						<input ng-model="vm.user.confirmpassword"  class="input100" type="password"  placeholder="Nhập password" required>
+						<span class="focus-input100" data-symbol="&#xf191;"></span>
+					</div>
+					
+					<div class="wrap-input100 ">
+						<span class="label-input100">Tên </span>
+						<input ng-model="vm.user.name" class="input100" type="text"  placeholder="Nhập tên" required>
+						<span class="focus-input100" data-symbol="&#xf201;"></span>
+					</div>
+
+					<div class="wrap-input100 ">
+						<span class="label-input100">Email </span>
+						<input ng-model="vm.user.email" class="input100" type="email"  placeholder="Nhập email" required>
+						<span class="focus-input100" data-symbol="&#xf200;"></span>
+					</div>
+
+					<div class="text-right p-t-8 p-b-31">
+						<a >
+							Bạn đã có tài khoản ?
+						</a>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							
+							<button class="login100-form-btn" ng-click="vm.resgister()" >
+								Đăng kí
+							</button>
+						
+						</div>
+					</div>
+
+					<h6 style="text-align: center;margin-top: 10px;" ui-sref="login">
+						Đăng nhập
+					</h6>
+
+					<div class="txt1 text-center p-t-54 p-b-20">
+						<span>
+							Đăng nhập bằng
+					</div>
+
+					<div class="flex-c-m">
+						<a href="#" class="login100-social-item bg1">
+							<i class="fa fa-facebook"></i>
+						</a>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
+	<div id="dropDownSelect1"></div>
+	

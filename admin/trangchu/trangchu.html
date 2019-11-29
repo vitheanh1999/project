@@ -35,7 +35,7 @@
     <li class="nav-item">
         <a class="nav-link" ui-sref="question">
           <i class="fas fa-fw fa-table"></i>
-          <span>Câu hỏi</span></a>
+          <span>Lịch sử</span></a>
     </li>
   </ul>
   <!-- End of Sidebar -->
@@ -54,46 +54,65 @@
       <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Users</h1>
+        <ul><li style="    text-align: center;
+          ">
+          <p class="h3 mb-2 text-gray-800">Users</p>
+        </li>
+      <li style="    position: absolute;
+      right: 11px;
+      top: 3px;">
+      <button ui-sref="root.trangchu" type="button" class="btn btn-mdb-color"><i style="color: white;" class="fas fa-door-open">Q-A_UET</i></button>
+   
+      </li>
+      </ul>
+        
+        <h1 class="h3 mb-2"></h1>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Quản lí Users</h6>
-          </div>
+          </div>  
           <div class="card-body">
+              <button type="button" class="btn btn-outline-primary waves-effect" ng-click="vm.taochutoa()">Tạo tài khoản chủ toạ</button>
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
                     <th>Tên</th>
                     <th>Tên đăng nhập</th>
+                    <th>Role</th>
                     <th>ID</th>
                     <th>Email</th>
                     <th>Password</th>
                     <th>Số câu hỏi</th>
                     <th>Số Phiên </th>
+                    <th>Tool</th>
                   </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>Tên</th>
                         <th>Tên đăng nhập</th>
+                        <td>Role</td>
                         <th>ID</th>
                         <th>Email</th>
                         <th>Password</th>
                         <th>Số câu hỏi</th>
                         <th>Số Phiên </th>
+                        <th>Tool</th>
                       </tr>
                 </tfoot>
                 <tbody>
                   <tr ng-repeat="x in vm.datas">
                     <td>{{x.name}}</td>
                     <td>{{x.username}}</td>
+                    <td >{{x.role}} <button type="button" class="btn btn-outline-primary btn btn-sm waves-effect" ng-click="vm.changerole(x.id)">change</button></td>
                     <td>{{x.id}}</td>
                     <td>{{x.email}}</td>
                     <td>********</td>
                     <td>{{x.countQ}}</td>
                     <td>{{x.countS}}</td>
+                    <td><button type="button" class="btn btn-outline-success btn-sm waves-effect" ng-click="vm.resetpassword(x.id)">resetpassword</button></td>
                   </tr>
                   
                 </tbody>

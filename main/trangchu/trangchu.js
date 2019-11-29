@@ -16,6 +16,7 @@ app.controller("trangchu", function (api, $scope, $http, factory, config, filter
   $scope.topic = []
   function init() {
     api.listsection().then(result => {
+      vm.countuser=result.countUser
       vm.iduser=JSON.parse(localStorage.getItem('infouser')).id
       vm.sumphien=result.sec.length
       $scope.result = result.sec
@@ -35,12 +36,12 @@ app.controller("trangchu", function (api, $scope, $http, factory, config, filter
       $scope.topic = result.list
     })
   }
-  vm.checkuser=(id,iduser)=>{
-    if(user.checkrole()==1){ 
-      return true
+  vm.checkrole=(auth_id)=>{
+    if(auth_id==user.checkid()){
+      return user.checkrole()
     }
-    else return false
-  }
+
+    }
   vm.delete = (id) => {
     factory.confirmdelete().then(result => {
       if (result.value == true) {
@@ -92,11 +93,16 @@ app.controller("trangchu", function (api, $scope, $http, factory, config, filter
   }
   vm.listquestion=()=>{
     api.listquestion().then(result=>{
-      vm.sumques=result.listQuestion.length
-      vm.listquestion=result.listQuestion
+      vm.sumques=result.listQ.length
+      vm.listquestion=result.listQ  
     })
   }
- 
+ vm.top5=()=>{
+   api.top5().then(result=>{
+     vm.top5Q=result.listTop5Q
+     vm.top5A=result.listop5A
+   })
+ }
   init()
   $scope.$watch(updateFilteredItems)
 

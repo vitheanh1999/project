@@ -1,7 +1,7 @@
 app.controller("listcauhoiCtrl", function (api, $scope, factory, $stateParams,user) {
   var vm = this
 
-
+  vm.iduser=JSON.parse(localStorage.getItem('infouser')).id
   $scope.currentPage = 1;
   $scope.numPerPage = 6;
   $scope.maxSize = 5;
@@ -22,8 +22,12 @@ app.controller("listcauhoiCtrl", function (api, $scope, factory, $stateParams,us
   vm.taocauhoi = () => {
     factory.taocauhoi().then(result => {
       api.createquestion({ content: result, id: vm.id }).then(result => {
-        vm.listquestion.push(result)
-        vm.init()
+         if(result.success==true){
+          factory.showSuccess(result.content)
+          vm.listquestion.push(result)
+          vm.init()
+        }
+     
       })
     })
   }
@@ -60,33 +64,35 @@ app.controller("listcauhoiCtrl", function (api, $scope, factory, $stateParams,us
     }
     else return false
   }
-  vm.checkuser=(id,iduser)=>{
-    if((id==iduser||user.checkrole()==1)&&vm.infoadmin.open){
-      return true;
-    }
-    else return false
-  }
   vm.checkrole=()=>{
-    if(user.checkrole()==1&&vm.infoadmin.open){
-      return true
+  return user.checkrole()
+  }
+  vm.checkuser=(idquestion,iduser)=>{
+    if(idquestion==iduser){
+      return 1
     }
-    else return false
+    else return 0
+  }
+  vm.checkchutoa=(id)=>{
+    if(id == vm.iduser){
+      return 1
+    }
+    else return 0
   }
   vm.init = () => {
     vm.iduser=JSON.parse(localStorage.getItem('infouser')).id
     api.viewsec({ id: vm.id }).then(result => {
 
       vm.infoadmin=result.sec[0]
-      vm.listsurvey=result.listSurvey
+      vm.listsurvey=result.listS
       vm.listquestion = result.listQ
+      vm.lengthlist=result.listQ.length
+      vm.lengthsur=result.listS.length
       vm.name=vm.listquestion.name
       if(vm.checkopen()==false){
         factory.showError("Phiên đã đóng")
       }
-       else if(vm.listquestion.length==0){
-        factory.showError("Chưa có câu hỏi trong phiên")
-      }
-     
+
     })
     
   }
@@ -95,7 +101,35 @@ app.controller("listcauhoiCtrl", function (api, $scope, factory, $stateParams,us
       api.viewsurvey()
     })
   }
+  vm.checkopensur=(id)=>{
+    return id
+  }
+  vm.checkchutoa=(id)=>{
+    vm.iduser=JSON.parse(localStorage.getItem('infouser')).id
+    if(id==vm.iduser){
+      return 1
+    }
+    else return 0
+  }
+  vm.mosur=(id)=>{
+    factory.confirm().then(result=>{
+      if(result.value==0){
+        api.opensurvey({id:id}).then(result=>{
+          vm.init()
+        })
+      }
+    })
+  }
+  vm.dongsur=(id)=>{
+    factory.confirm().then(result=>{
+      if(result.value==0){
+        api.closesurvey({id:id}).then(result=>{
+          vm.init()
+        })
+      }
+    })
 
+  }
   $scope.$watch(updateFilteredItems)
 
   function updateFilteredItems() {

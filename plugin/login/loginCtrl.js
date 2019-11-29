@@ -27,20 +27,12 @@ app.controller("loginCtrl",function($scope,$state,$http,api,factory){
                     let temp={}
                    
                    if(result.success===true){
-                    if(result.dataAuth.role==1){
+                   
                         factory.showLoading(result.content)
                         localStorage.setItem("token",result.token)
                         localStorage.setItem("infouser",JSON.stringify(result.dataAuth))
                         // factory.showSuccess(result.content.message)
-                        $state.go("root.trangchu")  
-                    }
-                    if(result.dataAuth.role==3){
-                        factory.showLoading(result.content)
-                        localStorage.setItem("token",result.token)
-                        localStorage.setItem("infouser",JSON.stringify(result.dataAuth))
-                        // factory.showSuccess(result.content.message)
-                        $state.go("root.trangchu")
-                    }
+                        $state.go("root.trangchu")           
                    
                    }
                    else if(result.success===false){

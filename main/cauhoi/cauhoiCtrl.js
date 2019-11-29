@@ -10,6 +10,7 @@ app.controller("cauhoiCtrl",function($scope,$location,api,$stateParams,$state){
       api.viewquestion({id:vm.id}).then(result=>{
         console.log(result.q)
         $scope.datas=Object.assign({}, result.Q[0])
+        vm.open=result.section.open
       })
     }
  

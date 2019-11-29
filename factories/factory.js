@@ -17,7 +17,7 @@ app.factory('factory',['$uibModal', '$q',function($uibModal,$q){
             "onclick": null,
             "showDuration": "300",
             "hideDuration": "1000",
-            "timeOut": "5000",
+            "timeOut": "1500",
             "extendedTimeOut": "1000",
             "showEasing": "swing",
             "hideEasing": "linear",
@@ -42,6 +42,46 @@ app.factory('factory',['$uibModal', '$q',function($uibModal,$q){
     methods.showWarning = (message) => {
         toastr.warning(message)
     };
+    methods.taochutoa=function(){
+        var defer = $q.defer();
+        var modalInstance = $uibModal.open({
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+              templateUrl: "modal/taochutoa/taochutoa.html",
+              controller: "taochutoaCtrl",
+              controllerAs:'vm',     
+              size: 'md',
+              
+          });
+          modalInstance.result.then(function (data) {
+            defer.resolve(data)//da giai quyet
+        }, function (dismiss) {
+            defer.reject()//tu choi
+        })
+        return defer.promise
+    }
+    methods.editpassword=function(args){
+        var defer = $q.defer();
+        var modalInstance = $uibModal.open({
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+              templateUrl: "modal/editpassword/editpassword.html",
+              controller: "editpasswordCtrl",
+              controllerAs:'vm',     
+              size: 'md',
+              resolve: {
+                args: function() {
+                    return args;
+                }
+            }
+          });
+          modalInstance.result.then(function (data) {
+            defer.resolve(data)//da giai quyet
+        }, function (dismiss) {
+            defer.reject()//tu choi
+        })
+        return defer.promise
+    }
     methods.taophien=function(){
         var defer = $q.defer();
         var modalInstance = $uibModal.open({

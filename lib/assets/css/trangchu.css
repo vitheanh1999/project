@@ -34,10 +34,10 @@ body{
     font-size: 16px;
 }
 .trangchu .phien ul li:hover a.nav-link{
-	background: #dd4343;
+	background: #5acf5a;
 }
 .trangchu .phien ul li.active{
-    background: #dd4343;
+    background: #5acf5a;
 }
 .trangchu .tab-form-demo .tab-content label{
     color: black;
@@ -53,9 +53,9 @@ body{
     padding-left: 4%
 }
 .trangchu .blockquote{
-    background-color: darkturquoise;
-   margin-bottom: 20px;
-   min-height: 120px;
+    background-color: rgba(246, 246, 246, 0.945);
+    margin-bottom: 20px;
+    min-height: 100px;
 }
 .trangchu .blockquote .left{
     margin: auto;
@@ -96,7 +96,7 @@ body{
 }
 .trangchu .blockquote .right .chutoa{
     color: black;
-    font-size: 15px;
+    font-size: 14px;
 }
 .trangchu .blockquote .right .bottom{
     font-size: 15px;
@@ -110,7 +110,7 @@ body{
 .trangchu .chude{
     width: 100%;
 }
-.trangchu .chude .listcauhoi i{
+.trangchu .chude .listcauhoi1 i{
     width: 12%;
 }
 .trangchu .chude ul{
@@ -134,15 +134,15 @@ body{
 }
 .searchtrangchu{
     
-    background: #353b65 url(http://templates.scriptsbundle.com/knowledge/demo/images/slider3.jpg) no-repeat scroll center top;
+    background: #2d9b6d;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: auto;
     min-height: 150px;
-    padding: 70px 0;
-    background: rgba(0, 0, 0, 0.7);
+    padding: 0px 20px;
+
 }
 /* .searchtrangchu .hoverimg::before {
     content: '';

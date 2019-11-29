@@ -1,4 +1,4 @@
-app.controller("khaosatCtrl",function(api,$uibModalInstance,args,$scope,$state,$stateParams){
+app.controller("khaosatCtrl",function(api,$uibModalInstance,args,$scope,$state,$stateParams,factory){
     var vm=this
     console.log(args)
 
@@ -15,15 +15,10 @@ app.controller("khaosatCtrl",function(api,$uibModalInstance,args,$scope,$state,$
     vm.user={
     }
     // vm.checktype=(type)=>{
-    //     if(type==1){
-    //         return 1
+    //     if(type==3){
+    //         return true
     //     }
-    //     if(type==2){
-    //         return 2
-    //     }
-    //     if(type){
-    //         return 3
-    //     }
+    //    else return false
     // }
 
   
@@ -31,17 +26,22 @@ app.controller("khaosatCtrl",function(api,$uibModalInstance,args,$scope,$state,$
     vm.cancel = function () {
         $uibModalInstance.dismiss('cancel');
       }
-      vm.save = (id) => {
+      vm.save = () => {
           let data={
               id:vm.idsurvey,
               listQ:vm.test
           }
+          console.log(data)
           api.dosurvey(data).then(result=>{
-
+              if(result.success==false){
+                factory.showError(result.content)
+              }
+              else{
+                  factory.showSuccess("Khảo sát thành công")
+              }
+           
           })
-        //   vm.data={
-        //       value:true
-        //   }
+
 
         // let data = Object.assign({}, vm.data)
         $uibModalInstance.close(data);

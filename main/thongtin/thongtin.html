@@ -2,39 +2,36 @@
     <h5 class="dsphd">Thông tin người dùng</h5>
 </div>
 <div class="container-fluid thongtin">
-    <!-- <div class="top row" ng-init="vm.init()">
-        <div class="col-md-2 left">
-            <img src="http://qa.uet.vnu.edu.vn/qa/public/img/student.png" alt="">
-        </div>
-        <div class="col-md-10 right">
-            <ul>
-                <li><span class="info" ng-model="vm.name"><i class="fas fa-user-graduate"></i>{{vm.user.name}}</span> <a href=""><i class="far fa-edit"></i></a></li>
-                <li><span class="info"><i class="fas fa-restroom"></i>{{vm.user.role}}</span><a href=""><i class="far fa-edit"></i></a></i></li>
-                <li><span class="info"><i class="fas fa-calendar-alt"></i>{}</span><a href=""><i class="far fa-edit"></i></a></li>
-                <li><span class="info"><i class="fas fa-book"></i>Tổng số câu hỏi: </span></li>
-            </ul>
-        </div>
-    </div> -->
     <div class="container-fluid" ng-init="vm.init()">
         <div class="row">
             <div class="col-12">
                 <div class="card card-inverse" style="background-color: #333; border-color: #333;">
                     <div class="card-block">
                         <div class="row">
-                                <div class="col-md-2 col-sm-2 text-center">
-                                        <img class="btn-md" src="https://www.webnots.com/bootstrap/assets/images/card-image.png" alt=""
-                                            >
-                                    </div>
-                            <div class="col-md-10 col-sm-10">
-                                <h2 ng-model="vm.name" class="card-title" style="color: white;"><i class="fas fa-user-graduate"></i> Name: {{vm.user.name}} </h2>
-                                <p class="card-text "><strong>Username: </strong> {{vm.user.username}} </p>
-                                <p class="card-text" ng-show="vm.admin()"><strong>Chức vụ: </strong> Admin </p>
-                                <p class="card-text" ng-hide="vm.admin()"><strong>Chức vụ: </strong> Thành viên </p>
-                                <p class="card-text"><strong>Số câu hỏi: {{vm.datas.length}}</strong> 
-                                </p>
-                               
+                            <div class="col-md-2 col-sm-2 text-center">
+                                <img class="btn-md" src="https://www.webnots.com/bootstrap/assets/images/card-image.png"
+                                    alt="">
+                                    
+                                <p class="card-text"><button type="button"
+                                    class="btn btn-outline-primary btn btn-sm waves-effect"
+                                    ng-click="vm.editpassword(vm.user.id)">Editpassword</button>
+                            </p>
                             </div>
-                            
+                            <div class="col-md-10 col-sm-10">
+                                <h2 ng-model="vm.name" class="card-title" style="color: white;"><i
+                                        class="fas fa-user-graduate"></i> Name: {{vm.info.name}} </h2>
+                                <p class="card-text "><strong>Username: </strong> {{vm.info.username}} </p>
+                                <p class="card-text "><strong>Email: </strong> {{vm.info.email}} </p>
+                                <p class="card-text" ng-if="vm.chucvu()==1"><strong>Chức vụ: </strong> Admin </p>
+                                <p class="card-text" ng-if="vm.chucvu()==2"><strong>Chức vụ: </strong> Thành viên </p>
+                                <p class="card-text" ng-if="vm.chucvu()==3"><strong>Chức vụ: </strong> Chủ tọa </p>
+                                </p>
+                                <span class="badge badge-pill badge-default">{{vm.info.countS}} Phiên</span>
+                                <span class="badge badge-pill badge-primary">{{vm.info.countQ}} Câu hỏi</span>
+
+
+                            </div>
+
 
 
 
@@ -49,30 +46,117 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Nội dung câu hỏi</h3>
+                <h3 class="panel-title" style="display: block;text-align: center;">Nội dung câu hỏi</h3>
             </div>
-            <div class="panel-body">
+            <form name="outerForm" class="tab-form-demo">
+                <uib-tabset active="activeForm">
+                    <uib-tab index="0" heading="Câu hỏi">
+                            <h3 ng-if="vm.lengthlist==0" style="    font-size: 16px;
+                            font-family: cursive;
+                            font-style: italic;
+                            color: black;
+                            display: block;
+                            text-align: center;
+                            margin-top: 25px;
+                        ">Bạn chưa hỏi câu nào</h3>
+                        <ng-form name="nestedForm" ng-if="vm.lengthlist==1" >
+                            <div class="panel-body" style="min-height: 500px;">
 
-                <div class="blockquote row" ng-repeat="temp in vm.datas">
+                                <div class="blockquote row" ng-repeat="question in vm.listQ">
 
-                    <div class="content col-lg-10 right">
-                        <a ui-sref="root.cauhoi({cauhoiId: {{temp.id}}})" class="cauhoidetail"
-                            style="display: block">Câu hỏi: {{temp.content}}</a>
-                        <a class="chutoa" ui-sref="root.listcauhoi({listsectionId: temp.section_id})">Phiên hỏi đáp: {{temp.section_id}}</a>
-                        <div class="bottom">
-            
-                            <a><i class="far fa-clock" style="margin-right: 5px;"></i>{{temp.date}}</a>
+                                    <div class="content col-lg-10 right">
+                                        <a ui-sref="root.cauhoi({cauhoiId: {{question.id}}})" class="cauhoidetail"
+                                            style="display: block">Câu hỏi: {{question.content}}</a>
+                                        <a class="chutoa" style="display: block"
+                                            ui-sref="root.listcauhoi({listsectionId: question.section_id})">Phiên hỏi
+                                            đáp:{{question.section_id}}</a>
+                                        <a class="chutoa">Tên
+                                            {{question.name}}</a>
+                                        <div class="bottom">
+
+                                            <a><i class="far fa-clock"
+                                                    style="margin-right: 5px;"></i>{{question.date}}</a>
+                                            <a><i class="fas fa-comments"
+                                                    style="margin-right: 5px;margin-left: 10px;"></i>{{question.countA}}
+                                                Câu trả lời</a>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-success" ng-click="vm.delete()"><i
+                                                class="fas fa-trash-alt"></i></button>
+                                        <button type="button" class="btn btn-danger" ng-click="vm.edit()"><i
+                                                class="fas fa-edit"></i></button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </ng-form>
+                    </uib-tab>
+                    <uib-tab index="1" heading="Section">
+                            <h3 ng-if="vm.lengthsur==0" style="    font-size: 16px;
+                            font-family: cursive;
+                            font-style: italic;
+                            color: black;
+                            display: block;
+                            text-align: center;
+                            margin-top: 25px;
+                        ">Bạn chưa đặt phiên khảo sát nào</h3>
+                        <ng-form name="nestedForm">
+                            <div class="panel-body" style="min-height: 500px;">
+
+                                <div class="blockquote row" ng-repeat="section in vm.listS">
+
+                                    <div class="content col-lg-10 right">
+                                        <a class="cauhoidetail" style="display: block" ui-sref="root.listcauhoi({listsectionId: {{section.id}}})">Tên phiên: {{section.title}}</a>
+                                        <a class="chutoa" style="display: block" >Chủ đề:
+                                            {{section.topic}}</a>
+                                        <a class="chutoa">Tên
+                                            {{section.name}}</a>
+                                        <div class="bottom">
+                                            <a><i class="fas fa-comments"
+                                                style="margin-right: 5px;margin-left: 10px;"></i> {{section.countQ}}
+                                            Câu hỏi</a>
+                                            <a><i class="far fa-clock"
+                                                    style="margin-right: 5px;"></i>{{section.date}}</a>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-success" ng-click="vm.delete()"><i
+                                                class="fas fa-trash-alt"></i></button>
+                                        <button type="button" class="btn btn-danger" ng-click="vm.edit()"><i
+                                                class="fas fa-edit"></i></button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </ng-form>
+                    </uib-tab>
+                    <!-- <uib-tab index="2" heading="Answer">
+                            <ng-form name="nestedForm">
+                                    <div class="panel-body">
+        
+                        <div ng-repeat="section in vm.listS">
+
+                                <div class="list-group">
+                                        <a  class="list-group-item list-group-item-action flex-column align-items-start active">
+                                          <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-2 h5">List group item heading</h5>
+                                            <small>3 days ago</small>
+                                          </div>
+                                          <p class="mb-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
+                                            blandit.</p>
+                                          <small>Donec id elit non mi porta.</small>
+                                        </a>
+                                       
+                                      </div>
+
                         </div>
                     </div>
-                    <div>
-                        <button type="button" class="btn btn-success" ng-click="vm.delete()"><i
-                                class="fas fa-trash-alt"></i></button>
-                        <button type="button" class="btn btn-danger" ng-click="vm.edit()"><i
-                                class="fas fa-edit"></i></button>
-                    </div>
+                </ng-form>
+                    </uib-tab> -->
+                </uib-tabset>
+            </form>
 
-                </div>
-            </div>
         </div>
 
     </div>

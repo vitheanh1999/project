@@ -9,10 +9,16 @@ angular.module('myapp').factory('api', ['config', 'request','factory','$statePar
     };
     
     var apipost = {
-        surveystatic:'survey/static',
+        surveystatic:'survey/statistics',
         dosurvey:'survey/doSurvey',
         createsurvey:'survey/create',
-        viewsurvey:'survey/view',
+        viewsurvey:'survey/viewsurvey',
+        opensurvey:'survey/open',
+        closesurvey:'survey/close',
+
+        profile:'auth/getInfor',
+        top5:'auth/top5',
+        myauth:'auth/myauth',
 
         createanswer:'answer/create',
         editanswer:'answer/edit',
@@ -27,11 +33,12 @@ angular.module('myapp').factory('api', ['config', 'request','factory','$statePar
         closesec:'section/closesec',
         opensec:'section/opensec',
 
-        listquestion:'viewauth/list',
+        listquestion:'question/list',
         createquestion:'question/create',
         viewquestion: 'question/viewquestion',
         deletequestion:'question/delete',
         editquestion:'question/edit',
+    
 
         login:'auth/login',
         resgister:'auth/registration',
@@ -41,9 +48,14 @@ angular.module('myapp').factory('api', ['config', 'request','factory','$statePar
 
         getall:'admin/getAll',
         changeRole:'admin/changeRole',
-        create:'admin/create'
+        createchutoa:'admin/create',
+        resetpassword:'admin/resetpassword',
+        editpassword:'admin/editpassword',
+        changerole:'admin/changerole',
+        history:'admin/history',
+       listall:'admin/listall',
 
-
+        
 
     };
 

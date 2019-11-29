@@ -5,12 +5,9 @@ angular.module("myapp").controller("headerCtrl", ['factory', '$scope', '$uibModa
       $state.go("login")
     }
   }
+  vm.info=user.getinfouser()
   vm.checkrole=()=>{
-    console.log(user.checkrole())
-    if(user.checkrole()==1){
-      return true
-    }
-    else return false
+  return user.checkrole()
   }
   vm.gotoadmin=()=>{
     

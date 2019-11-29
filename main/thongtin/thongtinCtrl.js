@@ -1,37 +1,50 @@
-app.controller("thongtinCtrl",function(api,user,factory){
-    var vm=this
+app.controller("thongtinCtrl", function (api, user, factory,$state) {
+    var vm = this
     // vm.infouser=user.getinfo()
     // vm.name=vm.infouser.name
-    vm.init=()=>{
-        api.listquestion().then(result=>{
-            vm.datas=result.listQuestion
-            console.log(vm.datas)
+    vm.init = () => {
+
+        api.myauth().then(result=>{
+            vm.listQ=result.listQ
+            vm.lengthlist=result.listQ.length
+            vm.lengthsur=result.listS.length
+            vm.listS=result.listS
+            vm.info=result.A[0]
         })
-        vm.user=user.getinfouser()
-        if(user.checkrole()==1){
-            vm.admin=()=>{
+        vm.chucvu=()=>{
+            return  user.checkrole()
+        }
+        vm.user = user.getinfouser()
+        if (user.checkrole() == 1) {
+            vm.admin = () => {
                 return true
             }
         }
-        else{
-            vm.admin=()=>{
+        else {
+            vm.admin = () => {
                 return false
             }
         }
-        
-        // api.info({id:vm.id}).then(result=>{
-        //     vm.user=result.dataAuth
-        //     vm.name=user.getinfouser().name
-        // })
+
+
     }
-    vm.edit=()=>{
-        factory.editquestion().then(result=>{
-            
+    vm.editpassword = (id) => {
+        factory.editpassword().then(result => {
+            api.editpassword({ id: id, oldpassword:result.oldpassword,password:result.password,confirmpassword:result.confirmpassword}).then(result => {
+                factory.showSuccess(result.content)
+                user.logout()
+                $state.go('login')
+            })
         })
     }
-    vm.delete=()=>{
-        factory.confirmdelete().then(result=>{
-            
+    vm.edit = () => {
+        factory.editquestion().then(result => {
+
+        })
+    }
+    vm.delete = () => {
+        factory.confirmdelete().then(result => {
+
         })
     }
 })

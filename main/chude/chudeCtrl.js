@@ -1,11 +1,28 @@
-app.controller("chudeCtrl",function($stateParams,api){
+app.controller("chudeCtrl",function($stateParams,api,$scope,factory){
     var vm=this
     vm.chude=$stateParams.chudeId
-    api.listsection({topic_id:vm.chude}).then(result=>{
+    vm.listsection=()=>{
+      api.listsection({topic_id:vm.chude}).then(result=>{
         vm.datas=result.sec
-        vm.topic=result.sec[0].topic
+        if(result.sec.length>0){
+          vm.topic=result.sec[0].topic
+          vm.checktopicnull=()=>{
+              return 1
+          }
+        }
+        else {
+          factory.showError("Chưa có phiên nào")
+          vm.checktopicnull=()=>{
+            return 0
+          }
+        }
+        
     })
-    api.listsection().then(result => {
+    }
+  
+    vm.init=()=> {
+      api.listsection().then(result => {
+        vm.countuser=result.countUser
         vm.iduser=JSON.parse(localStorage.getItem('infouser')).id
         vm.sumphien=result.sec.length
         $scope.result = result.sec
@@ -21,4 +38,8 @@ app.controller("chudeCtrl",function($stateParams,api){
         vm.phienhoatdong
         vm.phiendong
       })
+      api.listtopic().then(result => {
+        $scope.topic = result.list
+      })
+    }
 })

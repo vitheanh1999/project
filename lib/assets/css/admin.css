@@ -1,0 +1,10 @@
+#thanhconcuadmin ul{
+    justify-content: center;
+}
+#thanhconcuadmin ul li:hover{
+    background: rgb(121, 90, 90);
+  
+}
+#thanhconcuadmin ul li:hover a{
+    color: white;
+}

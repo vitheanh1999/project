@@ -7,12 +7,13 @@
 
         <p style="justify-content: right;
           display: grid;">
-          <span class="likeButton" href="" title="Nhấn để trả lời">
+          <span ng-if="vm.open==1" class="likeButton" href="" title="Nhấn để trả lời">
             <span class=" btn text-white btn-danger forComment" data-toggle="collapse" data-target="#demo"> <i
                 class="fa fa-reply"></i>
               Comment</span>
             <div id="demo" class="collapse">
-              <textarea autofocus="" placeholder="Add comment..." id="" style="width: 100%;" rows="3"
+              <textarea autofocus="" placeholder="Add comment..." id="" style="width: 100%;     border: 1px;
+              border-style: double;" rows="3"
                 ng-model="vm.comment.text" ng-change="vm.evaluateChange(this)"></textarea>
               <button class="btn btn-primary" ng-click="vm.addComment()">Bình luận</button>
 
@@ -36,10 +37,12 @@
                 </div>
               </div>
               <div class="comment-text">{{comment.content}}</div>
-              <div class="tool">
-                  <div class="edit">
-                    <button type="button" ng-click="vm.edit(comment.content,comment.id)" class="btn btn-outline-danger waves-effect">Edit</button>
-                    <button type="button" ng-click="vm.delete(comment.id)"class="btn btn-outline-danger waves-effect">Delete</button>
+              <div class="tool" style="    position: absolute;
+              right: -5px;
+              top: -6px;">
+                  <div class="edit" ng-if="vm.checkuser(comment.auth_Id)==1">
+                    <button type="button" ng-click="vm.edit(comment.content,comment.id)" class="btn btn-outline-danger btn btn-sm waves-effect">Edit</button>
+                    <button type="button" ng-click="vm.delete(comment.id)"class="btn btn-outline-danger btn btn-sm waves-effect">Delete</button>
                   </div>
                 </div>
             </div>

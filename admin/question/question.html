@@ -1,4 +1,4 @@
-<div id="wrapper">
+<div id="wrapper" ng-init="vm.init()">
 
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -35,7 +35,7 @@
       <li class="nav-item">
           <a class="nav-link" ui-sref="question">
             <i class="fas fa-fw fa-table"></i>
-            <span>Câu hỏi</span></a>
+            <span>Lịch sử</span></a>
       </li>
     </ul>
     <!-- End of Sidebar -->
@@ -54,41 +54,123 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Users</h1>
+          <ul><li style="    text-align: center;
+            ">
+            <p class="h3 mb-2 text-gray-800">Users</p>
+          </li>
+        <li style="    position: absolute;
+        right: 11px;
+        top: 3px;">
+        <button ui-sref="root.trangchu" type="button" class="btn btn-mdb-color"><i style="color: white;" class="fas fa-door-open">Q-A_UET</i></button>
+     
+        </li>
+        </ul>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Quản lí Users</h6>
             </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Người tạo</th>
-                      <th>Chủ đề</th>
-                      <th>ID câu hỏi</th>
-                      <th></th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Người tạo</th>
-                      <th>Chủ đề</th>
-                      <th>ID câu hỏi</th>
-                      <th></th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                    
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <form name="outerForm" class="tab-form-demo">
+              <uib-tabset active="activeForm" id="thanhconcuadmin">
+                <uib-tab index="0" heading="Lịch sử trả lời" >
+                  <ng-form name="nestedForm">
+                    <div class="form-group">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                              <tr>
+                                <th>Lịch sử</th>
+                                <th>Date</th>        
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr ng-repeat="x in  vm.listA">
+                                <td>{{x.status}} {{x.content}}</td>
+                                <td>{{x.date}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-form>
+                </uib-tab>
+                <uib-tab index="1" heading="Lịch sử câu hỏi">
+                  <ng-form name="nestedForm">
+                    <div class="form-group">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                              <tr>
+                                <th>Lịch sử</th>
+                                <th>Date</th>        
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr ng-repeat="x in  vm.listQ">
+                                <td>{{x.status}} {{x.content}}</td>
+                                <td>{{x.date}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-form>
+                </uib-tab>
+                <uib-tab index="2" heading="Lịch sử Phiên">
+                  <ng-form name="nestedForm">
+                    <div class="form-group">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                              <tr>
+                                <th>Lịch sử</th>
+                                <th>Date</th>        
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr ng-repeat="x in  vm.listSec">
+                                <td>{{x.status}} {{x.content}}</td>
+                                <td>{{x.date}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-form>
+                </uib-tab>
+                <uib-tab index="3" heading="Lịch sử khảo sát">
+                  <ng-form name="nestedForm">
+                    <div class="form-group">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                              <tr>
+                                <th>Lịch sử</th>
+                                <th>Date</th>        
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr ng-repeat="x in  vm.listSec">
+                                <td>{{x.status}} {{x.content}}</td>
+                                <td>{{x.date}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-form>
+                </uib-tab>
+              </uib-tabset>
+            </form>
+          
           </div>
 
         </div>

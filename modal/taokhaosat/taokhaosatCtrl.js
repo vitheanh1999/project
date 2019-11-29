@@ -164,6 +164,7 @@ vm.checkshow=(index)=>{
   vm.s = {}
 
   vm.createkhaosat = (data) => {
+ 
     data.content.forEach(element => {
       delete element.title
       if (element.style == 1) {
@@ -208,7 +209,7 @@ vm.checkshow=(index)=>{
   }
 
   
-vm.id=$stateParams.surveyId
+// vm.id=$stateParams.surveyId
   vm.save = (data) => {
     console.log(data)
     api.createsurvey(data).then(result => {

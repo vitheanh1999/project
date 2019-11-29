@@ -2,21 +2,37 @@
     <div class="container myquestion" ng-init="vm.init()">
         <div class="listcauhoi trangchu">
             
-            <div class="panel panel-default">
-                  <div class="panel-heading">
-                        <h3 class="panel-title">Nội dung câu hỏi</h3>
+            <div class="panel panel-default" style="margin-top:30px;">
+                  <div class="panel-heading" >
+                        <h3 class="panel-title" style="text-align: center;">Nội dung câu hỏi</h3>
                   </div>
-                  <div class="panel-body" ng-repeat="x in vm.datas">
-                    <div class="blockquote row">
-                        <div class="left"><a href="" class="col-lg-2"><img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
-                                    alt=""></a></div>
-        
+                  <div class="panel-body" >
+                    <div class="blockquote row" ng-repeat="question in vm.listQ">
+
                         <div class="content col-lg-10 right">
-                            <a ui-sref="root.cauhoi" class="cauhoidetail" style="display: block">Câu hỏi: {{x.content}}</a>
-                            <a  class="chutoa">Ngày tạo: {{x.date}}</a>
-                          
-        
+                            <a ui-sref="root.cauhoi({cauhoiId: {{question.id}}})" class="cauhoidetail"
+                                style="display: block">Câu hỏi: {{question.content}}</a>
+                            <a class="chutoa" style="display: block"
+                                ui-sref="root.listcauhoi({listsectionId: question.section_id})">Phiên hỏi
+                                đáp:{{question.section_id}}</a>
+                            <a class="chutoa">Tên
+                                {{question.name}}</a>
+                            <div class="bottom">
+
+                                <a><i class="far fa-clock"
+                                        style="margin-right: 5px;"></i>{{question.date}}</a>
+                                <a><i class="fas fa-comments"
+                                        style="margin-right: 5px;margin-left: 10px;"></i>{{question.countA}}
+                                    Câu trả lời</a>
+                            </div>
                         </div>
+                        <!-- <div>
+                            <button type="button" class="btn btn-success" ng-click="vm.delete()"><i
+                                    class="fas fa-trash-alt"></i></button>
+                            <button type="button" class="btn btn-danger" ng-click="vm.edit()"><i
+                                    class="fas fa-edit"></i></button>
+                        </div> -->
+
                     </div>
                 
                   </div>

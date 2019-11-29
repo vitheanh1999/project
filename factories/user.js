@@ -5,7 +5,7 @@ app.factory("user",function(){
         checklogin:checklogin,
         getinfouser:getinfouser,
         checkrole:checkrole,
-        checkuser:checkuser
+        checkid:checkid
     }
     function logout(){
         localStorage.clear()
@@ -15,9 +15,14 @@ app.factory("user",function(){
         if(infouser.role==1){
             return 1
         }
-        else return 2
+        else if(infouser.role==2){
+            return 2
+        }
+        else if(infouser.role==3){
+            return 3
+        }
     }
-    function checkuser(){
+    function checkid(){
         return iduser=JSON.parse(localStorage.getItem('infouser')).id
     }
     function getinfouser(){

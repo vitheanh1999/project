@@ -15,11 +15,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Users</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">120 người</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{vm.countuser }}  Thành viên</div>
                         </div>
-                        <div class="col-auto">
-                            <i class="material-icons" style="font-size:48px; color :grey">person</i>
-                        </div>
+                        <!-- <div class="col-auto">
+                            <i class="material-icons" >person</i>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -34,11 +34,11 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Tổng số phiên hỏi đáp
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800" ng-model="vm.sumphien"
-                                style="color: #000000;">{{vm.sumphien}}</div>
+                                style="color: #000000;">{{vm.sumphien}} Phiên</div>
                         </div>
-                        <div class="col-auto">
-                            <i class="material-icons" style="font-size:48px; color :grey">assignment</i>
-                        </div>
+                        <!-- <div class="col-auto">
+                            <i class="material-icons" >assignment</i>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -55,19 +55,19 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" ng-model="vm.sophienhd"
-                                        style="color: #000000;">{{vm.phienhoatdong.length}} phiên</div>
+                                        style="color: #000000;">{{vm.phienhoatdong.length}} Phiên</div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                            aria-valuenow="{{vm.phienhoatdong.length}}" aria-valuemin="0" aria-valuemax="{{vm.sumphien}}"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" ng-style="{width: (vm.phienhoatdong.length*100)/vm.sumphien + '%'}"
+                                            aria-valuenow="vm.phienhoatdong.length" aria-valuemin="0" aria-valuemax="{{vm.sumphien}}"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-auto">
-                            <i class="material-icons" style="font-size:48px; color :grey">assignment_turned_in</i>
-                        </div>
+                        <!-- <div class="col-auto">
+                            <i class="material-icons" >assignment_turned_in</i>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -81,11 +81,11 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Tổng số câu hỏi</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800" ng-model="vm.sumques"
-                                style="color: #000000;">{{vm.sumques}}</div>
+                                style="color: #000000;">{{vm.sumques}} Câu hỏi</div>
                         </div>
-                        <div class="col-auto">
+                        <!-- <div class="col-auto">
                             <i class="material-icons" style="font-size:48px; color :grey">question_answer</i>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -105,29 +105,29 @@
                 </div>
                 <div class="">
                     <ul>
-                        <li><a class="listcauhoi" ui-sref="root.chude({chudeId: 'lichhoc'})"><i
+                        <li><a class="listcauhoi1" ui-sref="root.chude({chudeId: 'lichhoc'})"><i
                                     class="fas fa-calendar-alt"></i>Lịch học</a></li>
-                        <li><a class="listcauhoi" ui-sref="root.chude({chudeId: 'giangduong'})"><i
+                        <li><a class="listcauhoi1" ui-sref="root.chude({chudeId: 'giangduong'})"><i
                                     class="fas fa-warehouse"></i>Giảng đường</a></li>
-                        <li><a class="listcauhoi" ui-sref="root.chude({chudeId: 'giangvien'})"><i
+                        <li><a class="listcauhoi1" ui-sref="root.chude({chudeId: 'giangvien'})"><i
                                     class="fas fa-user-tie"></i>Giảng viên</a></li>
-                        <li><a class="listcauhoi" ui-sref="root.chude({chudeId: 'cosovatchat'})"><i
+                        <li><a class="listcauhoi1" ui-sref="root.chude({chudeId: 'cosovatchat'})"><i
                                     class="fas fa-chair"></i>Cơ sở vật chất</a></li>
-                        <li><a class="listcauhoi" ui-sref="root.chude({chudeId: 'monhoc'})"><i
+                        <li><a class="listcauhoi1" ui-sref="root.chude({chudeId: 'monhoc'})"><i
                                     class="fas fa-book-reader"></i>Môn học</a></li>
-                        <li><a class="listcauhoi" ui-sref="root.chude({chudeId: 'chudekhac'})">Chủ đề khác</a></li>
+                        <li><a class="listcauhoi1" ui-sref="root.chude({chudeId: 'chudekhac'})">Chủ đề khác</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="panel panel-default">
+            <div class="panel panel-default" ng-init="vm.top5()">
                 <div class="panel-body">
                     <div class="noibat">
                         <div id="highest-points-widget-2" class="widget highest-points-widget">
-                            <h3 class="widget_title">Nổi bật</h3>
+                            <h3 class="widget_title" style="font-size: 23px;">Hỏi nhiều nhất</h3>
                             <div class="widget_highest_points">
-                                <ul>
-                                    <li>
+                                <ul >
+                                    <li ng-repeat="question in vm.top5Q">
                                         <div class="author-img"><a
                                                 href="https://2code.info/demo/themes/ask-me/author/ask-me/"><img
                                                     class="avatar avatar-65 photo" alt="Ahmed Hassan" width="65"
@@ -135,69 +135,13 @@
                                                     src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-7-65x65.jpg"></a>
                                         </div>
                                         <div class="author-content">
-                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/ask-me/">aaaa</a>
+                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/ask-me/">{{question.name}}</a>
                                             </h6>
-                                            <span class="badge-span" style="background-color: #81d742">Explainer</span>
+                                            <span class="badge-span" style="background-color: #81d742">{{question.COUNTQ}} Câu <i></i></span>
                                         </div>
                                         <div class="clearfix"></div>
                                     </li>
-                                    <li>
-                                        <div class="author-img"><a
-                                                href="https://2code.info/demo/themes/ask-me/author/barry/"><img
-                                                    class="avatar avatar-65 photo" alt="Barry Carter" width="65"
-                                                    height="65"
-                                                    src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-8-65x65.jpg"></a>
-                                        </div>
-                                        <div class="author-content">
-                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/barry/">Barry</a>
-                                            </h6>
-                                            <span class="badge-span" style="background-color: #dd9933">Pundit</span>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <div class="author-img"><a
-                                                href="https://2code.info/demo/themes/ask-me/author/john-2/"><img
-                                                    class="avatar avatar-65 photo" alt="John Peter" width="65"
-                                                    height="65"
-                                                    src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-9-65x65.jpg"></a>
-                                        </div>
-                                        <div class="author-content">
-                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/john-2/">John</a>
-                                            </h6>
-                                            <span class="badge-span" style="background-color: #dd3333"> Teacher</span>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <div class="author-img"><a
-                                                href="https://2code.info/demo/themes/ask-me/author/martin-2/"><img
-                                                    class="avatar avatar-65 photo" alt="Martin Hope" width="65"
-                                                    height="65"
-                                                    src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-2-65x65.jpg"></a>
-                                        </div>
-                                        <div class="author-content">
-                                            <h6><a
-                                                    href="https://2code.info/demo/themes/ask-me/author/martin-2/">Martin</a>
-                                            </h6><span class="badge-span" style="background-color: #dd3333">
-                                                Teacher</span>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <div class="author-img"><a
-                                                href="https://2code.info/demo/themes/ask-me/author/marko/"><img
-                                                    class="avatar avatar-65 photo" alt="Marko Smith" width="65"
-                                                    height="65"
-                                                    src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-4-65x65.jpg"></a>
-                                        </div>
-                                        <div class="author-content">
-                                            <h6><a href="https://2code.info/demo/themes/ask-me/author/marko/">Marko</a>
-                                            </h6>
-                                            <span class="badge-span" style="background-color: #000000">Beginner</span>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
+                                  
                                 </ul>
                             </div>
                         </div>
@@ -205,6 +149,34 @@
                 </div>
             </div>
 
+            <div class="panel panel-default" ng-init="vm.top5()">
+                <div class="panel-body">
+                    <div class="noibat">
+                        <div id="highest-points-widget-2" class="widget highest-points-widget">
+                            <h3 class="widget_title" style="font-size: 23px;">Trả lời nhiều nhất</h3>
+                            <div class="widget_highest_points">
+                                <ul >
+                                    <li ng-repeat="answer in vm.top5A">
+                                        <div class="author-img"><a
+                                               ><img
+                                                    class="avatar avatar-65 photo" alt="Ahmed Hassan" width="65"
+                                                    height="65"
+                                                    src="https://2code.info/demo/themes/ask-me/wp-content/uploads/2017/07/team-7-65x65.jpg"></a>
+                                        </div>
+                                        <div class="author-content">
+                                            <h6><a >{{answer.name}}</a>
+                                            </h6>
+                                            <span class="badge-span" style="background-color: #81d742">{{answer.COUNTA}} Câu</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                  
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <div class="col-md-10" ng-init="question()">
@@ -229,8 +201,14 @@
                                                             <a ui-sref="root.listcauhoi({listsectionId: {{x.id}}})"
                                                                 class="cauhoidetail"
                                                                 style="display: block">{{x.title}}</a>
-                                                            <a ui-sref="root.thongtin" style="display: block;"
+                                                            <a ng-if="vm.checkrole(x.auth_id)!=1" ui-sref="root.profile({profileId: {{x.auth_id}}})" style="display: block;"
                                                                 class="chutoa">Chủ tọa: {{x.name}}</a>
+                                                            <a ng-if="vm.checkrole(x.auth_id)==1" ui-sref="root.profile({profileId: {{x.auth_id}}})" style="font-size: 17px;
+                                                            font-family: cursive;
+                                                            color: black;
+                                                            font-style: italic;
+                                                            display: block;"
+                                                                class="chutoa">Admin</a>
                                                             <a  style="display: block;"
                                                                 class="chutoa">Mô tả: {{x.content}}</a>
                                                             <a class="chutoa">Chủ đề: {{x.topic}}</a>
@@ -241,7 +219,9 @@
                                                                         style="margin-right: 5px;margin-left: 10px;"></i>{{x.countQ}}
                                                                     Câu hỏi</a>
                                                             </div>
-                                                            <div class="button" ng-show="vm.checkuser()">
+                                                            <div style="    position: absolute;
+                                                            right: -104px;
+                                                            top: -8px;" class="button" ng-if="vm.checkrole(x.auth_id)">
                                                                 <ul class="nav">
                                                                     <li class="nav-item">
                                                                         <a class="nav-link"
@@ -271,8 +251,8 @@
 
                                             </div>
 
-                                            <nav class="nav pagination" role="navigation" style="bottom: 0px;
-                                            left: 685px;
+                                            <nav class="nav pagination" role="navigation" style="    bottom: 0px;
+                                            left: 580px;
                                             position: absolute;">
                                                 <ul uib-pagination boundary-links="true" total-items="vm.phienhoatdong.length"
                                                     max-size="maxSize" ng-model="currentPage" class="pagination-md"
@@ -285,7 +265,7 @@
                                 </uib-tab>
                                 <uib-tab heading="Phiên đã đóng">
                                     <ng-form name="nestedForm">
-                                        <div class="form-group">
+                                        <div class="form-group" style="min-height: 1355px;">
                                             <div class="card-body">
                                                 <div class="blockquote row  listcauhoi"
                                                     ng-repeat="x in seclist = (vm.phiendong | filter : {title : searchText }) | limitTo:6:6*(currentPage-1)"
@@ -310,7 +290,7 @@
                                                                     Câu hỏi</a>
                                                             </div>
                                                         </div>
-                                                        <div class="button" ng-show="vm.checkuser(x.auth_id,vm.iduser)">
+                                                        <div class="button" ng-if="vm.checkrole(x.auth_id)">
                                                             <button ng-show="x.open" type="button"
                                                                 class="btn btn-success" ng-click="vm.delete(x.id)"><i
                                                                     class="fas fa-trash-alt"></i></button>
@@ -318,9 +298,10 @@
                                                                 class="btn btn-danger"
                                                                 ng-click="vm.edit(x.id,x.title,x.content)"><i
                                                                     class="fas fa-edit"></i></button>
-                                                            <!-- <button ng-show="x.open" type="button" class="btn btn-danger"
-                                                                ng-click="vm.closesec(x.id)"><i class="fas fa-lock"></i></button> -->
-                                                            <button ng-hide="x.open" type="button"
+                                                           
+                                                            <button ng-hide="x.open" style="position: absolute;
+                                                            right: -109px;
+                                                            top: -13px;" type="button"
                                                                 class="btn btn-danger" ng-click="vm.opensec(x.id)"><i
                                                                     class="fas fa-lock-open"></i></button>
                                                         </div>
@@ -334,7 +315,7 @@
                                 </uib-tab>
                                 <uib-tab heading="Tất cả câu hỏi">
                                     <ng-form name="nestedForm" ng-init="vm.listquestion()">
-                                        <div class="form-group">
+                                        <div class="form-group" style="min-height: 1355px;">
                                             <div class="card-body">
                                                 <div class="blockquote row  listcauhoi"
                                                     ng-repeat="x in temp = (vm.listquestion | filter : {content : searchText }) | limitTo:6:6*(currentPage-1)">
@@ -347,15 +328,15 @@
                                                             class="cauhoidetail" style="display: block">Câu hỏi:
                                                             {{x.content}}</a>
                                                         <a ui-sref="root.thongtin" style="display: block;"
-                                                            class="chutoa">Tên: {{x.name}}</a>
-                                                        <a class="chutoa">Chủ đề: {{x.chude}}</a>
+                                                            class="chutoa">Tên: {{x.authName}}</a>
+                                                        <a class="chutoa" ui-sref="root.listcauhoi({listsectionId: {{x.section_id}}})">Phiên: {{x.secTitle}}</a>
                                                         <div class="bottom">
                                                             <a href="" style="margin-right:10px"> <i
                                                                     class="far fa-thumbs-up"></i>{{x.count_like}}</a>
                                                             <a><i class="far fa-clock"
                                                                     style="margin-right: 5px;"></i>{{x.date}}</a>
                                                             <a><i class="fas fa-comments"
-                                                                    style="margin-right: 5px;margin-left: 10px;"></i>0
+                                                                    style="margin-right: 5px;margin-left: 10px;"></i>{{x.countA}}
                                                                 Câu trả lời</a>
                                                         </div>
 
@@ -363,7 +344,9 @@
                                                 </div>
 
                                             </div>
-                                            <nav class="nav pagination" role="navigation">
+                                            <nav class="nav pagination" role="navigation" style="bottom: 15px;
+                                            left: 580px;
+                                            position: absolute;">
                                                 <ul uib-pagination boundary-links="true" total-items="temp.length"
                                                     max-size="maxSize" ng-model="currentPage" class="pagination-md"
                                                     items-per-page="numPerPage" previous-text="&lsaquo;"

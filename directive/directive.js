@@ -37,6 +37,13 @@ app.directive("myHeader",function(){
         controllerAs:'vm'
     }
 })
+.directive("myListadmin",function(){
+    return{
+        templateUrl:'./directive/listadmin/listadmin.html',
+        controller:'listadminCtrl',
+        controllerAs:'vm'
+    }
+})
 .directive("ngEnter",function(){
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {

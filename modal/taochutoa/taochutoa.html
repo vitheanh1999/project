@@ -1,0 +1,37 @@
+<div class="modal_class">
+        <div class="modal-header">
+          <h3>Tạo tài khoản chủ tọa</h3>
+        </div>
+        <div class="modal-body">
+                <div class="form-group">
+                        <form class="text-center" style="color: #757575;" action="#!">
+          
+                            <div class="md-form">
+                              <input type="text" id="materialLoginFormEmail" class="form-control" ng-model="vm.chutoa.username">
+                              <label for="materialLoginFormEmail">Username</label>
+                            </div>
+                            <div class="md-form">
+                              <input type="text" id="materialLoginFormEmail" class="form-control" ng-model="vm.chutoa.password">
+                              <label for="materialLoginFormEmail">Mật khẩu</label>
+                            </div>
+                            <div class="md-form">
+                              <input type="text" id="materialLoginFormEmail" class="form-control" ng-model="vm.chutoa.confirmpassword">
+                              <label for="materialLoginFormEmail">Nhập lại mật khẩu</label>
+                            </div>
+                            <div class="md-form">
+                              <input type="text" id="materialLoginFormEmail" class="form-control" ng-model="vm.chutoa.name">
+                              <label for="materialLoginFormEmail">Name</label>
+                            </div>
+                            <div class="md-form">
+                              <input type="text" id="materialLoginFormEmail" class="form-control" ng-model="vm.chutoa.email">
+                              <label for="materialLoginFormEmail">Email</label>
+                            </div>
+                          </form>
+                    </div>
+        </div>
+        <div class="modal-footer">
+          
+          <button class="btn btn-warning" style="margin-bottom: 0px;"  ng-click="vm.save()">Submit</button>
+          <button class="btn btn-warning" ng-click="vm.cancel()">Thoát</button>
+        </div>
+      </div>

@@ -1,10 +1,18 @@
-app.controller("taocauhoiCtrl",function($uibModalInstance){
+app.controller("taocauhoiCtrl",function($uibModalInstance,factory){
     var vm=this
+    vm.newquestion={}
     vm.cancel = function () {
         $uibModalInstance.dismiss('cancel');
       }
       vm.save = () => {
-        // let data = Object.assign({}, vm.newquestion.content)
-        $uibModalInstance.close(vm.newquestion.content);
+
+        if(!vm.newquestion.content){
+          factory.showError("Chưa nhập đủ nội dung")
+          $uibModalInstance.close();
+         
+        }
+        else{
+          $uibModalInstance.close(vm.newquestion.content);
+        }
       }
 })

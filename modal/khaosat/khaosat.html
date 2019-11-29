@@ -2,13 +2,18 @@
   <div class="modal-header">
     <h3>Khảo sát sinh viên</h3>
   </div>
-  <form name="form" ng-submit="vm.save(id)">
+  <form name="form" >
     <div class="modal-body" ng-repeat=" ($listId , list) in vm.list">
       <div class="radio" ng-switch="list.q.type">
+
         <div class="question">
-          <label for="">Câu: {{list.q.content}} {{list.q.id}}</label>
+          <label for="">Câu:{{$listId}} {{list.q.content}} {{list.q.id}}</label>
         </div>
-        <div class="answer" ng-repeat="($id,answer) in list.a">
+        <div class="custom-control custom-checkbox" ng-switch-when="3"  required>
+            <textarea name="text" id="" cols="30" rows="3" style="width: 100%;" ng-model="vm.test[list.q.id]" required >{{vm.test[$listId]}}</textarea>
+             </label>
+            </div>
+        <div  class="answer" ng-repeat="($id,answer) in list.a">
           <div class="custom-control custom-radio" ng-switch-when="1">
             <input type="radio" ng-model="vm.test[list.q.id]" ng-value="{{answer.id}}"  class="custom-control-input"
               id="defaultGroupExample{{answer.id}}" name="groupOfDefaultRadios" required>
@@ -23,11 +28,6 @@
            </label>
           </div>
 
-          <div class="custom-control custom-checkbox" ng-switch-when="3" required>
-          <textarea name="" id="" cols="30" rows="5" style="width: 100%;"></textarea>
-           </label>
-          </div>
-          {{aa}}
         </div>
 
       </div>
@@ -36,8 +36,8 @@
 
   <div class="modal-footer">
 
-    <button class="btn btn-warning" type="submit" >Submit</button>
-    <button class="btn btn-warning" ng-click="cancel()">Thoát</button>
+    <button class="btn btn-warning" type="submit" style="margin-bottom: 0px;"  ng-click="form.$valid &&vm.save()" >Submit</button>
+    <button class="btn btn-warning" ng-click="vm.cancel()">Thoát</button>
   </div>
 </form>
 </div>

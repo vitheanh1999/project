@@ -1,9 +1,11 @@
 app.controller("myquestionCtrl",function(api){
     var vm=this
-   vm.init=()=>{
-    api.listquestion().then(result=>{
-        vm.datas=result.listQuestion
-        console.log(vm.datas)
-    })
-   }
+    vm.init = () => {
+
+        api.myauth().then(result=>{
+            vm.listQ=result.listQ
+            vm.info=result.A[0]
+        })
+
+    }
 })
